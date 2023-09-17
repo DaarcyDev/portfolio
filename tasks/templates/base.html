@@ -1,12 +1,19 @@
+{%load static%}
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <title></title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static '/styles/app.css' %}">
+    {% comment %} <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css"> {% endcomment %}
+    <script src="https://kit.fontawesome.com/c945472186.js" crossorigin="anonymous"></script>
+    {% comment %} <link href="https://www.nerdfonts.com/assets/css/combo.css" rel="stylesheet" type="text/css"> {% endcomment %}
   </head>
   <body>
-      <h1>hola</h1>
+      {% block content %}
+
+      {% endblock content %}
   </body>
 </html>
