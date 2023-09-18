@@ -10,10 +10,14 @@
     {% comment %} <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css"> {% endcomment %}
     <script src="https://kit.fontawesome.com/c945472186.js" crossorigin="anonymous"></script>
     {% comment %} <link href="https://www.nerdfonts.com/assets/css/combo.css" rel="stylesheet" type="text/css"> {% endcomment %}
+    
   </head>
   <body>
       {% block content %}
 
       {% endblock content %}
   </body>
+  <script src="{% static 'js/bundle.min.js' %}"></script>
+  {% comment %} <script src="{% static 'js/bundle.min.js' %}"></script> {% endcomment %}
+
 </html>

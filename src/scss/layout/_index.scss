@@ -1,6 +1,7 @@
 body{
     // background-image: url("/tasks/static/images/wall-08.webp");
-    background: url("/static/images/wall-08.webp") 50% 0 no-repeat fixed; 
+    background: url("/static/images/wall-08.webp") 50% 0 no-repeat; 
+    background-position: top;
     height: 100vh;
     width: 100vw;
     position: relative;
@@ -31,10 +32,11 @@ body{
         p{
             margin:0 2rem;
             font-size: 1rem;
+            color: $amarillo;
         }
         .current{
             font-size: 2rem;
-            color: #5687cf;
+            color: $azul;
             // i{
             //     color: #164488;
             // }
@@ -42,9 +44,60 @@ body{
     }
     .home{
         padding:0 3rem;
+        p{
+            color: $azul;
+        }
     }
     .blog-contact{
         padding: 0 5rem;
         width: 20%;
+    }
+    .about{
+        cursor: pointer;
+    }
+}
+// .screen{
+//     .terminal{
+//         background: rgba($color: #000000, $alpha: 0.8);
+//         width: 80%;
+//         height: 80%;
+//         margin: 5rem;
+//         position: absolute;
+//         top:5rem;
+//         cursor: grab;
+//     }
+// }
+.terminal {
+    display: none;
+    margin: 0 auto;
+    width: 40%;
+    height: 50%;
+    top: 7rem;
+    left: 5rem;
+    background: rgba($color: #000000, $alpha: 0.8);
+    position: absolute;
+    cursor: grab; /* Cambia el cursor al símbolo de agarre */
+    border-radius: 1rem;
+    .bar{
+        width: 100%;
+        height: 5rem;
+        background-color: #111;
+        border-radius: 1rem 1rem 0 0 ;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        p{
+            margin:0 2rem;
+        }
+        .buttons{
+            display: flex;
+            p{
+                margin:0 1rem;
+                cursor: pointer;
+            }
+            #close:hover{
+                color: $rojo;
+            }
+        }
     }
 }

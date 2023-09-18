@@ -4,7 +4,7 @@
 
     <header class="header">
         <div class="topbar home">
-            <a href=""><p><i class="fa-brands fa-ubuntu"></i></p></a>
+            <a href=""><p><i class="fa-brands fa-fedora"></i></p></a>
         </div>
         <div class="topbar place">
             <a href=""><p class="current"><i class="fa-solid fa-ghost"></i></p></a>
@@ -14,19 +14,35 @@
             <a href=""><p><i class="fa-solid fa-circle"></i></p></a>
             <a href=""><p><i class="fa-solid fa-circle"></i></p></a>
         </div>
-        <div class="topbar about">
-            <a href=""><p>about me</p></a>
+        <div id="about" class="topbar about">
+            <p>About</p>
         </div>
         <div class="topbar projects">
-            <a href=""><p>Projects</p></a>
+            <p>Projects</p>
         </div>
         <div class="topbar skills">
-            <a href=""><p>Skills</p></a>
+            <p>Skills</p>
         </div>
         <div class="topbar blog-contact">
-            <a href=""><p>Blog</p></a>
-            <a href=""><p>Contact</p></a>
+            <p>Blog</p>
+            <p>Contact</p>
         </div>
     </header>
+    <main class="screen">
+        <div id="draggable" class="terminal">
+            <div class="bar">
+                <p>About Me</p>
+                <div class="buttons">
+                    <p id="min"><i class="fa-solid fa-window-minimize"></i></p>
+                    <p id="restore"><i class="fa-regular fa-window-restore"></i></p>
+                    <p id="max"><i class="fa-regular fa-window-maximize"></i></p>
+                    <p id="close" class="close"><i class="fa-regular fa-rectangle-xmark"></i></p>
+                </div>
+            </div>
+        </div>
+        <section class="desktop1">
+            
+        </section>
+    </main>
 
 {% endblock content %}
