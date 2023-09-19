@@ -92,16 +92,16 @@ body{
                 margin:0 1rem;
                 cursor: pointer;
             }
-            #close:hover{
+            .close:hover{
                 color: $rojo;
             }
-            #max:hover{
+            .max:hover{
                 color: $amarillo;
             }
-            #restore:hover{
+            .restore:hover{
                 color: $verde;
             }
-            #min:hover{
+            .min:hover{
                 color: $azul;
             }
         }
