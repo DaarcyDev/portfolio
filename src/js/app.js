@@ -22,6 +22,27 @@ function initializeTerminal(terminal) {
       terminal.style.display = "none";
     }
   });
+  max.addEventListener("click", function () {
+    if (!terminal.classList.contains("maximize")){
+      terminal.classList.add("maximize");
+      terminal.classList.remove("minimize")
+      terminal.onmousedown = null;
+    }
+  });
+  restore.addEventListener("click", function () {
+    if (!terminal.classList.contains("restore")){
+      terminal.classList.remove("maximize")
+      terminal.classList.remove("minimize")
+      draggable()
+    }
+  });
+  min.addEventListener("click", function () {
+    if (!terminal.classList.contains("minimize")){
+      terminal.classList.add("minimize");
+      terminal.classList.remove("maximize")
+      terminal.onmousedown = null;
+    }
+  });
 }
 
 function draggable() {
@@ -62,7 +83,19 @@ function draggable() {
     return false;
   };
   const closeButton = document.getElementById("close");
+  const maximize = document.getElementById("max");
+  const restore = document.getElementById("restore");
+  const minimize = document.getElementById("min");
   closeButton.addEventListener("mousedown", function (event) {
+    event.stopPropagation();
+  });
+  maximize.addEventListener("mousedown", function (event) {
+    event.stopPropagation();
+  });
+  restore.addEventListener("mousedown", function (event) {
+    event.stopPropagation();
+  });
+  minimize.addEventListener("mousedown", function (event) {
     event.stopPropagation();
   });
   

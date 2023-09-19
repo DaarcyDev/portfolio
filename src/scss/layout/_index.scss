@@ -5,6 +5,10 @@ body{
     height: 100vh;
     width: 100vw;
     position: relative;
+    padding: 2rem 0;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
 }
 .header{
     margin-top: 1rem;
@@ -12,6 +16,7 @@ body{
     display: flex;
     justify-content: space-around;
     width: 100vw;
+    top: 0;
     .topbar{
         border: 1px solid #111;
         border-radius: 1rem;
@@ -57,15 +62,7 @@ body{
     }
 }
 // .screen{
-//     .terminal{
-//         background: rgba($color: #000000, $alpha: 0.8);
-//         width: 80%;
-//         height: 80%;
-//         margin: 5rem;
-//         position: absolute;
-//         top:5rem;
-//         cursor: grab;
-//     }
+//     // display: flex;
 // }
 .terminal {
     display: none;
@@ -76,7 +73,7 @@ body{
     left: 5rem;
     background: rgba($color: #000000, $alpha: 0.8);
     position: absolute;
-    cursor: grab; /* Cambia el cursor al símbolo de agarre */
+    cursor: grab;
     border-radius: 1rem;
     .bar{
         width: 100%;
@@ -98,6 +95,29 @@ body{
             #close:hover{
                 color: $rojo;
             }
+            #max:hover{
+                color: $amarillo;
+            }
+            #restore:hover{
+                color: $verde;
+            }
+            #min:hover{
+                color: $azul;
+            }
         }
     }
+}
+.maximize{
+    width: 97vw;
+    height: 90vh;
+    position: initial !important;
+    cursor: auto;
+    margin: 0 auto;
+}
+.minimize{
+    width: 20vw;
+    height: 5vh;
+    position: initial !important;
+    cursor: auto;
+    // margin: 0 auto;
 }
