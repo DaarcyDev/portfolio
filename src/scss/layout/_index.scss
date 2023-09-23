@@ -8,6 +8,7 @@ body{
     padding: 2rem 0;
     display: flex;
     align-items: flex-end;
+    // justify-content: center;
     justify-content: center;
 }
 .header{
@@ -60,10 +61,11 @@ body{
     .about{
         cursor: pointer;
     }
+    .projects{
+        cursor: pointer;
+    }
 }
-// .screen{
-//     // display: flex;
-// }
+
 .terminal {
     display: none;
     margin: 0 auto;
@@ -117,7 +119,16 @@ body{
 .minimize{
     width: 20vw;
     height: 5vh;
-    position: initial !important;
+    // position: initial !important;
     cursor: auto;
-    // margin: 0 auto;
+    margin: 0 1rem;
+    bottom: 3rem !important;
+    top: initial !important;
+    // left: 3rem !important;
+    .bar{
+        border-radius: 1rem;
+    }
 }
+.left-3rem-important {
+    left: 3rem !important;
+  }
