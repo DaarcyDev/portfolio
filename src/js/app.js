@@ -1,31 +1,58 @@
 const globTerminal = document.getElementById("draggable");
 const globTerminal2 = document.getElementById("draggable2");
 const globTerminal3 = document.getElementById("draggable3");
-var data = 0
 var konsole1 = ""
 var konsole2 = ""
 var konsole3 = ""
 var konsole4 = ""
 var konsole5 = ""
-function setNextElementPosition(konsole) {
-  if (konsole1 == "") {
+
+function setNextElementPosition(konsole, restoreButton, maxButton) {
+  maxButton.addEventListener("click", function () {
+    if (konsole1 === konsole) {
+      konsole1 = ""
+    }
+      if (konsole2 === konsole) {
+      konsole2 =""
+    }
+      if (konsole3 === konsole) {
+      konsole3 = ""
+    }
+  });
+  restoreButton.addEventListener("click", function () {
+    if (konsole1 === konsole) {
+      konsole1 = ""
+    }
+      if (konsole2 === konsole) {
+      konsole2 =""
+    }
+      if (konsole3 === konsole) {
+      konsole3 = ""
+    }
+  });
+
+  if (konsole1 == "" ) {
     konsole1 = konsole
     console.log("konsole1 = ",konsole1.id)
     konsole1.style.left = "2%"
-  }else if(konsole2 =="") {
+  }else if(konsole2 ==""  && konsole1 !="") {
+
     konsole2 = konsole
     konsole2.style.left = "23%";
-    console.log(konsole.style.left)
-    console.log("style left: ",konsole2.style.left)
     console.log("konsole2 = ",konsole2.id)
-  }else if(konsole3 == ""){
+    
+  }else if(konsole3 =="" && konsole1 !="" && konsole2 !=""){
     konsole3 = konsole
     konsole3.style.left = "44%";
-    console.log("konsole3 = ",konsole3.id)      
-  }else if(konsole3 ==""){
-    konsole3 = konsole
-    console.log("konsole3 = ",konsole3.id)
-    konsole3.style.left = "65%"
+    console.log("konsole3 = ",konsole3.id)  
+        
+  }else if(konsole4 =="" && konsole1 !="" && konsole2 !="" && konsole3 !=""){
+    konsole4 = konsole
+    console.log("konsole4 = ",konsole4.id)
+    konsole4.style.left = "65%"
+    
+  }else{
+    console.log("error")
   }
 }
 
@@ -72,6 +99,7 @@ function initializeTerminal() {
       if (!konsole.classList.contains("maximize")) {
         konsole.classList.add("maximize");
         konsole.classList.remove("minimize")
+        
         konsole.onmousedown = null;
       }
 
@@ -89,7 +117,7 @@ function initializeTerminal() {
         konsole.classList.add("minimize");
         konsole.classList.remove("maximize")
         konsole.onmousedown = null;
-        setNextElementPosition(konsole);
+        setNextElementPosition(konsole, restoreButton, maxButton);
 
       }
     });
