@@ -1,67 +1,89 @@
-body{
+body {
     // background-image: url("/tasks/static/images/wall-08.webp");
-    background: url("/static/images/wall-08.webp") 50% 0 no-repeat; 
+    // background: url("/static/images/wall-08.webp") 50% 0 no-repeat; 
     background-position: top;
     height: 100vh;
-    width: 100vw;
+    width: 500vw;
     position: relative;
     padding: 2rem 0;
     display: flex;
     align-items: flex-end;
     // justify-content: center;
     justify-content: center;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    scroll-behavior: auto;
 }
-.header{
-    margin-top: 1rem;
-    position: absolute;
+
+.background {
+    background: url("/static/images/wall-08.webp") 50% 0 no-repeat;
+    background-position: top;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+}
+
+.header {
+    // margin-top: 1rem;
+    position: fixed;
     display: flex;
     justify-content: space-around;
     width: 100vw;
     top: 0;
-    .topbar{
-        border: 1px solid #111;
+    left: 0;
+
+    .topbar {
+        margin-top: 1rem;
+        border: 1px solid #555;
         border-radius: 1rem;
         display: flex;
         align-items: center;
         justify-content: space-between;
         padding: 0 10rem;
         background-color: rgba($color: #000000, $alpha: 0.3);
-        // filter: blur(4px);
         z-index: 0;
-        p{
+
+        p {
             margin: 0 0.3rem;
+            color: $blanco;
             z-index: 1;
         }
     }
-    .place{
+
+    .place {
         padding: 0 5rem;
-        p{
-            margin:0 2rem;
+
+        p {
+            margin: 0 2rem;
             font-size: 1rem;
             color: $amarillo;
         }
-        .current{
+
+        .current {
             font-size: 2rem;
             color: $azul;
-            // i{
-            //     color: #164488;
-            // }
         }
     }
-    .home{
-        padding:0 3rem;
-        p{
+
+    .home {
+        padding: 0 3rem;
+
+        p {
             color: $azul;
         }
     }
-    .blog-contact{
+
+    .blog-contact {
         padding: 0 5rem;
         width: 20%;
     }
-    .about{
+
+    .about {
         cursor: pointer;
     }
-    .projects{
+
+    .projects {
         cursor: pointer;
     }
 }
@@ -69,7 +91,7 @@ body{
 .terminal {
     display: none;
     margin: 0 auto;
-    width: 40%;
+    width: 80rem;
     height: 50%;
     top: 7rem;
     left: 5rem;
@@ -77,58 +99,136 @@ body{
     position: absolute;
     cursor: grab;
     border-radius: 1rem;
-    .bar{
+    z-index: 5;
+    .bar {
         width: 100%;
         height: 5rem;
         background-color: #111;
-        border-radius: 1rem 1rem 0 0 ;
+        border-radius: 1rem 1rem 0 0;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        p{
-            margin:0 2rem;
+        
+        p {
+            margin: 0 2rem;
+            color: $blanco;
         }
-        .buttons{
+
+        .buttons {
             display: flex;
-            p{
-                margin:0 1rem;
+
+            p {
+                margin: 0 1rem;
                 cursor: pointer;
             }
-            .close:hover{
+
+            .close:hover {
                 color: $rojo;
             }
-            .max:hover{
+
+            .max:hover {
                 color: $amarillo;
             }
-            .restore:hover{
+
+            .restore:hover {
                 color: $verde;
             }
-            .min:hover{
+
+            .min:hover {
                 color: $azul;
             }
         }
     }
 }
-.maximize{
+
+.maximize {
     width: 97vw;
     height: 90vh;
-    position: initial !important;
+    position: absolute !important;
     cursor: auto;
     margin: 0 auto;
+    // left: .3% !important;
+    top: 7rem !important;
 }
-.minimize{
-    width: 20vw;
+
+.minimize {
+    width: 4%;
     height: 5vh;
     // position: initial !important;
     cursor: auto;
     margin: 0 1rem;
     bottom: 3rem !important;
     top: initial !important;
+
     // left: 3rem !important;
-    .bar{
+    .bar {
         border-radius: 1rem;
     }
 }
-.left-3rem-important {
-    left: 3rem !important;
-  }
+
+.display {
+    display: flex;
+    scroll-behavior: auto;
+    scroll-snap-type: x mandatory;
+}
+
+.first {
+    width: 100vw;
+    height: 90vh;
+    scroll-snap-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    scroll-snap-align: start;
+    // background-color: aquamarine;
+}
+
+.second {
+    width: 100vw;
+    height: 90vh;
+    scroll-snap-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    // background-color: bisque;
+}
+
+.third {
+    width: 100vw;
+    height: 90vh;
+    scroll-snap-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    // background-color: bisque;
+}
+
+.fourth {
+    width: 100vw;
+    height: 90vh;
+    scroll-snap-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    // background-color: bisque;
+}
+
+.fifth {
+    width: 100vw;
+    height: 90vh;
+    scroll-snap-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    // background-color: bisque;
+}

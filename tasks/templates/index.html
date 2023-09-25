@@ -1,18 +1,32 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
+<div class="backgroundd">
+
 
     <header class="header">
+        <div class="background"></div>
         <div class="topbar home">
-            <a href=""><p><i class="fa-brands fa-fedora"></i></p></a>
+            <a href="">
+                <p><i class="fa-brands fa-fedora"></i></p>
+            </a>
         </div>
         <div class="topbar place">
-            <a href=""><p class="current"><i class="fa-solid fa-ghost"></i></p></a>
-            <a href=""><p><i class="fa-solid fa-circle"></i></p></a>
-            <a href=""><p><i class="fa-solid fa-circle"></i></p></a>
-            <a href=""><p><i class="fa-solid fa-circle"></i></p></a>
-            <a href=""><p><i class="fa-solid fa-circle"></i></p></a>
-            <a href=""><p><i class="fa-solid fa-circle"></i></p></a>
+            <a  href="#first">
+                <p ><i id="firstPosition" class="fa-solid fa-ghost"></i></p>
+            </a>
+            <a  href="#second">
+                <p><i id="secondPosition" class="fa-solid fa-circle"></i></p>
+            </a>
+            <a  href="#third">
+                <p><i id="thirdPosition" class="fa-solid fa-circle"></i></p>
+            </a>
+            <a  href="#fourth">
+                <p><i id="fourthPosition" class="fa-solid fa-circle"></i></p>
+            </a>
+            <a  href="#fifth">
+                <p><i id="fifthPosition" class="fa-solid fa-circle"></i></p>
+            </a>
         </div>
         <div id="about" class="topbar about">
             <p>About</p>
@@ -24,11 +38,12 @@
             <p>Skills</p>
         </div>
         <div class="topbar blog-contact">
-            <p>Blog</p>
-            <p>Contact</p>
+            <p id="blog">Blog</p>
+            <p id="contact">Contact</p>
         </div>
+
     </header>
-    <main class="screen">
+    <main>
         <div id="draggable" class="terminal terminalAbout">
             <div class="bar">
                 <p>About Me</p>
@@ -62,9 +77,50 @@
                 </div>
             </div>
         </div>
+        <div id="draggable4" class="terminal terminalBlog">
+            <div class="bar">
+                <p>Blog</p>
+                <div class="buttons">
+                    <p id="minBlog" class="min"><i class="fa-solid fa-window-minimize"></i></p>
+                    <p id="restoreBlog" class="restore"><i class="fa-regular fa-window-restore"></i></p>
+                    <p id="maxBlog" class="max"><i class="fa-regular fa-window-maximize"></i></p>
+                    <p id="closeBlog" class="close" class="close"><i class="fa-regular fa-rectangle-xmark"></i></p>
+                </div>
+            </div>
+        </div>
+        <div id="draggable5" class="terminal terminalContact">
+            <div class="bar">
+                <p>Contact</p>
+                <div class="buttons">
+                    <p id="minContact" class="min"><i class="fa-solid fa-window-minimize"></i></p>
+                    <p id="restoreContact" class="restore"><i class="fa-regular fa-window-restore"></i></p>
+                    <p id="maxContact" class="max"><i class="fa-regular fa-window-maximize"></i></p>
+                    <p id="closeContact" class="close" class="close"><i class="fa-regular fa-rectangle-xmark"></i></p>
+                </div>
+            </div>
+        </div>
+        <div class="display">
+            <section id="first" class="slide first ">
+
+            </section>
+            <section id="second" class="slide second ">
+
+            </section>
+            <section id="third" class="slide third ">
+
+            </section>
+            <section id="fourth" class="slide fourth ">
+
+            </section>
+            <section id="fifth" class="slide fifth ">
+
+            </section>
+        </div>
+
+
         {% comment %} <section class="desktop1">
-            
+
         </section> {% endcomment %}
     </main>
-
+</div>
 {% endblock content %}
