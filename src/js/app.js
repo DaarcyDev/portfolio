@@ -8,15 +8,21 @@ var konsole2 = ""
 var konsole3 = ""
 var konsole4 = ""
 var konsole5 = ""
-const scrollPosition = window.scrollX; // Obtén la posición de desplazamiento horizontal
-const sections = document.querySelectorAll('.slide'); // Selecciona todas las secciones
 
+function position() {
+  const scrollPosition = window.scrollX;
+  const sections = document.querySelectorAll('.slide');
+  sections.forEach((section, index) => {
+    const sectionStart = section.offsetLeft;
+    const sectionEnd = sectionStart + section.offsetWidth;
 
-
-// Función para determinar la sección actual en función del desplazamiento horizontal
+    if (scrollPosition >= sectionStart && scrollPosition < sectionEnd) {
+      currentPosition = index + 1
+    }
+  })
+  return (currentPosition)
+}
 function changeIcons() {
-  const scrollPosition = window.scrollX; // Obtén la posición de desplazamiento horizontal
-  const sections = document.querySelectorAll('.slide'); // Selecciona todas las secciones
   const firstPosition = document.getElementById("firstPosition");
   const secondPosition = document.getElementById("secondPosition");
   const thirdPosition = document.getElementById("thirdPosition");
@@ -34,46 +40,35 @@ function changeIcons() {
       position.classList.remove('current');
     }
   }
-  sections.forEach((section, index) => {
-    const sectionStart = section.offsetLeft;
-    const sectionEnd = sectionStart + section.offsetWidth;
+  number = position()
 
-    if (scrollPosition >= sectionStart && scrollPosition < sectionEnd) {
-      currentPosition = index + 1
-      console.log(`Estás en la sección ${currentPosition}`);
+  if (position() == 1) {
+    changeIcon(number, firstPosition, 1)
+  } else {
+    changeIcon(number, firstPosition, 1)
+  }
+  if (position() == 2) {
+    changeIcon(number, secondPosition, 2)
+  } else {
+    changeIcon(number, secondPosition, 2)
+  }
+  if (position() == 3) {
+    changeIcon(number, thirdPosition, 3)
+  } else {
+    changeIcon(number, thirdPosition, 3)
+  }
+  if (position() == 4) {
+    changeIcon(number, fourthPosition, 4)
+  } else {
+    changeIcon(number, fourthPosition, 4)
+  }
+  if (position() == 5) {
+    changeIcon(number, fifthPosition, 5)
+  } else {
+    changeIcon(number, fifthPosition, 5)
+  }
 
-      if (currentPosition == 1) {
-        changeIcon(currentPosition, firstPosition, 1)
-      } else {
-        changeIcon(currentPosition, firstPosition, 1)
-      }
-      if (currentPosition == 2) {
-        changeIcon(currentPosition, secondPosition, 2)
-      } else {
-        changeIcon(currentPosition, secondPosition, 2)
-      }
-      if (currentPosition == 3) {
-        changeIcon(currentPosition, thirdPosition, 3)
-      } else {
-        changeIcon(currentPosition, thirdPosition, 3)
-      }
-      if (currentPosition == 4) {
-        changeIcon(currentPosition, fourthPosition, 4)
-      } else {
-        changeIcon(currentPosition, fourthPosition, 4)
-      }
-      if (currentPosition == 5) {
-        changeIcon(currentPosition, fifthPosition, 5)
-      } else {
-        changeIcon(currentPosition, fifthPosition, 5)
-      }
-    }
-  });
 }
-
-
-
-
 
 
 function setNextElementPosition(konsole, restoreButton, maxButton) {
@@ -87,6 +82,12 @@ function setNextElementPosition(konsole, restoreButton, maxButton) {
     if (konsole3 === konsole) {
       konsole3 = ""
     }
+    if (konsole4 === konsole) {
+      konsole4 = ""
+    }
+    if (konsole5 === konsole) {
+      konsole5 = ""
+    }
   });
   restoreButton.addEventListener("click", function () {
     if (konsole1 === konsole) {
@@ -97,6 +98,12 @@ function setNextElementPosition(konsole, restoreButton, maxButton) {
     }
     if (konsole3 === konsole) {
       konsole3 = ""
+    }
+    if (konsole4 === konsole) {
+      konsole4 = ""
+    }
+    if (konsole5 === konsole) {
+      konsole5 = ""
     }
   });
 
@@ -173,32 +180,21 @@ function initializeTerminal() {
       }
     });
     option.addEventListener("click", function () {
-      const scrollPosition = window.scrollX;
-      const sections = document.querySelectorAll('.slide');
-      sections.forEach((section, index) => {
-        const sectionStart = section.offsetLeft;
-        const sectionEnd = sectionStart + section.offsetWidth;
-
-        if (scrollPosition >= sectionStart && scrollPosition < sectionEnd) {
-          currentPosition = index + 1
-          console.log(`Estás en la sección ${currentPosition} currentPosition`);
-          if(currentPosition==1){
-            konsole.style.left = "5%";
-          }
-          if(currentPosition==2){
-            konsole.style.left = "25%";
-          }
-          if(currentPosition==3){
-            konsole.style.left = "45%";
-          }
-          if(currentPosition==4){
-            konsole.style.left = "65%";
-          }
-          if(currentPosition==5){
-            konsole.style.left = "85%";
-          }
-        }
-      })
+      if (position() == 1) {
+        konsole.style.left = "5%";
+      }
+      if (position() == 2) {
+        konsole.style.left = "25%";
+      }
+      if (position() == 3) {
+        konsole.style.left = "45%";
+      }
+      if (position() == 4) {
+        konsole.style.left = "65%";
+      }
+      if (position() == 5) {
+        konsole.style.left = "85%";
+      }
     })
 
     closeButton.addEventListener("click", function () {
@@ -211,46 +207,32 @@ function initializeTerminal() {
       }
 
     });
-    // konsole.log(maxButton)
     maxButton.addEventListener("click", function () {
-      // konsole.log("hola")
       if (!konsole.classList.contains("maximize")) {
         konsole.classList.add("maximize");
         konsole.classList.remove("minimize")
         console.log("prueba")
         konsole.onmousedown = null;
-        const scrollPosition = window.scrollX;
-        const sections = document.querySelectorAll('.slide');
-        
-        sections.forEach((section, index) => {
-          const sectionStart = section.offsetLeft;
-          const sectionEnd = sectionStart + section.offsetWidth;
-
-          if (scrollPosition >= sectionStart && scrollPosition < sectionEnd) {
-            currentPosition = index + 1
-            console.log(`Estás en la sección ${currentPosition} currentPosition`);
-            if(currentPosition==1){
-              konsole.style.left = ".3%";
-              console.log(`max position: ${konsole.id} position ${konsole.style.left}` )
-            }
-            if(currentPosition==2){
-              konsole.style.left = "20.3%";
-              console.log(`max position: ${konsole.id} position ${konsole.style.left}` )
-            }
-            if(currentPosition==3){
-              konsole.style.left = "40.3%";
-              console.log(`max position: ${konsole.id} position ${konsole.style.left}` )
-            }
-            if(currentPosition==4){
-              konsole.style.left = "60.3%";
-              console.log(`max position: ${konsole.id} position ${konsole.style.left}` )
-            }
-            if(currentPosition==5){
-              konsole.style.left = "80.3%";
-              console.log(`max position: ${konsole.id} position ${konsole.style.left}` )
-            }
-          }
-        })
+        if (position() == 1) {
+          konsole.style.left = ".3%";
+          console.log(`max position: ${konsole.id} position ${konsole.style.left}`)
+        }
+        if (position() == 2) {
+          konsole.style.left = "20.3%";
+          console.log(`max position: ${konsole.id} position ${konsole.style.left}`)
+        }
+        if (position() == 3) {
+          konsole.style.left = "40.3%";
+          console.log(`max position: ${konsole.id} position ${konsole.style.left}`)
+        }
+        if (position() == 4) {
+          konsole.style.left = "60.3%";
+          console.log(`max position: ${konsole.id} position ${konsole.style.left}`)
+        }
+        if (position() == 5) {
+          konsole.style.left = "80.3%";
+          console.log(`max position: ${konsole.id} position ${konsole.style.left}`)
+        }
       }
 
     });
@@ -268,7 +250,26 @@ function initializeTerminal() {
         konsole.classList.remove("maximize")
         konsole.onmousedown = null;
         setNextElementPosition(konsole, restoreButton, maxButton);
-
+        if (position() == 1) {
+          konsole.style.left = ".3%";
+          console.log(`max position: ${konsole.id} position ${konsole.style.left}`)
+        }
+        if (position() == 2) {
+          konsole.style.left = "20.3%";
+          console.log(`max position: ${konsole.id} position ${konsole.style.left}`)
+        }
+        if (position() == 3) {
+          konsole.style.left = "40.3%";
+          console.log(`max position: ${konsole.id} position ${konsole.style.left}`)
+        }
+        if (position() == 4) {
+          konsole.style.left = "60.3%";
+          console.log(`max position: ${konsole.id} position ${konsole.style.left}`)
+        }
+        if (position() == 5) {
+          konsole.style.left = "80.3%";
+          console.log(`max position: ${konsole.id} position ${konsole.style.left}`)
+        }
       }
     });
 
@@ -340,9 +341,5 @@ function draggable(terminal, minButton, restoreButton, maxButton, closeButton) {
 
 }
 initializeTerminal();
-// draggable(globTerminal)
-// Agrega un eventListener para el evento de desplazamiento
 window.addEventListener('scroll', changeIcons);
-
-// Llama a la función inicialmente para determinar la sección actual al cargar la página
 changeIcons();
