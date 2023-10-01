@@ -1,47 +1,50 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<div class="backgroundd">
+
 
 
     <header class="header">
+        
+            
+            <div class="topbar home">
+                <a href="">
+                    <p><i class="fa-brands fa-fedora"></i></p>
+                </a>
+            </div>
+            <div class="topbar place">
+                <a  href="#first">
+                    <p ><i id="firstPosition" class="fa-solid fa-ghost"></i></p>
+                </a>
+                <a  href="#second">
+                    <p><i id="secondPosition" class="fa-solid fa-circle"></i></p>
+                </a>
+                <a  href="#third">
+                    <p><i id="thirdPosition" class="fa-solid fa-circle"></i></p>
+                </a>
+                <a  href="#fourth">
+                    <p><i id="fourthPosition" class="fa-solid fa-circle"></i></p>
+                </a>
+                <a  href="#fifth">
+                    <p><i id="fifthPosition" class="fa-solid fa-circle"></i></p>
+                </a>
+            </div>
+            <div class="menu">
+                <div id="about" class="topbar about">
+                    <p>About</p>
+                </div>
+                <div id="projects" class="topbar projects">
+                    <p>Projects</p>
+                </div>
+                <div id="skills" class="topbar skills">
+                    <p>Skills</p>
+                </div>
+                <div class="topbar blog-contact">
+                    <p id="blog">Blog</p>
+                    <p id="contact">Contact</p>
+                </div>
+            </div>
         <div class="background"></div>
-        <div class="topbar home">
-            <a href="">
-                <p><i class="fa-brands fa-fedora"></i></p>
-            </a>
-        </div>
-        <div class="topbar place">
-            <a  href="#first">
-                <p ><i id="firstPosition" class="fa-solid fa-ghost"></i></p>
-            </a>
-            <a  href="#second">
-                <p><i id="secondPosition" class="fa-solid fa-circle"></i></p>
-            </a>
-            <a  href="#third">
-                <p><i id="thirdPosition" class="fa-solid fa-circle"></i></p>
-            </a>
-            <a  href="#fourth">
-                <p><i id="fourthPosition" class="fa-solid fa-circle"></i></p>
-            </a>
-            <a  href="#fifth">
-                <p><i id="fifthPosition" class="fa-solid fa-circle"></i></p>
-            </a>
-        </div>
-        <div id="about" class="topbar about">
-            <p>About</p>
-        </div>
-        <div id="projects" class="topbar projects">
-            <p>Projects</p>
-        </div>
-        <div id="skills" class="topbar skills">
-            <p>Skills</p>
-        </div>
-        <div class="topbar blog-contact">
-            <p id="blog">Blog</p>
-            <p id="contact">Contact</p>
-        </div>
-
     </header>
     <main>
         <div id="draggable" class="terminal terminalAbout">
@@ -122,5 +125,5 @@
 
         </section> {% endcomment %}
     </main>
-</div>
+
 {% endblock content %}

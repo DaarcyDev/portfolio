@@ -9,6 +9,7 @@ var konsole3 = ""
 var konsole4 = ""
 var konsole5 = ""
 
+
 function position() {
   const scrollPosition = window.scrollX;
   const sections = document.querySelectorAll('.slide');
@@ -107,34 +108,6 @@ function setNextElementPosition(konsole, restoreButton, maxButton) {
     }
   });
 
-  if (konsole1 == "") {
-    konsole1 = konsole
-    console.log("konsole1 = ", konsole1.id)
-    konsole1.style.left = "0%"
-  } else if (konsole2 == "") {
-
-    konsole2 = konsole
-    konsole2.style.left = "18%";
-    console.log("konsole2 = ", konsole2.id)
-
-  } else if (konsole3 == "") {
-    konsole3 = konsole
-    konsole3.style.left = "36%";
-    console.log("konsole3 = ", konsole3.id)
-
-  } else if (konsole4 == "") {
-    konsole4 = konsole
-    console.log("konsole4 = ", konsole4.id)
-    konsole4.style.left = "54%"
-
-  } else if (konsole5 == "") {
-    konsole4 = konsole
-    console.log("konsole4 = ", konsole4.id)
-    konsole4.style.left = "72%"
-
-  } else {
-    console.log("error")
-  }
 }
 
 
@@ -169,11 +142,30 @@ function initializeTerminal() {
   function displayTerminal(option, konsole, minButton, restoreButton, maxButton, closeButton) {
 
     option.addEventListener("click", function () {
+      
       if (konsole.style.display === "none" || konsole.style.display === "") {
+        
+        var screenDiv = document.querySelector('.display');
+        if (position() == 1) {
+          screenDiv = document.querySelector('.first');
+        }
+        if (position() == 2) {
+          screenDiv = document.querySelector('.second');
+        }
+        if (position() == 3) {
+          screenDiv = document.querySelector('.third');
+        }
+        if (position() == 4) {
+          screenDiv = document.querySelector('.fourth');
+        }
+        if (position() == 5) {
+          screenDiv = document.querySelector('.fifth');
+        }
+        
+        screenDiv.appendChild(konsole);
         konsole.style.display = "block";
         konsole.classList.remove("maximize")
         konsole.classList.remove("minimize")
-        // konsole.log("hola")
         draggable(konsole, minButton, restoreButton, maxButton, closeButton)
       } else {
         konsole.style.display = "none";
@@ -250,26 +242,6 @@ function initializeTerminal() {
         konsole.classList.remove("maximize")
         konsole.onmousedown = null;
         setNextElementPosition(konsole, restoreButton, maxButton);
-        if (position() == 1) {
-          konsole.style.left = ".3%";
-          console.log(`max position: ${konsole.id} position ${konsole.style.left}`)
-        }
-        if (position() == 2) {
-          konsole.style.left = "20.3%";
-          console.log(`max position: ${konsole.id} position ${konsole.style.left}`)
-        }
-        if (position() == 3) {
-          konsole.style.left = "40.3%";
-          console.log(`max position: ${konsole.id} position ${konsole.style.left}`)
-        }
-        if (position() == 4) {
-          konsole.style.left = "60.3%";
-          console.log(`max position: ${konsole.id} position ${konsole.style.left}`)
-        }
-        if (position() == 5) {
-          konsole.style.left = "80.3%";
-          console.log(`max position: ${konsole.id} position ${konsole.style.left}`)
-        }
       }
     });
 
@@ -290,29 +262,59 @@ function draggable(terminal, minButton, restoreButton, maxButton, closeButton) {
   terminal.onmousedown = function (event) {
     let shiftX = event.clientX - terminal.getBoundingClientRect().left;
     let shiftY = event.clientY - terminal.getBoundingClientRect().top;
+    var screenDiv = document.querySelector('.display');
+    if (position() == 1) {
+      screenDiv = document.querySelector('.first');
+    }
+    if (position() == 2) {
+      screenDiv = document.querySelector('.second');
+    }
+    if (position() == 3) {
+      screenDiv = document.querySelector('.third');
+    }
+    if (position() == 4) {
+      screenDiv = document.querySelector('.fourth');
+    }
+    if (position() == 5) {
+      screenDiv = document.querySelector('.fifth');
+    }
+    
+    screenDiv.appendChild(terminal); // Mover la terminal al div .screen
 
     terminal.style.position = 'absolute';
     terminal.style.zIndex = 100;
-    document.body.append(terminal);
-
+    
     moveAt(event.pageX, event.pageY);
 
     // mueve el elemento a las coordenadas (pageX, pageY)
     // tomando en cuenta la posición inicial
 
     function moveAt(pageX, pageY) {
-      terminal.style.left = pageX - shiftX + 'px';
-      terminal.style.top = pageY - shiftY + 'px';
-    }
+      // Obtén las coordenadas límite para mantener la terminal dentro del div .screen
+      const minX = screenDiv.offsetLeft;
+      const maxX = minX + screenDiv.offsetWidth - terminal.offsetWidth;
+      const minY = screenDiv.offsetTop;
+      const maxY = minY + screenDiv.offsetHeight - terminal.offsetHeight;
+      
+      // Ajusta las coordenadas para que no salga del div .screen
+      let adjustedX = pageX - shiftX;
+      let adjustedY = pageY - shiftY;
+      
+      // Limita las coordenadas a los valores máximos y mínimos
+      adjustedX = Math.max(minX, Math.min(maxX, adjustedX));
+      adjustedY = Math.max(minY, Math.min(maxY, adjustedY));
 
+      terminal.style.left = adjustedX + 'px';
+      terminal.style.top = adjustedY + 'px';
+    }
 
     function onMouseMove(event) {
       moveAt(event.pageX, event.pageY);
     }
-
+    
     // mueve el elemento con mousemove
     document.addEventListener('mousemove', onMouseMove);
-
+    
     // suelta el elemento, elimina el manejador innecesario
     terminal.onmouseup = function () {
       document.removeEventListener('mousemove', onMouseMove);
@@ -323,6 +325,7 @@ function draggable(terminal, minButton, restoreButton, maxButton, closeButton) {
   terminal.ondragstart = function () {
     return false;
   };
+
   function stopDraggable(minButton, restoreButton, maxButton, closeButton) {
     closeButton.addEventListener("mousedown", function (event) {
       event.stopPropagation();
@@ -338,7 +341,6 @@ function draggable(terminal, minButton, restoreButton, maxButton, closeButton) {
     });
   }
   stopDraggable(minButton, restoreButton, maxButton, closeButton)
-
 }
 initializeTerminal();
 window.addEventListener('scroll', changeIcons);

@@ -1,3 +1,6 @@
+html{
+    scroll-behavior: smooth;
+}
 body {
     // background-image: url("/tasks/static/images/wall-08.webp");
     // background: url("/static/images/wall-08.webp") 50% 0 no-repeat; 
@@ -12,7 +15,10 @@ body {
     justify-content: center;
     overflow-x: hidden;
     overflow-y: hidden;
-    scroll-behavior: auto;
+    // scroll-behavior: auto;
+    ::-webkit-scrollbar{
+        display: none;
+    }
 }
 
 .background {
@@ -21,29 +27,61 @@ body {
     position: fixed;
     width: 100vw;
     height: 100vh;
-    z-index: 0;
+    z-index: -1;
+    top: 0;
 }
 
+
 .header {
+    z-index: 1;
+    // display: none;
     // margin-top: 1rem;
     position: fixed;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     width: 100vw;
     top: 0;
     left: 0;
-
+    @include tablet{
+        flex-direction: column;
+        align-items: center;
+    }
+    // .menuButton{
+    //     display: none !important;
+    //     display: flex;
+    //     justify-content: space-around;
+    //     left: 0;
+    //     position: fixed;
+    //     top: 0;
+    //     width: 100vw;
+    //     z-index: 1;
+    //     // .bars{
+    
+    //     // }
+    //     @include tablet{
+    //             display: flex !important;
+    //             top: 10rem;
+    //     }
+    
+    
+    // }
+    
     .topbar {
-        margin-top: 1rem;
+        // margin-top: 1rem;
         border: 1px solid #555;
         border-radius: 1rem;
+        // width: 100%;
+        margin:1rem .5rem;
         display: flex;
         align-items: center;
-        justify-content: space-between;
-        padding: 0 10rem;
+        justify-content: center;
+        // padding: 0 10rem;
         background-color: rgba($color: #000000, $alpha: 0.3);
         z-index: 0;
-
+        @include tablet{
+            width: 100%;
+            margin: .5rem;
+        }
         p {
             margin: 0 0.3rem;
             color: $blanco;
@@ -52,8 +90,7 @@ body {
     }
 
     .place {
-        padding: 0 5rem;
-
+        width: 30%;
         p {
             margin: 0 2rem;
             font-size: 1rem;
@@ -64,41 +101,60 @@ body {
             font-size: 2rem;
             color: $azul;
         }
-    }
-
-    .home {
-        padding: 0 3rem;
-
-        p {
-            color: $azul;
+        @include tablet{
+            width: 95%;
+            padding: 1rem;
         }
     }
 
-    .blog-contact {
-        padding: 0 5rem;
-        width: 20%;
-    }
-
-    .about {
+    .home {
+        width: 10%;
         cursor: pointer;
+        p {
+            color: $azul;
+        }
+        @include tablet{
+            width: 95%;
+        }
     }
-
-    .projects {
-        cursor: pointer;
+    .menu{
+        display: flex;
+        width: 100%;
+        // @include tablet{
+        //     display: none ;
+        // }
+        .blog-contact {
+            cursor: pointer;
+            justify-content: space-evenly;
+            // padding: 0 5rem;
+            // width: 20%;
+        }
+    
+        .about {
+            cursor: pointer;
+            width: 100%;
+        }
+    
+        .projects {
+            cursor: pointer;
+            width: 100%;
+        }
+        .skills {
+            cursor: pointer;
+            width: 100%;
+        }
+    
+        .blog-contact {
+            width: 100%;
+            cursor: pointer;
+        }
     }
-    .skills {
-        cursor: pointer;
-    }
-
-    .blog-contact {
-        cursor: pointer;
-    }
+    
 }
-
 .terminal {
     display: none;
     margin: 0 auto;
-    width: 80rem;
+    width: 10%;
     height: 50%;
     top: 7rem;
     left: 5rem;
@@ -159,9 +215,9 @@ body {
 }
 
 .minimize {
-    width: 4%;
+    width: auto;
     height: 5vh;
-    // position: initial !important;
+    position: initial !important;
     cursor: auto;
     margin: 0 1rem;
     bottom: 3rem !important;
@@ -182,60 +238,44 @@ body {
 .first {
     width: 100vw;
     height: 90vh;
-    scroll-snap-align: center;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    align-items: flex-end;
+    justify-content: flex-start;
     overflow: hidden;
-    position: relative;
-    scroll-snap-align: start;
-    // background-color: aquamarine;
 }
 
 .second {
     width: 100vw;
     height: 90vh;
-    scroll-snap-align: center;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    align-items: flex-end;
+    justify-content: flex-start;
     overflow: hidden;
-    position: relative;
-    // background-color: bisque;
 }
 
 .third {
     width: 100vw;
     height: 90vh;
-    scroll-snap-align: center;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    align-items: flex-end;
+    justify-content: flex-start;
     overflow: hidden;
-    position: relative;
-    // background-color: bisque;
 }
 
 .fourth {
     width: 100vw;
     height: 90vh;
-    scroll-snap-align: center;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    align-items: flex-end;
+    justify-content: flex-start;
     overflow: hidden;
-    position: relative;
-    // background-color: bisque;
 }
 
 .fifth {
     width: 100vw;
     height: 90vh;
-    scroll-snap-align: center;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    align-items: flex-end;
+    justify-content: flex-start;
     overflow: hidden;
-    position: relative;
-    // background-color: bisque;
 }
