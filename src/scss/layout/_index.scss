@@ -8,9 +8,9 @@ body {
     height: 100vh;
     width: 500vw;
     position: relative;
-    padding: 2rem 0;
+    // padding: 2rem 0;
     display: flex;
-    align-items: flex-end;
+    // align-items: flex-end;
     // justify-content: center;
     justify-content: center;
     overflow-x: hidden;
@@ -46,25 +46,6 @@ body {
         flex-direction: column;
         align-items: center;
     }
-    // .menuButton{
-    //     display: none !important;
-    //     display: flex;
-    //     justify-content: space-around;
-    //     left: 0;
-    //     position: fixed;
-    //     top: 0;
-    //     width: 100vw;
-    //     z-index: 1;
-    //     // .bars{
-    
-    //     // }
-    //     @include tablet{
-    //             display: flex !important;
-    //             top: 10rem;
-    //     }
-    
-    
-    // }
     
     .topbar {
         // margin-top: 1rem;
@@ -163,6 +144,9 @@ body {
     cursor: grab;
     border-radius: 1rem;
     z-index: 5;
+    @include tablet{
+        width: 13%;
+    }
     .bar {
         width: 100%;
         height: 5rem;
@@ -212,6 +196,10 @@ body {
     margin: 0 auto;
     // left: .3% !important;
     top: 7rem !important;
+    @include tablet{
+        top: 17rem !important;
+        height: 80vh;
+    }
 }
 
 .minimize {
@@ -219,7 +207,7 @@ body {
     height: 5vh;
     position: initial !important;
     cursor: auto;
-    margin: 0 1rem;
+    margin: 1rem 1rem 0 1rem;
     bottom: 3rem !important;
     top: initial !important;
 
@@ -233,49 +221,77 @@ body {
     display: flex;
     scroll-behavior: auto;
     scroll-snap-type: x mandatory;
+    @include tablet{
+        height: 100vh;
+    }
 }
 
 .first {
     width: 100vw;
-    height: 90vh;
+    height: 100vh;
     display: flex;
-    align-items: flex-end;
+    // align-items: flex-end;
     justify-content: flex-start;
     overflow: hidden;
+    align-content: flex-end;
+    flex-wrap: wrap;
+    @include tablet{
+        height: 100%;
+    }
 }
 
 .second {
     width: 100vw;
-    height: 90vh;
+    height: 100vh;
     display: flex;
-    align-items: flex-end;
+    // align-items: flex-end;
     justify-content: flex-start;
     overflow: hidden;
+    align-content: flex-end;
+    flex-wrap: wrap;
+    @include tablet{
+        height: 100%;
+    }
 }
 
 .third {
     width: 100vw;
-    height: 90vh;
+    height: 100vh;
     display: flex;
-    align-items: flex-end;
+    // align-items: flex-end;
     justify-content: flex-start;
     overflow: hidden;
+    align-content: flex-end;
+    flex-wrap: wrap;
+    @include tablet{
+        height: 100%;
+    }
 }
 
 .fourth {
     width: 100vw;
-    height: 90vh;
+    height: 100vh;
     display: flex;
-    align-items: flex-end;
+    // align-items: flex-end;
     justify-content: flex-start;
     overflow: hidden;
+    align-content: flex-end;
+    flex-wrap: wrap;
+    @include tablet{
+        height: 100%;
+    }
 }
 
 .fifth {
     width: 100vw;
-    height: 90vh;
+    height: 100vh;
     display: flex;
-    align-items: flex-end;
+    // align-items: flex-end;
     justify-content: flex-start;
     overflow: hidden;
+    align-content: flex-end;
+    flex-wrap: wrap;
+    @include tablet{
+        height: 100%;
+    }
 }

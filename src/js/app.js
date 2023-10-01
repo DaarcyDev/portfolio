@@ -174,18 +174,23 @@ function initializeTerminal() {
     option.addEventListener("click", function () {
       if (position() == 1) {
         konsole.style.left = "5%";
+        konsole.style.top = "17rem";
       }
       if (position() == 2) {
         konsole.style.left = "25%";
+        konsole.style.top = "17rem";
       }
       if (position() == 3) {
         konsole.style.left = "45%";
+        konsole.style.top = "17rem";
       }
       if (position() == 4) {
         konsole.style.left = "65%";
+        konsole.style.top = "17rem";
       }
       if (position() == 5) {
         konsole.style.left = "85%";
+        konsole.style.top = "17rem";
       }
     })
 
