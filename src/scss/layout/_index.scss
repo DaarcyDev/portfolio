@@ -1,5 +1,7 @@
+
 html{
     scroll-behavior: smooth;
+    
 }
 body {
     // background-image: url("/tasks/static/images/wall-08.webp");
@@ -66,6 +68,8 @@ body {
         p {
             margin: 0 0.3rem;
             color: $blanco;
+            font-family: 'Chakra Petch', sans-serif;
+
             z-index: 1;
         }
     }
@@ -135,7 +139,7 @@ body {
 .terminal {
     display: none;
     margin: 0 auto;
-    width: 10%;
+    width: 8%;
     height: 50%;
     top: 7rem;
     left: 5rem;
@@ -148,6 +152,7 @@ body {
         width: 13%;
     }
     .bar {
+        
         width: 100%;
         height: 5rem;
         background-color: #111;
@@ -158,6 +163,7 @@ body {
         
         p {
             margin: 0 2rem;
+            
             color: $blanco;
         }
 
@@ -207,13 +213,16 @@ body {
     height: 5vh;
     position: initial !important;
     cursor: auto;
-    margin: 1rem 1rem 0 1rem;
+    margin: 1rem;
     bottom: 3rem !important;
     top: initial !important;
 
     // left: 3rem !important;
     .bar {
         border-radius: 1rem;
+    }
+    .terminalContent{
+        display: none;
     }
 }
 
@@ -294,4 +303,60 @@ body {
     @include tablet{
         height: 100%;
     }
+}
+.comandLine{
+    padding: 1rem;
+    h3{
+        font-family: 'Chakra Petch', sans-serif;
+        color: $blanco;
+        margin: 0;
+        font-size: 2rem;
+        font-weight: 500;
+        display: flex;
+        flex-wrap: wrap;
+        
+    }
+    .user{
+        color: $verde;
+    }
+    .comand{
+        color: $blanco;
+        display: flex;
+        white-space: nowrap;
+        width: 22rem;
+        overflow: hidden;
+        margin: 0 1rem;
+        animation-fill-mode: forwards;
+    }
+    .simbols{
+        color: $azul;
+    }
+    .animationComand{
+        animation: typing 1.5s steps(22),blink .5s infinite step-end alternate;
+    }
+    @keyframes typing{
+        from{width:0}
+    }
+    @keyframes blink{
+        50%{border-color: transparent;}
+    }
+}
+.text{
+    padding: 1rem;
+    p{
+        color: $blanco;
+        margin: 0;
+        
+    }
+    @keyframes showDiv {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+}
+.animationText{
+    animation: showDiv 1.5s steps(1);
 }

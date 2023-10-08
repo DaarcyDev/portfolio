@@ -9,6 +9,21 @@ var konsole3 = ""
 var konsole4 = ""
 var konsole5 = ""
 
+// const elements = document.querySelectorAll(".comand");
+
+// // Establece un tiempo para eliminar la clase de animación
+// const tiempoParaEliminarAnimacion = 2500; // 2500 milisegundos (2.5 segundos)
+
+// // Itera sobre cada elemento y aplica la lógica para eliminar la clase de animación
+// elements.forEach(function(element) {
+//   // Agrega la clase de animación al elemento
+//   element.classList.add("animation");
+
+//   // Usa setTimeout para eliminar la clase de animación después del tiempo especificado
+//   setTimeout(function() {
+//     element.classList.remove("animation");
+//   }, tiempoParaEliminarAnimacion);
+// });
 
 function position() {
   const scrollPosition = window.scrollX;
@@ -138,8 +153,15 @@ function initializeTerminal() {
   const blog = document.getElementById("blog");
   const contact = document.getElementById("contact");
 
+  let terminalAbierta = null;
 
+  // Establece un tiempo para eliminar la clase de animación
+  const tiempoParaEliminarAnimacion = 1500; // 2500 milisegundos (2.5 segundos)
+
+  // Itera sobre cada elemento y aplica la lógica para eliminar la clase de animación
+  
   function displayTerminal(option, konsole, minButton, restoreButton, maxButton, closeButton) {
+
 
     option.addEventListener("click", function () {
       
@@ -161,12 +183,29 @@ function initializeTerminal() {
         if (position() == 5) {
           screenDiv = document.querySelector('.fifth');
         }
-        
+        const elements = konsole.querySelectorAll(".comand");
+        const texts = konsole.querySelectorAll(".text");
+        texts.forEach(function(text) {
+          text.classList.add("animationText");
+            setTimeout(function() {
+            text.classList.remove("animationText");
+          }, tiempoParaEliminarAnimacion);
+        });
+        elements.forEach(function(element) {
+          element.classList.add("animationComand");
+            setTimeout(function() {
+            element.classList.remove("animationComand");
+          }, tiempoParaEliminarAnimacion);
+        });
         screenDiv.appendChild(konsole);
         konsole.style.display = "block";
         konsole.classList.remove("maximize")
         konsole.classList.remove("minimize")
-        draggable(konsole, minButton, restoreButton, maxButton, closeButton)
+        konsole.onmousedown = null;
+        setTimeout(function () {
+          draggable(konsole, minButton, restoreButton, maxButton, closeButton)  
+        }, 1000);
+        
       } else {
         konsole.style.display = "none";
       }
@@ -264,6 +303,7 @@ function initializeTerminal() {
 }
 
 function draggable(terminal, minButton, restoreButton, maxButton, closeButton) {
+  
   terminal.onmousedown = function (event) {
     let shiftX = event.clientX - terminal.getBoundingClientRect().left;
     let shiftY = event.clientY - terminal.getBoundingClientRect().top;
@@ -311,6 +351,7 @@ function draggable(terminal, minButton, restoreButton, maxButton, closeButton) {
 
       terminal.style.left = adjustedX + 'px';
       terminal.style.top = adjustedY + 'px';
+      // terminal.style.transform = `translate(${adjustedX}px, ${adjustedY}px)`; 
     }
 
     function onMouseMove(event) {
