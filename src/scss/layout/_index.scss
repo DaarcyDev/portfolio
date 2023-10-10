@@ -18,11 +18,11 @@ body {
     overflow-x: hidden;
     overflow-y: hidden;
     // scroll-behavior: auto;
-    ::-webkit-scrollbar{
-        display: none;
+    @include tablet{
+        width: 100vw;
+        height: 500vh;
     }
 }
-
 .background {
     background: url("/static/images/wall-08.webp") 50% 0 no-repeat;
     background-position: top;
@@ -149,7 +149,9 @@ body {
     border-radius: 1rem;
     z-index: 5;
     @include tablet{
-        width: 13%;
+        width: 80%;
+        height: auto;
+        top: 20rem;
     }
     .bar {
         
@@ -201,9 +203,9 @@ body {
     cursor: auto;
     margin: 0 auto;
     // left: .3% !important;
-    top: 7rem !important;
+    // top: 7rem !important;
     @include tablet{
-        top: 17rem !important;
+        // top: 17rem !important;
         height: 80vh;
     }
 }
@@ -231,6 +233,12 @@ body {
     scroll-behavior: auto;
     scroll-snap-type: x mandatory;
     @include tablet{
+        // height: 100vh;
+        flex-direction:column;
+    }
+}
+.slide{
+    @include tablet{
         height: 100vh;
     }
 }
@@ -244,9 +252,7 @@ body {
     overflow: hidden;
     align-content: flex-end;
     flex-wrap: wrap;
-    @include tablet{
-        height: 100%;
-    }
+
 }
 
 .second {
@@ -258,9 +264,7 @@ body {
     overflow: hidden;
     align-content: flex-end;
     flex-wrap: wrap;
-    @include tablet{
-        height: 100%;
-    }
+
 }
 
 .third {
@@ -272,9 +276,7 @@ body {
     overflow: hidden;
     align-content: flex-end;
     flex-wrap: wrap;
-    @include tablet{
-        height: 100%;
-    }
+
 }
 
 .fourth {
@@ -286,9 +288,7 @@ body {
     overflow: hidden;
     align-content: flex-end;
     flex-wrap: wrap;
-    @include tablet{
-        height: 100%;
-    }
+
 }
 
 .fifth {
@@ -300,9 +300,7 @@ body {
     overflow: hidden;
     align-content: flex-end;
     flex-wrap: wrap;
-    @include tablet{
-        height: 100%;
-    }
+
 }
 .comandLine{
     padding: 1rem;

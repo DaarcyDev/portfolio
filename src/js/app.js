@@ -9,35 +9,34 @@ var konsole3 = ""
 var konsole4 = ""
 var konsole5 = ""
 
-// const elements = document.querySelectorAll(".comand");
 
-// // Establece un tiempo para eliminar la clase de animación
-// const tiempoParaEliminarAnimacion = 2500; // 2500 milisegundos (2.5 segundos)
-
-// // Itera sobre cada elemento y aplica la lógica para eliminar la clase de animación
-// elements.forEach(function(element) {
-//   // Agrega la clase de animación al elemento
-//   element.classList.add("animation");
-
-//   // Usa setTimeout para eliminar la clase de animación después del tiempo especificado
-//   setTimeout(function() {
-//     element.classList.remove("animation");
-//   }, tiempoParaEliminarAnimacion);
-// });
 
 function position() {
-  const scrollPosition = window.scrollX;
+  let currentPosition = 0;
+  const scrollLeft = window.scrollLeft || window.pageXOffset; // Scroll horizontal
+  const scrollTop = window.scrollTop || window.pageYOffset;    // Scroll vertical
   const sections = document.querySelectorAll('.slide');
-  sections.forEach((section, index) => {
-    const sectionStart = section.offsetLeft;
-    const sectionEnd = sectionStart + section.offsetWidth;
 
-    if (scrollPosition >= sectionStart && scrollPosition < sectionEnd) {
-      currentPosition = index + 1
+  sections.forEach((section, index) => {
+    const sectionStartX = section.offsetLeft;
+    const sectionEndX = sectionStartX + section.offsetWidth;
+    const sectionStartY = section.offsetTop;
+    const sectionEndY = sectionStartY + section.offsetHeight;
+
+    if (
+      scrollLeft >= sectionStartX &&
+      scrollLeft < sectionEndX &&
+      scrollTop >= sectionStartY &&
+      scrollTop < sectionEndY
+    ) {
+      currentPosition = index + 1;
+      console.log(currentPosition);
     }
-  })
-  return (currentPosition)
+  });
+
+  return currentPosition;
 }
+
 function changeIcons() {
   const firstPosition = document.getElementById("firstPosition");
   const secondPosition = document.getElementById("secondPosition");
@@ -50,6 +49,7 @@ function changeIcons() {
       position.classList.add('current');
       position.classList.add('fa-ghost');
       position.classList.remove('fa-circle');
+      
     } else {
       position.classList.add('fa-circle');
       position.classList.remove('fa-ghost');
@@ -153,12 +153,8 @@ function initializeTerminal() {
   const blog = document.getElementById("blog");
   const contact = document.getElementById("contact");
 
-  let terminalAbierta = null;
+  const time = 1500;
 
-  // Establece un tiempo para eliminar la clase de animación
-  const tiempoParaEliminarAnimacion = 1500; // 2500 milisegundos (2.5 segundos)
-
-  // Itera sobre cada elemento y aplica la lógica para eliminar la clase de animación
   
   function displayTerminal(option, konsole, minButton, restoreButton, maxButton, closeButton) {
 
@@ -189,13 +185,13 @@ function initializeTerminal() {
           text.classList.add("animationText");
             setTimeout(function() {
             text.classList.remove("animationText");
-          }, tiempoParaEliminarAnimacion);
+          }, time);
         });
         elements.forEach(function(element) {
           element.classList.add("animationComand");
             setTimeout(function() {
             element.classList.remove("animationComand");
-          }, tiempoParaEliminarAnimacion);
+          }, time);
         });
         screenDiv.appendChild(konsole);
         konsole.style.display = "block";
@@ -212,24 +208,53 @@ function initializeTerminal() {
     });
     option.addEventListener("click", function () {
       if (position() == 1) {
-        konsole.style.left = "5%";
-        konsole.style.top = "17rem";
+        if (window.innerWidth <= 900) {
+          konsole.style.left = "10%";
+        }else{
+          konsole.style.left = "5%";
+        }
+        
+        // konsole.style.top = "17rem";
       }
       if (position() == 2) {
-        konsole.style.left = "25%";
-        konsole.style.top = "17rem";
+        if (window.innerWidth <= 900) {
+          konsole.style.left = "10%";
+          konsole.style.top = "25%";
+        }else{
+          konsole.style.left = "25%";
+        }
+        
+        // konsole.style.top = "17rem";
       }
       if (position() == 3) {
-        konsole.style.left = "45%";
-        konsole.style.top = "17rem";
+        if (window.innerWidth <= 900) {
+          konsole.style.left = "10%";
+          konsole.style.top = "45%";
+        }else{
+          konsole.style.left = "45%";
+        }
+        
+        // konsole.style.top = "17rem";
       }
       if (position() == 4) {
-        konsole.style.left = "65%";
-        konsole.style.top = "17rem";
+        if (window.innerWidth <= 900) {
+          konsole.style.left = "10%";
+          konsole.style.top = "65%";
+        }else{
+          konsole.style.left = "65%";
+        }
+        
+        // konsole.style.top = "17rem";
       }
       if (position() == 5) {
-        konsole.style.left = "85%";
-        konsole.style.top = "17rem";
+        if (window.innerWidth <= 900) {
+          konsole.style.left = "10%";
+          konsole.style.top = "85%";
+        }else{
+          konsole.style.left = "85%";
+        }
+        
+        // konsole.style.top = "17rem";
       }
     })
 
@@ -250,26 +275,63 @@ function initializeTerminal() {
         console.log("prueba")
         konsole.onmousedown = null;
         if (position() == 1) {
-          konsole.style.left = ".3%";
+          if (window.innerWidth <= 900) {
+            konsole.style.left = "1.5%";
+            konsole.style.top = "3.5%";
+          }else{
+            konsole.style.top = "8%";
+            konsole.style.top = "8%";
+            konsole.style.left = ".3%";
+          }
+          
           console.log(`max position: ${konsole.id} position ${konsole.style.left}`)
         }
         if (position() == 2) {
-          konsole.style.left = "20.3%";
+          if (window.innerWidth <= 900) {
+            konsole.style.left = "1.5%";
+            konsole.style.top = "23.5%";
+          }else{
+            konsole.style.top = "8%";
+            konsole.style.left = "20.3%";
+          }
+          
           console.log(`max position: ${konsole.id} position ${konsole.style.left}`)
         }
         if (position() == 3) {
-          konsole.style.left = "40.3%";
+          if (window.innerWidth <= 900) {
+            konsole.style.left = "1.5%";
+            konsole.style.top = "43.5%";
+          }else{
+            konsole.style.top = "8%";
+            konsole.style.left = "40.3%";
+          }
+          
           console.log(`max position: ${konsole.id} position ${konsole.style.left}`)
         }
         if (position() == 4) {
-          konsole.style.left = "60.3%";
+          if (window.innerWidth <= 900) {
+          konsole.style.left = "1.5%";
+          konsole.style.top = "63.5%";
+          }else{
+            konsole.style.top = "8%";
+            konsole.style.left = "60.3%";
+          }
+          
           console.log(`max position: ${konsole.id} position ${konsole.style.left}`)
         }
         if (position() == 5) {
-          konsole.style.left = "80.3%";
+          if (window.innerWidth <= 900) {
+          konsole.style.left = "1.5%";
+          konsole.style.top = "83.5%";
+          }else{
+            konsole.style.top = "8%";
+            konsole.style.left = "80.3%";
+          }
+          
           console.log(`max position: ${konsole.id} position ${konsole.style.left}`)
         }
       }
+    
 
     });
     restoreButton.addEventListener("click", function () {
