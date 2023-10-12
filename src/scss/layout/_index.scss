@@ -140,7 +140,7 @@ body {
     display: none;
     margin: 0 auto;
     width: 8%;
-    height: 50%;
+    height: auto;
     top: 7rem;
     left: 5rem;
     background: rgba($color: #000000, $alpha: 0.8);
@@ -151,7 +151,7 @@ body {
     @include tablet{
         width: 80%;
         height: auto;
-        top: 20rem;
+        top: 15rem;
     }
     .bar {
         
@@ -204,10 +204,38 @@ body {
     margin: 0 auto;
     // left: .3% !important;
     // top: 7rem !important;
+    overflow: hidden; 
     @include tablet{
         // top: 17rem !important;
         height: 80vh;
     }
+    .details{
+        display: inherit;
+    }
+    .readMore{
+        display: none;
+    }
+    .terminalContent{
+        height: 93%;
+        overflow-y: scroll;
+        &::-webkit-scrollbar{
+            width: .5rem;
+            background: $verde;
+            border-radius: 4px;
+        }
+        &::-webkit-scrollbar-thumb{
+            background: $azul;
+            box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+        }
+
+    }
+    .text{
+
+        p{
+            font-size: 2rem;
+        }
+    }
+    
 }
 
 .minimize {
@@ -225,7 +253,9 @@ body {
     }
     .terminalContent{
         display: none;
+        
     }
+
 }
 
 .display {
@@ -341,10 +371,11 @@ body {
 }
 .text{
     padding: 1rem;
+    // text-overflow: ellipsis;
     p{
         color: $blanco;
         margin: 0;
-        
+        font-size: 1.6rem;
     }
     @keyframes showDiv {
         from {
@@ -358,3 +389,10 @@ body {
 .animationText{
     animation: showDiv 1.5s steps(1);
 }
+.details{
+    display: none;
+}
+// .terminalContent{
+//     height: 90%;
+//     overflow-y: scroll;
+// }

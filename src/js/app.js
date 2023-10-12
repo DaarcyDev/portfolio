@@ -210,6 +210,7 @@ function initializeTerminal() {
       if (position() == 1) {
         if (window.innerWidth <= 900) {
           konsole.style.left = "10%";
+          konsole.style.top = "5%";
         }else{
           konsole.style.left = "5%";
         }
