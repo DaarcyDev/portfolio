@@ -9,8 +9,6 @@ var konsole3 = ""
 var konsole4 = ""
 var konsole5 = ""
 
-
-
 function position() {
   let currentPosition = 0;
   const scrollLeft = window.scrollLeft || window.pageXOffset; // Scroll horizontal
@@ -30,7 +28,7 @@ function position() {
       scrollTop < sectionEndY
     ) {
       currentPosition = index + 1;
-      console.log(currentPosition);
+      // // console.log(currentPosition);
     }
   });
 
@@ -154,11 +152,68 @@ function initializeTerminal() {
   const contact = document.getElementById("contact");
 
   const time = 1500;
-
+  
   
   function displayTerminal(option, konsole, minButton, restoreButton, maxButton, closeButton) {
 
-
+    function projects(){
+      const datascienceButton = document.getElementById("datascienceButton");
+      const websiteButton = document.getElementById("websiteButton");
+      const website = document.getElementById("websites")
+      const datascience = document.getElementById("datascience")
+      const website1 = document.getElementById("website1")
+      const website1Info = document.getElementById("website1Info")
+      const website2 = document.getElementById("website2")
+      const website2Info = document.getElementById("website2Info")
+      const website3 = document.getElementById("website3")
+      const website3Info = document.getElementById("website3Info")
+      website1.addEventListener("click",function(){
+        website1Info.style.display="flex"
+        website1Info.scrollIntoView({ behavior: "smooth", block: "end", inline: "center", container: konsole });
+        website2Info.style.display="none"
+        website3Info.style.display="none"
+      })
+      website2.addEventListener("click",function(){
+        website1Info.style.display="none"
+        website2Info.style.display="flex"
+        website2Info.scrollIntoView({ behavior: "smooth", block: "end", inline: "center", container: konsole });
+        website3Info.style.display="none"
+      })
+      website3.addEventListener("click",function(){
+        website1Info.style.display="none"
+        website2Info.style.display="none"
+        website3Info.style.display="flex"
+        website3Info.scrollIntoView({ behavior: "smooth", block: "end", inline: "center", container: konsole });
+      })
+      websiteButton.addEventListener("click", function () {
+        website.style.display ="flex"
+        website.scrollIntoView({ behavior: "smooth", block: "end", inline: "center", container: konsole });
+        datascience.style.display ="none"
+        
+      })
+      datascienceButton.addEventListener("click", function () {
+        datascience.style.display ="flex"
+        datascience.scrollIntoView({ behavior: "smooth", block: "end", inline: "center", container: konsole });
+        website.style.display ="none"
+        website1Info.style.display="none"
+        website2Info.style.display="none"
+        website3Info.style.display="none"
+      })
+      restoreButton.addEventListener("click", function () {
+        datascience.style.display ="none"
+        website.style.display ="none"
+        website1Info.style.display="none"
+        website2Info.style.display="none"
+        website3Info.style.display="none"
+      })
+      closeButton.addEventListener("click", function () {
+        datascience.style.display ="none"
+        website.style.display ="none"
+        website1Info.style.display="none"
+        website2Info.style.display="none"
+        website3Info.style.display="none"
+      })
+    }
     option.addEventListener("click", function () {
       
       if (konsole.style.display === "none" || konsole.style.display === "") {
@@ -197,6 +252,7 @@ function initializeTerminal() {
         konsole.style.display = "block";
         konsole.classList.remove("maximize")
         konsole.classList.remove("minimize")
+
         konsole.onmousedown = null;
         setTimeout(function () {
           draggable(konsole, minButton, restoreButton, maxButton, closeButton)  
@@ -273,7 +329,7 @@ function initializeTerminal() {
       if (!konsole.classList.contains("maximize")) {
         konsole.classList.add("maximize");
         konsole.classList.remove("minimize")
-        console.log("prueba")
+        // console.log("prueba")
         konsole.onmousedown = null;
         if (position() == 1) {
           if (window.innerWidth <= 900) {
@@ -285,7 +341,7 @@ function initializeTerminal() {
             konsole.style.left = ".3%";
           }
           
-          console.log(`max position: ${konsole.id} position ${konsole.style.left}`)
+          // console.log(`max position: ${konsole.id} position ${konsole.style.left}`)
         }
         if (position() == 2) {
           if (window.innerWidth <= 900) {
@@ -296,7 +352,7 @@ function initializeTerminal() {
             konsole.style.left = "20.3%";
           }
           
-          console.log(`max position: ${konsole.id} position ${konsole.style.left}`)
+          // console.log(`max position: ${konsole.id} position ${konsole.style.left}`)
         }
         if (position() == 3) {
           if (window.innerWidth <= 900) {
@@ -307,7 +363,7 @@ function initializeTerminal() {
             konsole.style.left = "40.3%";
           }
           
-          console.log(`max position: ${konsole.id} position ${konsole.style.left}`)
+          // console.log(`max position: ${konsole.id} position ${konsole.style.left}`)
         }
         if (position() == 4) {
           if (window.innerWidth <= 900) {
@@ -318,7 +374,7 @@ function initializeTerminal() {
             konsole.style.left = "60.3%";
           }
           
-          console.log(`max position: ${konsole.id} position ${konsole.style.left}`)
+          // console.log(`max position: ${konsole.id} position ${konsole.style.left}`)
         }
         if (position() == 5) {
           if (window.innerWidth <= 900) {
@@ -329,7 +385,7 @@ function initializeTerminal() {
             konsole.style.left = "80.3%";
           }
           
-          console.log(`max position: ${konsole.id} position ${konsole.style.left}`)
+          // console.log(`max position: ${konsole.id} position ${konsole.style.left}`)
         }
       }
     
@@ -351,6 +407,7 @@ function initializeTerminal() {
         setNextElementPosition(konsole, restoreButton, maxButton);
       }
     });
+    projects()
 
 
   }
@@ -454,3 +511,4 @@ function draggable(terminal, minButton, restoreButton, maxButton, closeButton) {
 initializeTerminal();
 window.addEventListener('scroll', changeIcons);
 changeIcons();
+// projects()3

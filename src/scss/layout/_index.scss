@@ -213,7 +213,7 @@ body {
         display: inherit;
     }
     .readMore{
-        display: none;
+        display: none ;
     }
     .terminalContent{
         height: 93%;
@@ -235,7 +235,49 @@ body {
             font-size: 2rem;
         }
     }
-    
+    .detailsProjects{
+        display: flex ;
+        justify-content: space-around;
+        margin: 10rem 0;
+        @include tablet{
+            flex-direction: column;
+            align-items: center;
+            margin: 5rem 0;
+        }
+        a{
+            border: $verde 3px solid;
+            background: rgba(255,255,255,.3);
+            width: 45%;
+            color: #000;
+            h1{
+                font-family: 'Chakra Petch', sans-serif;
+                font-weight: 500;
+            }
+            @include tablet{
+                width: 80%;
+                margin: 3rem 0;
+            }
+            &:hover{
+                border: $azul 3px solid;
+            }
+        }
+    }
+    .websites{
+        justify-content: space-around;
+        @include tablet{
+            flex-direction: column;
+            align-items: center;
+            .websiteImage{
+                width: 80%;
+                border: 1px solid $verde;
+                margin: 1rem;
+                &:hover{
+                    border: 1px solid $azul;
+                }
+            }
+        }
+    }
+
 }
 
 .minimize {
@@ -375,7 +417,13 @@ body {
     p{
         color: $blanco;
         margin: 0;
-        font-size: 1.6rem;
+        font-size: 2rem;
+        font-family: 'Chakra Petch', sans-serif;
+
+        @include tablet{
+            font-size: 1.6rem;    
+        }
+        
     }
     @keyframes showDiv {
         from {
@@ -392,7 +440,61 @@ body {
 .details{
     display: none;
 }
-// .terminalContent{
-//     height: 90%;
-//     overflow-y: scroll;
-// }
+
+.websites{
+    display: none;
+}
+.datascience{
+    display: none;
+}
+.websiteImage{
+    width: 30%;
+    border: 1px solid $verde;
+    &:hover{
+        border: 1px solid $azul;
+    }
+}
+.website1Info,
+.website2Info, 
+.website3Info{
+    display: none;
+    padding: 10rem;
+    padding-bottom: 0;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    a{
+        color: $blanco;
+        font-size: 2rem;
+    }
+    @include tablet{
+        padding: 1rem;
+    }
+}
+.websiteImageDescription{
+    width: 80%;
+    img{
+        margin: 2rem 0;
+        border: 1px solid $verde;
+    }
+    @include tablet{
+        width: 95%;
+    
+    }
+}
+.tools{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    img{
+        width: 20%;
+        border-radius: 50%;
+        margin: 3rem;
+        @include tablet{
+            margin: 1rem;
+            width: 30%;
+        
+        }
+    }
+}
