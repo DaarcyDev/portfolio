@@ -262,6 +262,40 @@ body {
             }
         }
     }
+    .detailSkills{
+        display: flex ;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        // align-items: center;
+        margin: 5rem 0;
+        @include tablet{
+            flex-direction: column;
+            align-items: center;
+            margin: 5rem 0;
+        }
+        a{
+            border: $verde 3px solid;
+            background: rgba(255,255,255,.3);
+            margin: 3rem 1rem;
+            width: 20%;
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            color: $negro;
+            h1{
+                font-family: 'Chakra Petch', sans-serif;
+                font-weight: 500;
+                font-size: 2.5rem;
+            }
+            @include tablet{
+                width: 80%;
+                margin: 3rem 0;
+            }
+            &:hover{
+                border: $azul 3px solid;
+            }
+        }
+    }
     .websites{
         justify-content: space-around;
         @include tablet{
@@ -488,7 +522,7 @@ body {
     align-items: center;
     flex-wrap: wrap;
     img{
-        width: 20%;
+        width: 15%;
         border-radius: 50%;
         margin: 3rem;
         @include tablet{
