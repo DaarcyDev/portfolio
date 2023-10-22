@@ -295,6 +295,9 @@ body {
                 border: $azul 3px solid;
             }
         }
+        .tools{
+            display: none;
+        }
     }
     .websites{
         justify-content: space-around;
@@ -516,6 +519,21 @@ body {
     
     }
 }
+.toolsSkills{
+    display: none;
+    flex-direction: column;
+}
+.contentSkills{
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 5rem;
+    .textSkills{
+        color: $blanco;
+        font-size: 2rem;
+    }
+}
+
 .tools{
     display: flex;
     justify-content: center;

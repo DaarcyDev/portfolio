@@ -167,33 +167,100 @@ function initializeTerminal() {
       const website2Info = document.getElementById("website2Info")
       const website3 = document.getElementById("website3")
       const website3Info = document.getElementById("website3Info")
+      const programmingLanguages = document.getElementById("programmingLanguages")
+      const userInterface = document.getElementById("userInterface")
+      const developmentTools = document.getElementById("developmentTools")
+      const databases = document.getElementById("databases")
+      const dataProcessing = document.getElementById("dataProcessing")
+      const operatingSystems = document.getElementById("operatingSystems")
+      const programmingLanguagesButton = document.getElementById("programmingLanguagesButton")
+      const userInterfaceButton = document.getElementById("userInterfaceButton")
+      const developmentToolsButton = document.getElementById("developmentToolsButton")
+      const databasesButton = document.getElementById("databasesButton")
+      const dataProcessingButton = document.getElementById("dataProcessingButton")
+      const operatingSystemsButton = document.getElementById("operatingSystemsButton")
+
+      programmingLanguagesButton.addEventListener("click",function(){
+        programmingLanguages.classList.add("tools")
+        programmingLanguages.scrollIntoView({ behavior: "smooth", block: "end" });
+        userInterface.classList.remove("tools")
+        developmentTools.classList.remove("tools")
+        databases.classList.remove("tools")
+        dataProcessing.classList.remove("tools")
+        operatingSystems.classList.remove("tools")
+      })
+      userInterfaceButton.addEventListener("click",function(){
+        programmingLanguages.classList.remove("tools")
+        userInterface.classList.add("tools")
+        userInterface.scrollIntoView({ behavior: "smooth", block: "end" });
+        developmentTools.classList.remove("tools")
+        databases.classList.remove("tools")
+        dataProcessing.classList.remove("tools")
+        operatingSystems.classList.remove("tools")
+      })
+      developmentToolsButton.addEventListener("click",function(){
+        programmingLanguages.classList.remove("tools")
+        userInterface.classList.remove("tools")
+        developmentTools.classList.add("tools")
+        developmentTools.scrollIntoView({ behavior: "smooth", block: "end" });
+        databases.classList.remove("tools")
+        dataProcessing.classList.remove("tools")
+        operatingSystems.classList.remove("tools")
+      })
+      databasesButton.addEventListener("click",function(){
+        programmingLanguages.classList.remove("tools")
+        userInterface.classList.remove("tools")
+        developmentTools.classList.remove("tools")
+        databases.classList.add("tools")
+        databases.scrollIntoView({ behavior: "smooth", block: "end" });
+        dataProcessing.classList.remove("tools")
+        operatingSystems.classList.remove("tools")
+      })
+      dataProcessingButton.addEventListener("click",function(){
+        programmingLanguages.classList.remove("tools")
+        userInterface.classList.remove("tools")
+        developmentTools.classList.remove("tools")
+        databases.classList.remove("tools")
+        dataProcessing.classList.add("tools")
+        dataProcessing.scrollIntoView({ behavior: "smooth", block: "end" });
+        operatingSystems.classList.remove("tools")
+      })
+      operatingSystemsButton.addEventListener("click",function(){
+        programmingLanguages.classList.remove("tools")
+        userInterface.classList.remove("tools")
+        developmentTools.classList.remove("tools")
+        databases.classList.remove("tools")
+        dataProcessing.classList.remove("tools")
+        operatingSystems.classList.add("tools")
+        operatingSystems.scrollIntoView({ behavior: "smooth", block: "end" });
+      })
       website1.addEventListener("click",function(){
         website1Info.style.display="flex"
-        website1Info.scrollIntoView({ behavior: "smooth", block: "end", inline: "center", container: konsole });
+        website1Info.scrollIntoView({ behavior: "smooth", block: "end" });
         website2Info.style.display="none"
         website3Info.style.display="none"
       })
       website2.addEventListener("click",function(){
         website1Info.style.display="none"
         website2Info.style.display="flex"
-        website2Info.scrollIntoView({ behavior: "smooth", block: "end", inline: "center", container: konsole });
+        website2Info.scrollIntoView({ behavior: "smooth", block: "end" });
         website3Info.style.display="none"
       })
       website3.addEventListener("click",function(){
         website1Info.style.display="none"
         website2Info.style.display="none"
         website3Info.style.display="flex"
-        website3Info.scrollIntoView({ behavior: "smooth", block: "end", inline: "center", container: konsole });
+        website3Info.scrollIntoView({ behavior: "smooth", block: "end" });
       })
       websiteButton.addEventListener("click", function () {
         website.style.display ="flex"
-        website.scrollIntoView({ behavior: "smooth", block: "end", inline: "center", container: konsole });
+        website.scrollIntoView({ behavior: "smooth", block: "end" });
+        console.log(position())
         datascience.style.display ="none"
-        
       })
       datascienceButton.addEventListener("click", function () {
         datascience.style.display ="flex"
-        datascience.scrollIntoView({ behavior: "smooth", block: "end", inline: "center", container: konsole });
+        datascience.scrollIntoView({ behavior: "smooth", block: "end" });
         website.style.display ="none"
         website1Info.style.display="none"
         website2Info.style.display="none"
