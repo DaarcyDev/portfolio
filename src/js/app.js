@@ -381,7 +381,6 @@ function initializeTerminal() {
 
         if (firstcategory) {
           firstcategory.click(); // Simular un clic en el primer proyecto
-          console.log(firstcategory)
         }
         konsole.onmousedown = null;
         setTimeout(function () {

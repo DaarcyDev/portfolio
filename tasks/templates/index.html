@@ -573,13 +573,36 @@
         </h3>
       </div>
       <div class="text animationText">
-        <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facere, sit!
-          Nam incidunt repudiandae aut! Voluptatum quidem expedita sed itaque
-          quia deleniti mollitia, dolor et non perferendis voluptas minus modi
-          nulla?
-        </p>
+        <p class="readMore">
+          ¡Gracias por visitar mi portafolio! Si deseas ponerte en contacto conmigo para discutir proyectos, oportunidades de colaboración, hacer una consulta o simplemente saludar, no dudes en hacerlo. Estoy siempre abierto a nuevas conexiones y oportunidades emocionantes.        </p>
+        <br class="readMore" />
+        <p class="readMore">Amplíe la ventana para obtener más detalles...</p>
+        <div class="details">
+          <p>
+            Puedes contactarme a través de mi dirección de correo electrónico liam_alvarez@hotmail.com, o si prefieres las redes sociales, estoy activo en redes sociales, como LinkedIn, Twitter o GitHub donde puedes seguirme y enviarme un mensaje directo.
+          </p>
+          <div class="form">
+            <h2>Contacto</h2>
+            <form action="procesar_formulario.php" method="post">
+              <label for="nombre">Nombre:</label>
+              <input class="name" type="text" id="nombre" name="nombre" required>
+
+              <label for="telefono">Número de Teléfono:</label>
+              <input class="phone" type="tel" id="telefono" name="telefono">
+      
+              <label for="correo">Correo Electrónico:</label>
+              <input class="email" type="email" id="correo" name="correo" required>
+      
+              <label for="mensaje">Mensaje:</label>
+              <textarea class="message" id="mensaje" name="mensaje" rows="4" required></textarea>
+              
+              <button class="button-24" role="button">Enviar</button>
+            </form>
+          </div>
+
+        </div>
       </div>
+      
     </div>
   </div>
   <div class="display">
