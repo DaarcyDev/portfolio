@@ -9,10 +9,67 @@ var konsole3 = ""
 var konsole4 = ""
 var konsole5 = ""
 
+
+function ranger() {
+  const categories = document.querySelectorAll('.category');
+  const projects = document.querySelectorAll('.project');
+  const projectContent = document.querySelectorAll('.project-content');
+  categories.forEach((category) => {
+    category.addEventListener('click', (event) => {
+      categories.forEach((cat) => {
+        cat.classList.remove("select");
+      });
+      category.classList.add("select");      
+      const selectedCategory = category.getAttribute('data-category');
+      projects.forEach((project) => {
+        project.style.display = 'none';
+      });
+      projectContent.forEach((content) => {
+        content.style.display = 'none';
+      });
+  
+      projects.forEach((project) => {
+        if (project.getAttribute('data-category') === selectedCategory) {
+          project.style.display = 'block';
+        }
+      });
+      projectContent.forEach((content) => {
+        if (content.getAttribute('data-category') === selectedCategory) {
+          content.style.display = 'block';
+        }
+      });
+      
+      const firstProject = document.querySelector('.project[data-category="' + selectedCategory + '"]');
+
+      if (firstProject) {
+        firstProject.click();
+      }
+    });
+  });
+
+  projects.forEach((project) => {
+    project.addEventListener('click', (event) => {
+      projects.forEach((proj) => {
+        proj.classList.remove("select");
+      });
+      project.classList.add("select");
+      const projectCategory = project.getAttribute('data-project-content');
+      projectContent.forEach((content) => {
+        content.style.display = 'none';
+      });
+      projectContent.forEach((content) => {
+        if (content.getAttribute('data-project-content') === projectCategory) {
+          content.style.display = 'block';
+        }
+      });
+    });
+  });
+}
+
 function position() {
   let currentPosition = 0;
-  const scrollLeft = window.scrollLeft || window.pageXOffset; // Scroll horizontal
-  const scrollTop = window.scrollTop || window.pageYOffset;    // Scroll vertical
+  const scrollLeft = window.scrollLeft || window.pageXOffset;
+  const scrollTop = window.scrollTop || window.pageYOffset;
   const sections = document.querySelectorAll('.slide');
 
   sections.forEach((section, index) => {
@@ -319,7 +376,13 @@ function initializeTerminal() {
         konsole.style.display = "block";
         konsole.classList.remove("maximize")
         konsole.classList.remove("minimize")
+        const categories = document.querySelectorAll('.category');
+        const firstcategory = categories[0];
 
+        if (firstcategory) {
+          firstcategory.click(); // Simular un clic en el primer proyecto
+          console.log(firstcategory)
+        }
         konsole.onmousedown = null;
         setTimeout(function () {
           draggable(konsole, minButton, restoreButton, maxButton, closeButton)  
@@ -578,4 +641,4 @@ function draggable(terminal, minButton, restoreButton, maxButton, closeButton) {
 initializeTerminal();
 window.addEventListener('scroll', changeIcons);
 changeIcons();
-// projects()3
+ranger()
