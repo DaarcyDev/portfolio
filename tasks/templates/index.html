@@ -1,617 +1,708 @@
 {% extends 'base.html' %} {% load static %} {% block content %}
-
-<header class="header">
-  <div class="topbar home">
-    <a href="">
-      <p><i class="fa-brands fa-fedora"></i></p>
-    </a>
-  </div>
-  <div class="topbar place">
-    <a href="#first">
-      <p><i id="firstPosition" class="fa-solid fa-ghost"></i></p>
-    </a>
-    <a href="#second">
-      <p><i id="secondPosition" class="fa-solid fa-circle"></i></p>
-    </a>
-    <a href="#third">
-      <p><i id="thirdPosition" class="fa-solid fa-circle"></i></p>
-    </a>
-    <a href="#fourth">
-      <p><i id="fourthPosition" class="fa-solid fa-circle"></i></p>
-    </a>
-    <a href="#fifth">
-      <p><i id="fifthPosition" class="fa-solid fa-circle"></i></p>
-    </a>
-  </div>
-  <div class="menu">
-    <div id="about" class="topbar about">
-      <p>About</p>
+<body class="bodyIndex">
+  <header class="header">
+    <div class="topbar home">
+      <a href="">
+        <p><i class="fa-brands fa-fedora"></i></p>
+      </a>
     </div>
-    <div id="projects" class="topbar projects">
-      <p>Projects</p>
+    <div class="topbar place">
+      <a href="#first">
+        <p><i id="firstPosition" class="fa-solid fa-ghost"></i></p>
+      </a>
+      <a href="#second">
+        <p><i id="secondPosition" class="fa-solid fa-circle"></i></p>
+      </a>
+      <a href="#third">
+        <p><i id="thirdPosition" class="fa-solid fa-circle"></i></p>
+      </a>
+      <a href="#fourth">
+        <p><i id="fourthPosition" class="fa-solid fa-circle"></i></p>
+      </a>
+      <a href="#fifth">
+        <p><i id="fifthPosition" class="fa-solid fa-circle"></i></p>
+      </a>
     </div>
-    <div id="skills" class="topbar skills">
-      <p>Skills</p>
-    </div>
-    <div class="topbar blog-contact">
-      <p id="blog">Blog</p>
-      <p id="contact">Contact</p>
-    </div>
-  </div>
-  <div class="background"></div>
-</header>
-<main>
-  <div id="draggable" class="terminal terminalAbout">
-    <div class="bar">
-      <p>About Me</p>
-      <div class="buttons">
-        <p id="minAbout" class="min">
-          <i class="fa-solid fa-window-minimize"></i>
-        </p>
-        <p id="restoreAbout" class="restore">
-          <i class="fa-regular fa-window-restore"></i>
-        </p>
-        <p id="maxAbout" class="max">
-          <i class="fa-regular fa-window-maximize"></i>
-        </p>
-        <p id="closeAbout" class="close" class="close">
-          <i class="fa-regular fa-rectangle-xmark"></i>
-        </p>
+    <div class="menu">
+      <div id="about" class="topbar about">
+        <p>About</p>
+      </div>
+      <div id="projects" class="topbar projects">
+        <p>Projects</p>
+      </div>
+      <div id="skills" class="topbar skills">
+        <p>Skills</p>
+      </div>
+      <div class="topbar blog-contact">
+        <p id="blog">Blog</p>
+        <p id="contact">Contact</p>
       </div>
     </div>
-    <div class="terminalContent">
-      <div class="comandLine">
-        <h3 class="user">
-          User@DaarcyWebsite:<span class="simbols">~$ </span
-          ><span class="comand animationComand">sudo cat about-me.txt</span>
-        </h3>
-      </div>
-      <div class="text animationText">
-        <p class="readMore">
-          Soy Liam Alvarez Peralta, un apasionado de la programación y amante
-          del código abierto. Con experiencia en Linux, GitHub, GitLab,
-          JavaScript, Python y PHP, estoy completando una especialidad en
-          Ciencia de Datos. Mi curiosidad insaciable me lleva a crear proyectos
-          en GitHub y a compartir conocimientos a través de mi canal de YouTube.
-          Estoy ansioso por abrazar nuevos desafíos tecnológicos y colaborar en
-          la comunidad.
-        </p>
-
-        <br class="readMore" />
-        <p class="readMore">Amplíe la ventana para obtener más detalles...</p>
-
-        <div class="details">
-          <p>
-            ¡Hola! Soy Liam Alvarez Peralta, un apasionado de la programación.
-            Para mí, la programación no es solo un trabajo, es una pasión que
-            disfruto profundamente. Mi día a día gira en torno a mi computadora
-            con Arch Linux, lo que me ha permitido desarrollar un profundo
-            conocimiento en sistemas basados en Linux.
+    <div class="background"></div>
+  </header>
+  <main>
+    <div id="draggable" class="terminal terminalAbout">
+      <div class="bar">
+        <p>About Me</p>
+        <div class="buttons">
+          <p id="minAbout" class="min">
+            <i class="fa-solid fa-window-minimize"></i>
           </p>
-          <p>
-            Soy un entusiasta de la tecnología y un amante del código abierto,
-            lo que me llevó a dominar las herramientas de control de versiones
-            como GitHub y GitLab. Siempre estoy abierto a la exploración de
-            nuevas tecnologías y me encanta poner a prueba mi habilidad y
-            creatividad para desarrollar soluciones innovadoras.
+          <p id="restoreAbout" class="restore">
+            <i class="fa-regular fa-window-restore"></i>
           </p>
-
-          <p>
-            Tengo experiencia en una variedad de lenguajes de programación,
-            incluyendo JavaScript, Python, y PHP. Actualmente, estoy finalizando
-            mi especialidad en Ciencia de Datos en el Instituto Tecnológico de
-            Zacatepec, lo que me ha brindado una base sólida en análisis de
-            datos y machine learning.
+          <p id="maxAbout" class="max">
+            <i class="fa-regular fa-window-maximize"></i>
           </p>
-
-          <p>
-            En mi perfil de GitHub, encontrarás una colección de proyectos que
-            he desarrollado por pura pasión y curiosidad. Mi naturaleza
-            autodidacta y sed de conocimiento me impulsan a mantenerme siempre
-            aprendiendo y creciendo.
+          <p id="closeAbout" class="close" class="close">
+            <i class="fa-regular fa-rectangle-xmark"></i>
           </p>
-
-          <p>
-            Además, tengo un nivel de inglés intermedio avanzado, lo que me
-            permite mantener conversaciones y comprender con facilidad el
-            idioma. Disfruto compartiendo mi conocimiento y experiencia con los
-            demás, lo que me llevó a crear un canal de YouTube. En mi canal,
-            explico conceptos y soluciones que habría deseado encontrar en su
-            momento para facilitar mi camino en el mundo de la programación.
-          </p>
-          <p>
-            Estoy emocionado por lo que el futuro de la tecnología nos depara y
-            siempre estoy dispuesto a asumir nuevos desafíos y proyectos
-            emocionantes. Si estás interesado en colaborar o aprender juntos, no
-            dudes en ponerse en contacto. ¡Estoy aquí para contribuir al
-            crecimiento y al éxito de la comunidad tecnológica!
-          </p>
-          <br />
-          <p>Gracias por visitar mi portafolio.</p>
         </div>
       </div>
-    </div>
-  </div>
-  <div id="draggable2" class="terminal terminalProjects">
-    <div class="bar">
-      <p>Projects</p>
-      <div class="buttons">
-        <p id="minProject" class="min">
-          <i class="fa-solid fa-window-minimize"></i>
-        </p>
-        <p id="restoreProject" class="restore">
-          <i class="fa-regular fa-window-restore"></i>
-        </p>
-        <p id="maxProject" class="max">
-          <i class="fa-regular fa-window-maximize"></i>
-        </p>
-        <p id="closeProject" class="close" class="close">
-          <i class="fa-regular fa-rectangle-xmark"></i>
-        </p>
-      </div>
-    </div>
-    <div class="terminalContent">
-      <div class="comandLine">
-        <h3 class="user">
-          User@DaarcyWebsite:<span class="simbols">~$ </span
-          ><span class="comand animationComand">sudo cat Projects.txt</span>
-        </h3>
-      </div>
-      <div class="text animationText">
-        <p>
-          En este espacio, les doy la bienvenida a mi portafolio, donde comparto
-          mis proyectos en el emocionante mundo de la ciencia de datos y el
-          desarrollo web. A lo largo de mi trayecto como apasionado
-          desarrollador y científico de datos, he tenido la oportunidad de
-          trabajar en una variedad de proyectos intrigantes. Cada uno de ellos
-          representa un desafío único y un logro en mi viaje de aprendizaje y
-          crecimiento profesional.
-        </p>
-        <br class="readMore" />
-        <p class="readMore">Amplíe la ventana para obtener más detalles...</p>
-        <div class="readMore details detailsProjects">
-          <a >
-            <div id="websiteButton">
-              <h1>Desarrollo Web</h1>
-            </div>
-          </a>
-          <a >
-            <div id="datascienceButton">
-              <h1>Ciencia de Datos</h1>
-            </div>
-          </a>
-        </div>
-        <div class="details">
-          <div id="websites" class="readMore websites">
-            <div id="website1" class="websiteImage">
-              <img src="{% static 'images/website1.webp' %}" alt="website" />
-            </div>
-            <div id="website2" class="websiteImage">
-              <img src="{% static 'images/website2.webp' %}" alt="website" />
-            </div>
-            <div id="website3" class="websiteImage">
-              <img src="{% static 'images/website3.webp' %}" alt="website" />
-            </div>
-          </div>
-          <div id="website1Info" class="website1Info">
-            <p>
-              Este es un proyecto de una tienda de ropa en línea que ofrece una
-              experiencia de compra simplificada y personalizada. Los visitantes
-              pueden elegir entre ropa para hombre o mujer, así como tipos de
-              prendas con un solo clic. El carrito de compras mantiene un
-              seguimiento en tiempo real del total de artículos seleccionados,
-              brindando transparencia en el proceso. Además, los usuarios pueden
-              registrarse y tener sus propias cuentas para una experiencia más
-              personalizada. Todo esto fue posible gracias al uso de las
-              tecnologías de Django, JavaScript, npm, Gulp y Sass. Es tu destino
-              ideal para descubrir moda de manera eficiente y elegante.
-            </p>
-            <div class="websiteImageDescription">
-              <img src="{% static 'images/website1.webp' %}" alt="website" />
-              <img src="{% static 'images/website1Crud.webp' %}" alt="website" />
-            </div>
-            <p>Codigo en github:</p>
-            <a href="https://github.com/DaarcyDev/kefWebsite"
-              >https://github.com/DaarcyDev</a>
-            <p>Herramientas que se ocuparon para este proyecto</p>
-
-            <div id="websites" class="tools">
-              <img src="{% static 'images/gulp.webp' %}" alt="website" />
-              <img src="{% static 'images/node.webp' %}" alt="website" />
-              <img src="{% static 'images/python.webp' %}" alt="website" />
-              <img src="{% static 'images/django.webp' %}" alt="website" />
-              <img src="{% static 'images/sass.webp' %}" alt="website" />
-              <img src="{% static 'images/js.webp' %}" alt="website" />
-            </div>
-          </div>
-          <div id="website2Info" class="website2Info">
-            <p>
-              BienesRaices es tu puerta de entrada al emocionante mundo de la
-              compra y venta de propiedades. En esta plataforma, el
-              administrador tiene el control total, con la capacidad de listar
-              propiedades y crear vendedores, todo con un diseño intuitivo y
-              fácil de usar. Los vendedores también pueden gestionar sus propias
-              ofertas y propiedades a través de un panel de control. Este
-              proyecto se ha desarrollado utilizando PHP con el paradigma de
-              "Active Record", junto con JS, npm, Gulp y Sass para una
-              experiencia de usuario fluida y atractiva. ¿Quieres analizar el
-              código por ti mismo? ¡Puedes encontrar el proyecto en mi GitHub!
-              Descubre la comodidad y la eficiencia de BienesRaices y comienza
-              tu viaje en bienes raíces hoy.
-            </p>
-            <div class="websiteImageDescription">
-              <img src="{% static 'images/website2.webp' %}" alt="website" />
-              <img src="{% static 'images/website2Crud.webp' %}" alt="website" />
-            </div>
-            <p>Codigo en github:</p>
-            <a href="https://github.com/DaarcyDev/bienesRaicesPOO"
-              >https://github.com/DaarcyDev</a>
-            <p>Herramientas que se ocuparon para este proyecto</p>
-
-            <div id="websites" class="tools">
-              <img src="{% static 'images/gulp.webp' %}" alt="website" />
-              <img src="{% static 'images/node.webp' %}" alt="website" />
-              <img src="{% static 'images/php.webp' %}" alt="website" />
-              <img src="{% static 'images/sass.webp' %}" alt="website" />
-              <img src="{% static 'images/js.webp' %}" alt="website" />
-            </div>
-          </div>
-          <div id="website3Info" class="website3Info">
-            <p>
-              "Sheru Website" es una creación artística y un destino de compras
-              en uno. Este sitio web es el escaparate personal de un talentoso
-              artista independiente, que comparte sus canciones con el mundo y
-              ofrece una visión única de la inspiración detrás de cada melodía.
-              Además de su faceta musical, este proyecto incluye una tienda en
-              línea donde el artista puede vender su mercancía, y todo es
-              gestionado desde un panel de control de administrador intuitivo
-              que permite manipular noticias, usuarios, productos y más.
-            </p>
-            <br />
-            <p>
-              El diseño responsive garantiza una experiencia perfecta en
-              cualquier dispositivo, y la implementación de tecnologías como
-              SASS, Gulp, NPM, PHP, JS y Node.js aseguran un rendimiento
-              excepcional. Además, un scroll horizontal adaptable a dispositivos
-              móviles brinda un toque único.
-            </p>
-            <br />
-            <p>
-              ¿Te gustaría analizar el código por ti mismo? ¡Puedes encontrar
-              este emocionante proyecto en mi GitHub! Explora la creatividad y
-              la versatilidad de Sheru Website para descubrir la música y el
-              arte con un giro personal.
-            </p>
-
-            <div class="websiteImageDescription">
-              <img src="{% static 'images/website3.webp' %}" alt="website" />
-              <img src="{% static 'images/website3Crud.webp' %}" alt="website" />
-            </div>
-            <p>Codigo en github:</p>
-            <a href="https://github.com/DaarcyDev/Shell_Website_POO">https://github.com/DaarcyDev</a>
-            <p>Herramientas que se ocuparon para este proyecto</p>
-
-            <div id="websites" class="tools">
-              <img src="{% static 'images/gulp.webp' %}" alt="website" />
-              <img src="{% static 'images/node.webp' %}" alt="website" />
-              <img src="{% static 'images/php.webp' %}" alt="website" />
-              <img src="{% static 'images/sass.webp' %}" alt="website" />
-              <img src="{% static 'images/js.webp' %}" alt="website" />
-            </div>
-          </div>
-          <div id="datascience" class="readMore datascience">
-            <p>
-              pendiente
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div id="draggable3" class="terminal terminalSkills">
-    <div class="bar">
-      <p>Skills</p>
-      <div class="buttons">
-        <p id="minSkills" class="min">
-          <i class="fa-solid fa-window-minimize"></i>
-        </p>
-        <p id="restoreSkills" class="restore">
-          <i class="fa-regular fa-window-restore"></i>
-        </p>
-        <p id="maxSkills" class="max">
-          <i class="fa-regular fa-window-maximize"></i>
-        </p>
-        <p id="closeSkills" class="close" class="close">
-          <i class="fa-regular fa-rectangle-xmark"></i>
-        </p>
-      </div>
-    </div>
-    <div class="terminalContent">
-      <div class="comandLine">
-        <h3 class="user">
-          User@DaarcyWebsite:<span class="simbols">~$ </span
-          ><span class="comand animationComand">sudo cat Skills.txt</span>
-        </h3>
-      </div>
-      <div class="text animationText">
-        <p class="readMore">
-          Soy un apasionado de la tecnología con experiencia en JavaScript, PHP,
-          Python, Django, Git, bases de datos como MySQL, PostgreSQL, MongoDB, y
-          un amplio conocimiento en Linux. Mi mentalidad autodidacta y deseo
-          constante de aprender me permiten abordar desafíos y aportar
-          soluciones creativas.
-        </p>
-        <br class="readMore" />
-        <p class="readMore">Amplíe la ventana para obtener más detalles...</p>
-        <div class="details">
-          <p>
-            Soy un apasionado de la tecnología con una sólida base de conocimientos en múltiples áreas. Mi experiencia en desarrollo incluye lenguajes como JavaScript, PHP y Python, y mi capacidad para construir interfaces de usuario eficientes con Tkinter y frameworks web como Django. Además, soy competente en herramientas de control de versiones, como Git y GitKraken, para un desarrollo colaborativo y ordenado.
-          </p>
-          <p>
-            En el ámbito de las bases de datos, tengo experiencia en una variedad de sistemas, desde los tradicionales como MySQL y PostgreSQL, hasta opciones más modernas como MongoDB. También me aventuro en el ámbito del procesamiento de datos con Hadoop y Spark, y utilizo Jupyter Notebooks con bibliotecas como NumPy y Pandas para análisis de datos.
-          </p>
-          <p>
-            Como usuario avanzado de Linux, específicamente utilizando Arch Linux, estoy cómodo y eficaz en entornos basados en este sistema operativo. Mi capacidad para adaptarme a nuevas tecnologías y mi deseo constante de aprender me impulsan a mantenerme al tanto de las últimas tendencias y tecnologías.
-          </p>
-          <p>
-            En resumen, mi mentalidad autodidacta y pasión por la programación y
-            la tecnología me motivan a enfrentar desafíos y aportar soluciones
-            creativas en cada proyecto. Estoy comprometido con el aprendizaje
-            continuo y el crecimiento profesional.
-          </p>
-          <p>Mis habilidades se dividen en categorías como:</p>
-          <div class="readMore details detailSkills">
-            <a>
-              <div id="programmingLanguagesButton">
-                <h1>Lenguajes de Programación</h1>
-              </div>
-            </a>
-            <a>
-              <div id="userInterfaceButton">
-                <h1>Interfaz de Usuario y Desarrollo de Aplicaciones</h1>
-              </div>
-            </a>
-            <a>
-              <div id="developmentToolsButton">
-                <h1>Herramientas de Desarrollo</h1>
-              </div>
-            </a>
-            <a>
-              <div id="databasesButton">
-                <h1>Bases de Datos</h1>
-              </div>
-            </a>
-            <a>
-              <div id="dataProcessingButton">
-                <h1>Procesamiento de Datos y Análisis</h1>
-              </div>
-            </a>
-            <a>
-              <div id="operatingSystemsButton">
-                <h1>Sistemas Operativos</h1>
-              </div>
-            </a>
-          </div>
-          <div id="programmingLanguages" class="contentSkills">
-            <div class="textSkills">
-              Los lenguajes de programación son la esencia de la creación de software. Mi experiencia en JavaScript me permite desarrollar aplicaciones web interactivas y dinámicas. Además, tengo conocimiento en PHP y Python, que son valiosos para la creación de sitios web y aplicaciones en el lado del servidor. Estoy dispuesto a aprender y explorar otros lenguajes y frameworks según las necesidades del proyecto.            
-            </div>
-            <div class="tools">
-              <img src="{% static 'images/php.webp' %}" alt="website" />
-              <img src="{% static 'images/python.webp' %}" alt="website" />
-              <img src="{% static 'images/js.webp' %}" alt="website" />
-            </div>
-            
-          </div>
-          <div id="userInterface" class="contentSkills" >
-            <div class="textSkills">
-              El diseño de interfaces de usuario efectivas es fundamental en la creación de aplicaciones atractivas y funcionales. Conozco frameworks personalizados, como "custom tkinter", que mejoran la apariencia de las aplicaciones de tkinter, lo que es especialmente valioso para aplicaciones de escritorio. Además, tengo experiencia en Django, un potente framework de desarrollo web que utilizo para construir aplicaciones web con características avanzadas, como autenticación de usuarios y administración de contenido. Mi capacidad para diseñar y desarrollar aplicaciones con interfaces intuitivas y funcionales garantiza una experiencia de usuario excepcional.            
-            </div>
-            <div class="tools">
-              <img src="{% static 'images/django.webp' %}" alt="website" />
-              <img src="{% static 'images/tkinter.webp' %}" alt="website" />
-            </div>
-            
-          </div>
-          <div id="developmentTools" class="contentSkills" >
-            <div class="textSkills">
-              Las herramientas de desarrollo son esenciales para la gestión de proyectos y la productividad en el desarrollo de software. Mi competencia en Gulp me permite automatizar tareas repetitivas, como la compilación de código y la optimización de recursos en proyectos web. Sass es una herramienta que utilizo para la creación de hojas de estilo CSS eficientes y mantenibles, lo que facilita la gestión del diseño. npm, por su parte, es fundamental en proyectos de JavaScript para gestionar paquetes y dependencias de manera eficaz. Además, mi experiencia con Git y GitKraken asegura un control de versiones sólido y una colaboración eficaz en equipos de desarrollo. Estas herramientas me permiten mantener un flujo de trabajo organizado y colaborativo en el desarrollo de software.
-            </div>
-            <div class="tools">
-              <img src="{% static 'images/gulp.webp' %}" alt="website" />
-              <img src="{% static 'images/sass.webp' %}" alt="website" />
-              <img src="{% static 'images/npm.webp' %}" alt="website" />
-              <img src="{% static 'images/git.webp' %}" alt="website" />
-              <img src="{% static 'images/gitkraken.webp' %}" alt="website" />
-            </div>
-            
-          </div>
-          <div id="databases" class="contentSkills" >
-            <div class="textSkills">
-              Las bases de datos son la columna vertebral de muchas aplicaciones, donde los datos deben ser almacenados y gestionados de manera efectiva. Mi experiencia en sistemas de bases de datos incluye MySQL, PostgreSQL, MongoDB y MariaDB. En el mundo de las bases de datos relacionales, utilizo MySQL y PostgreSQL para diseñar esquemas de bases de datos, crear consultas complejas y asegurar un rendimiento óptimo. Además, MongoDB es una excelente opción para bases de datos NoSQL y aplicaciones que requieren flexibilidad en la estructura de los datos. Mi capacidad para trabajar con diferentes sistemas de bases de datos me permite abordar una amplia variedad de necesidades de almacenamiento de datos.
-            </div>
-            <div class="tools">
-              <img src="{% static 'images/mariadb.webp' %}" alt="website" />
-              <img src="{% static 'images/mongo.webp' %}" alt="website" />
-              <img src="{% static 'images/postgres.webp' %}" alt="website" />
-              <img src="{% static 'images/mysql.webp' %}" alt="website" />
-            </div>
-            
-          </div>
-          <div id="dataProcessing" class="contentSkills" >
-            <div class="textSkills">
-              El procesamiento y análisis de datos son habilidades clave en la era de la información. Mi experiencia con Hadoop y Spark me permite abordar grandes conjuntos de datos y realizar análisis de datos a gran escala, lo que es valioso en aplicaciones de big data y procesamiento de datos en tiempo real. Además, utilizo Jupyter Notebooks junto con bibliotecas como NumPy y Pandas para análisis de datos más detallados. Estas herramientas son fundamentales para la exploración de datos, la creación de modelos predictivos y la toma de decisiones informadas. Mi capacidad para extraer información valiosa de datos complejos es esencial en el análisis de datos.
-            </div>
-            <div class="tools">
-              <img src="{% static 'images/spark.webp' %}" alt="website" />
-              <img src="{% static 'images/jupyter.webp' %}" alt="website" />
-              <img src="{% static 'images/hadoop.webp' %}" alt="website" />
-              <img src="{% static 'images/numpy.webp' %}" alt="website" />
-              <img src="{% static 'images/pandas.webp' %}" alt="website" />
-            </div>
-            
-          </div>
-          <div id="operatingSystems" class="contentSkills" >
-            <div class="textSkills">
-              Un sistema operativo sólido es fundamental para mantener un entorno de desarrollo estable y eficiente. Como usuario avanzado de Linux, con un enfoque en Arch Linux, tengo experiencia en la administración de sistemas basados en Linux. Además, tengo un buen control de Windows, lo que me permite trabajar de manera eficaz en diversos entornos de desarrollo. La versatilidad de los sistemas operativos es esencial para adaptarme a las necesidades de desarrollo.
-            </div>
-            <div class="tools">
-              <img src="{% static 'images/linux.webp' %}" alt="website" />
-              <img src="{% static 'images/windows.webp' %}" alt="website" />
-            </div>
-            
-          </div>
-
-        </div>
-      </div>
-    </div>
-  </div>
-  <div id="draggable4" class="terminal terminalBlog">
-    <div class="bar">
-      <p>Blog</p>
-      <div class="buttons">
-        <p id="minBlog" class="min">
-          <i class="fa-solid fa-window-minimize"></i>
-        </p>
-        <p id="restoreBlog" class="restore">
-          <i class="fa-regular fa-window-restore"></i>
-        </p>
-        <p id="maxBlog" class="max">
-          <i class="fa-regular fa-window-maximize"></i>
-        </p>
-        <p id="closeBlog" class="close" class="close">
-          <i class="fa-regular fa-rectangle-xmark"></i>
-        </p>
-      </div>
-    </div>
-    <div class="terminalContent">
-      <div class="comandLine">
-        <h3 class="readMore user">
-          User@DaarcyWebsite:<span class="simbols">~$ </span
-          ><span class="comand animationComand">sudo cat Blog.txt</span>
-        </h3>
-      </div>
-      <div class="text textBlog animationText">
-        <p class="readMore">
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius, dolores magnam. Rem excepturi cum itaque ea eos sapiente eius totam alias maxime, quod sequi facere atque possimus modi cupiditate expedita!
-        </p>
-        <br class="readMore" />
-        <p class="readMore">Amplíe la ventana para obtener más detalles...</p>
-        
-        <div class="details">
-          <h3 class="userBlog">
+      <div class="terminalContent">
+        <div class="comandLine">
+          <h3 class="user">
             User@DaarcyWebsite:<span class="simbols">~$ </span
-            ><span class="comandBlog animationComand">sudo ranger ~/.Blog/</span>
+            ><span class="comand animationComand">sudo cat about-me.txt</span>
           </h3>
-          <div class="contentBlog">
-            <div class="categoryBlog">
-              <p id="category" class="select category" data-category="prueba">
-                <i class="fa-solid fa-folder"></i> .prueba
-              </p>
-              <p class="category" data-category="adios">
-                <i  class="fa-solid fa-folder"></i> .adios
-              </p>
-              
-              
-            </div>
-            <div class="fileBlog">
-              <p  class="project select" data-category="prueba" data-project-content="prueba">
-                <i class="fa-solid fa-file-lines"></i> prueba.txt
-              </p>
-              <p  class="project" data-category="prueba" data-project-content="prueba2">
-                <i class="fa-solid fa-file-lines"></i> prueba2.txt
-              </p>
-              <p  class="project" data-category="adios" data-project-content="adios">
-                <i class="fa-solid fa-file-lines"></i> adios.txt
-              </p>
-              <p  class="project" data-category="adios" data-project-content="adios2">
-                <i class="fa-solid fa-file-lines"></i> adios2.txt
-              </p>
-            </div>
-            <div class="contentFile">
-              <p class="project-content" data-category="prueba" data-project-content="prueba">
-                Contenido de .prueba
-              </p>
-              <p class="project-content" data-category="prueba" data-project-content="prueba2">
-                Contenido de .prueba2
-              </p>
-              <p class="project-content" data-category="adios" data-project-content="adios">
-                Contenido de .adios
-              </p>
-              <p class="project-content" data-category="adios" data-project-content="adios2">
-                Contenido de .adios2
-              </p>
-            </div>
+        </div>
+        <div class="text animationText">
+          {% for about in abouts %}
+            <p class="readMore">
+              {{about.aboutResume}}
+            </p>
+          {% endfor %}
+          <br class="readMore" />
+          <p class="readMore">Amplíe la ventana para obtener más detalles...</p>
+
+          <div class="details">
+            {% for about in abouts %}
+            <p>
+              {{about.aboutComplete}}
+            </p>
+          {% endfor %}
+            <br />
+            <p>Gracias por visitar mi portafolio.</p>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <div id="draggable5" class="terminal terminalContact">
-    <div class="bar">
-      <p>Contact</p>
-      <div class="buttons">
-        <p id="minContact" class="min">
-          <i class="fa-solid fa-window-minimize"></i>
-        </p>
-        <p id="restoreContact" class="restore">
-          <i class="fa-regular fa-window-restore"></i>
-        </p>
-        <p id="maxContact" class="max">
-          <i class="fa-regular fa-window-maximize"></i>
-        </p>
-        <p id="closeContact" class="close" class="close">
-          <i class="fa-regular fa-rectangle-xmark"></i>
-        </p>
-      </div>
-    </div>
-    <div class="terminalContent">
-      <div class="comandLine">
-        <h3 class="user">
-          User@DaarcyWebsite:<span class="simbols">~$ </span
-          ><span class="comand animationComand">sudo cat Contact.txt</span>
-        </h3>
-      </div>
-      <div class="text animationText">
-        <p class="readMore">
-          ¡Gracias por visitar mi portafolio! Si deseas ponerte en contacto conmigo para discutir proyectos, oportunidades de colaboración, hacer una consulta o simplemente saludar, no dudes en hacerlo. Estoy siempre abierto a nuevas conexiones y oportunidades emocionantes.        </p>
-        <br class="readMore" />
-        <p class="readMore">Amplíe la ventana para obtener más detalles...</p>
-        <div class="details">
-          <p>
-            Puedes contactarme a través de mi dirección de correo electrónico liam_alvarez@hotmail.com, o si prefieres las redes sociales, estoy activo en redes sociales, como LinkedIn, Twitter o GitHub donde puedes seguirme y enviarme un mensaje directo.
+    <div id="draggable2" class="terminal terminalProjects">
+      <div class="bar">
+        <p>Projects</p>
+        <div class="buttons">
+          <p id="minProject" class="min">
+            <i class="fa-solid fa-window-minimize"></i>
           </p>
-          <div class="form">
-            <h2>Contacto</h2>
-            <form action="procesar_formulario.php" method="post">
-              <label for="nombre">Nombre:</label>
-              <input class="name" type="text" id="nombre" name="nombre" required>
-
-              <label for="telefono">Número de Teléfono:</label>
-              <input class="phone" type="tel" id="telefono" name="telefono">
-      
-              <label for="correo">Correo Electrónico:</label>
-              <input class="email" type="email" id="correo" name="correo" required>
-      
-              <label for="mensaje">Mensaje:</label>
-              <textarea class="message" id="mensaje" name="mensaje" rows="4" required></textarea>
-              
-              <button class="button-24" role="button">Enviar</button>
-            </form>
-          </div>
-
+          <p id="restoreProject" class="restore">
+            <i class="fa-regular fa-window-restore"></i>
+          </p>
+          <p id="maxProject" class="max">
+            <i class="fa-regular fa-window-maximize"></i>
+          </p>
+          <p id="closeProject" class="close" class="close">
+            <i class="fa-regular fa-rectangle-xmark"></i>
+          </p>
         </div>
       </div>
-      
+      <div class="terminalContent">
+        <div class="comandLine">
+          <h3 class="user">
+            User@DaarcyWebsite:<span class="simbols">~$ </span
+            ><span class="comand animationComand">sudo cat Projects.txt</span>
+          </h3>
+        </div>
+        <div class="text animationText">
+          <p>
+            En este espacio, les doy la bienvenida a mi portafolio, donde
+            comparto mis proyectos en el emocionante mundo de la ciencia de
+            datos y el desarrollo web. A lo largo de mi trayecto como apasionado
+            desarrollador y científico de datos, he tenido la oportunidad de
+            trabajar en una variedad de proyectos intrigantes. Cada uno de ellos
+            representa un desafío único y un logro en mi viaje de aprendizaje y
+            crecimiento profesional.
+          </p>
+          <br class="readMore" />
+          <p class="readMore">Amplíe la ventana para obtener más detalles...</p>
+          <div class="readMore details detailsProjects">
+            <a>
+              <div id="websiteButton">
+                <h1>Desarrollo Web</h1>
+              </div>
+            </a>
+            <a>
+              <div id="datascienceButton">
+                <h1>Ciencia de Datos</h1>
+              </div>
+            </a>
+          </div>
+          <div class="details">
+            <div id="websites" class="readMore websites">
+              <div id="website1" class="websiteImage">
+                <img src="{% static 'images/website1.webp' %}" alt="website" />
+              </div>
+              <div id="website2" class="websiteImage">
+                <img src="{% static 'images/website2.webp' %}" alt="website" />
+              </div>
+              <div id="website3" class="websiteImage">
+                <img src="{% static 'images/website3.webp' %}" alt="website" />
+              </div>
+            </div>
+            <div id="website1Info" class="website1Info">
+              <p>
+                Este es un proyecto de una tienda de ropa en línea que ofrece
+                una experiencia de compra simplificada y personalizada. Los
+                visitantes pueden elegir entre ropa para hombre o mujer, así
+                como tipos de prendas con un solo clic. El carrito de compras
+                mantiene un seguimiento en tiempo real del total de artículos
+                seleccionados, brindando transparencia en el proceso. Además,
+                los usuarios pueden registrarse y tener sus propias cuentas para
+                una experiencia más personalizada. Todo esto fue posible gracias
+                al uso de las tecnologías de Django, JavaScript, npm, Gulp y
+                Sass. Es tu destino ideal para descubrir moda de manera
+                eficiente y elegante.
+              </p>
+              <div class="websiteImageDescription">
+                <img src="{% static 'images/website1.webp' %}" alt="website" />
+                <img
+                  src="{% static 'images/website1Crud.webp' %}"
+                  alt="website"
+                />
+              </div>
+              <p>Codigo en github:</p>
+              <a href="https://github.com/DaarcyDev/kefWebsite"
+                >https://github.com/DaarcyDev</a
+              >
+              <p>Herramientas que se ocuparon para este proyecto</p>
+
+              <div id="websites" class="tools">
+                <img src="{% static 'images/gulp.webp' %}" alt="website" />
+                <img src="{% static 'images/node.webp' %}" alt="website" />
+                <img src="{% static 'images/python.webp' %}" alt="website" />
+                <img src="{% static 'images/django.webp' %}" alt="website" />
+                <img src="{% static 'images/sass.webp' %}" alt="website" />
+                <img src="{% static 'images/js.webp' %}" alt="website" />
+              </div>
+            </div>
+            <div id="website2Info" class="website2Info">
+              <p>
+                BienesRaices es tu puerta de entrada al emocionante mundo de la
+                compra y venta de propiedades. En esta plataforma, el
+                administrador tiene el control total, con la capacidad de listar
+                propiedades y crear vendedores, todo con un diseño intuitivo y
+                fácil de usar. Los vendedores también pueden gestionar sus
+                propias ofertas y propiedades a través de un panel de control.
+                Este proyecto se ha desarrollado utilizando PHP con el paradigma
+                de "Active Record", junto con JS, npm, Gulp y Sass para una
+                experiencia de usuario fluida y atractiva. ¿Quieres analizar el
+                código por ti mismo? ¡Puedes encontrar el proyecto en mi GitHub!
+                Descubre la comodidad y la eficiencia de BienesRaices y comienza
+                tu viaje en bienes raíces hoy.
+              </p>
+              <div class="websiteImageDescription">
+                <img src="{% static 'images/website2.webp' %}" alt="website" />
+                <img
+                  src="{% static 'images/website2Crud.webp' %}"
+                  alt="website"
+                />
+              </div>
+              <p>Codigo en github:</p>
+              <a href="https://github.com/DaarcyDev/bienesRaicesPOO"
+                >https://github.com/DaarcyDev</a
+              >
+              <p>Herramientas que se ocuparon para este proyecto</p>
+
+              <div id="websites" class="tools">
+                <img src="{% static 'images/gulp.webp' %}" alt="website" />
+                <img src="{% static 'images/node.webp' %}" alt="website" />
+                <img src="{% static 'images/php.webp' %}" alt="website" />
+                <img src="{% static 'images/sass.webp' %}" alt="website" />
+                <img src="{% static 'images/js.webp' %}" alt="website" />
+              </div>
+            </div>
+            <div id="website3Info" class="website3Info">
+              <p>
+                "Sheru Website" es una creación artística y un destino de
+                compras en uno. Este sitio web es el escaparate personal de un
+                talentoso artista independiente, que comparte sus canciones con
+                el mundo y ofrece una visión única de la inspiración detrás de
+                cada melodía. Además de su faceta musical, este proyecto incluye
+                una tienda en línea donde el artista puede vender su mercancía,
+                y todo es gestionado desde un panel de control de administrador
+                intuitivo que permite manipular noticias, usuarios, productos y
+                más.
+              </p>
+              <br />
+              <p>
+                El diseño responsive garantiza una experiencia perfecta en
+                cualquier dispositivo, y la implementación de tecnologías como
+                SASS, Gulp, NPM, PHP, JS y Node.js aseguran un rendimiento
+                excepcional. Además, un scroll horizontal adaptable a
+                dispositivos móviles brinda un toque único.
+              </p>
+              <br />
+              <p>
+                ¿Te gustaría analizar el código por ti mismo? ¡Puedes encontrar
+                este emocionante proyecto en mi GitHub! Explora la creatividad y
+                la versatilidad de Sheru Website para descubrir la música y el
+                arte con un giro personal.
+              </p>
+
+              <div class="websiteImageDescription">
+                <img src="{% static 'images/website3.webp' %}" alt="website" />
+                <img
+                  src="{% static 'images/website3Crud.webp' %}"
+                  alt="website"
+                />
+              </div>
+              <p>Codigo en github:</p>
+              <a href="https://github.com/DaarcyDev/Shell_Website_POO"
+                >https://github.com/DaarcyDev</a
+              >
+              <p>Herramientas que se ocuparon para este proyecto</p>
+
+              <div id="websites" class="tools">
+                <img src="{% static 'images/gulp.webp' %}" alt="website" />
+                <img src="{% static 'images/node.webp' %}" alt="website" />
+                <img src="{% static 'images/php.webp' %}" alt="website" />
+                <img src="{% static 'images/sass.webp' %}" alt="website" />
+                <img src="{% static 'images/js.webp' %}" alt="website" />
+              </div>
+            </div>
+            <div id="datascience" class="readMore datascience">
+              <p>pendiente</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="display">
-    <section id="first" class="slide first"></section>
-    <section id="second" class="slide second"></section>
-    <section id="third" class="slide third"></section>
-    <section id="fourth" class="slide fourth"></section>
-    <section id="fifth" class="slide fifth"></section>
-  </div>
-</main>
+    <div id="draggable3" class="terminal terminalSkills">
+      <div class="bar">
+        <p>Skills</p>
+        <div class="buttons">
+          <p id="minSkills" class="min">
+            <i class="fa-solid fa-window-minimize"></i>
+          </p>
+          <p id="restoreSkills" class="restore">
+            <i class="fa-regular fa-window-restore"></i>
+          </p>
+          <p id="maxSkills" class="max">
+            <i class="fa-regular fa-window-maximize"></i>
+          </p>
+          <p id="closeSkills" class="close" class="close">
+            <i class="fa-regular fa-rectangle-xmark"></i>
+          </p>
+        </div>
+      </div>
+      <div class="terminalContent">
+        <div class="comandLine">
+          <h3 class="user">
+            User@DaarcyWebsite:<span class="simbols">~$ </span
+            ><span class="comand animationComand">sudo cat Skills.txt</span>
+          </h3>
+        </div>
+        <div class="text animationText">
+          <p class="readMore">
+            Soy un apasionado de la tecnología con experiencia en JavaScript,
+            PHP, Python, Django, Git, bases de datos como MySQL, PostgreSQL,
+            MongoDB, y un amplio conocimiento en Linux. Mi mentalidad
+            autodidacta y deseo constante de aprender me permiten abordar
+            desafíos y aportar soluciones creativas.
+          </p>
+          <br class="readMore" />
+          <p class="readMore">Amplíe la ventana para obtener más detalles...</p>
+          <div class="details">
+            <p>
+              Soy un apasionado de la tecnología con una sólida base de
+              conocimientos en múltiples áreas. Mi experiencia en desarrollo
+              incluye lenguajes como JavaScript, PHP y Python, y mi capacidad
+              para construir interfaces de usuario eficientes con Tkinter y
+              frameworks web como Django. Además, soy competente en herramientas
+              de control de versiones, como Git y GitKraken, para un desarrollo
+              colaborativo y ordenado.
+            </p>
+            <p>
+              En el ámbito de las bases de datos, tengo experiencia en una
+              variedad de sistemas, desde los tradicionales como MySQL y
+              PostgreSQL, hasta opciones más modernas como MongoDB. También me
+              aventuro en el ámbito del procesamiento de datos con Hadoop y
+              Spark, y utilizo Jupyter Notebooks con bibliotecas como NumPy y
+              Pandas para análisis de datos.
+            </p>
+            <p>
+              Como usuario avanzado de Linux, específicamente utilizando Arch
+              Linux, estoy cómodo y eficaz en entornos basados en este sistema
+              operativo. Mi capacidad para adaptarme a nuevas tecnologías y mi
+              deseo constante de aprender me impulsan a mantenerme al tanto de
+              las últimas tendencias y tecnologías.
+            </p>
+            <p>
+              En resumen, mi mentalidad autodidacta y pasión por la programación
+              y la tecnología me motivan a enfrentar desafíos y aportar
+              soluciones creativas en cada proyecto. Estoy comprometido con el
+              aprendizaje continuo y el crecimiento profesional.
+            </p>
+            <p>Mis habilidades se dividen en categorías como:</p>
+            <div class="readMore details detailSkills">
+              <a>
+                <div id="programmingLanguagesButton">
+                  <h1>Lenguajes de Programación</h1>
+                </div>
+              </a>
+              <a>
+                <div id="userInterfaceButton">
+                  <h1>Interfaz de Usuario y Desarrollo de Aplicaciones</h1>
+                </div>
+              </a>
+              <a>
+                <div id="developmentToolsButton">
+                  <h1>Herramientas de Desarrollo</h1>
+                </div>
+              </a>
+              <a>
+                <div id="databasesButton">
+                  <h1>Bases de Datos</h1>
+                </div>
+              </a>
+              <a>
+                <div id="dataProcessingButton">
+                  <h1>Procesamiento de Datos y Análisis</h1>
+                </div>
+              </a>
+              <a>
+                <div id="operatingSystemsButton">
+                  <h1>Sistemas Operativos</h1>
+                </div>
+              </a>
+            </div>
+            <div id="programmingLanguages" class="contentSkills">
+              <div class="textSkills">
+                Los lenguajes de programación son la esencia de la creación de
+                software. Mi experiencia en JavaScript me permite desarrollar
+                aplicaciones web interactivas y dinámicas. Además, tengo
+                conocimiento en PHP y Python, que son valiosos para la creación
+                de sitios web y aplicaciones en el lado del servidor. Estoy
+                dispuesto a aprender y explorar otros lenguajes y frameworks
+                según las necesidades del proyecto.
+              </div>
+              <div class="tools">
+                <img src="{% static 'images/php.webp' %}" alt="website" />
+                <img src="{% static 'images/python.webp' %}" alt="website" />
+                <img src="{% static 'images/js.webp' %}" alt="website" />
+              </div>
+            </div>
+            <div id="userInterface" class="contentSkills">
+              <div class="textSkills">
+                El diseño de interfaces de usuario efectivas es fundamental en
+                la creación de aplicaciones atractivas y funcionales. Conozco
+                frameworks personalizados, como "custom tkinter", que mejoran la
+                apariencia de las aplicaciones de tkinter, lo que es
+                especialmente valioso para aplicaciones de escritorio. Además,
+                tengo experiencia en Django, un potente framework de desarrollo
+                web que utilizo para construir aplicaciones web con
+                características avanzadas, como autenticación de usuarios y
+                administración de contenido. Mi capacidad para diseñar y
+                desarrollar aplicaciones con interfaces intuitivas y funcionales
+                garantiza una experiencia de usuario excepcional.
+              </div>
+              <div class="tools">
+                <img src="{% static 'images/django.webp' %}" alt="website" />
+                <img src="{% static 'images/tkinter.webp' %}" alt="website" />
+              </div>
+            </div>
+            <div id="developmentTools" class="contentSkills">
+              <div class="textSkills">
+                Las herramientas de desarrollo son esenciales para la gestión de
+                proyectos y la productividad en el desarrollo de software. Mi
+                competencia en Gulp me permite automatizar tareas repetitivas,
+                como la compilación de código y la optimización de recursos en
+                proyectos web. Sass es una herramienta que utilizo para la
+                creación de hojas de estilo CSS eficientes y mantenibles, lo que
+                facilita la gestión del diseño. npm, por su parte, es
+                fundamental en proyectos de JavaScript para gestionar paquetes y
+                dependencias de manera eficaz. Además, mi experiencia con Git y
+                GitKraken asegura un control de versiones sólido y una
+                colaboración eficaz en equipos de desarrollo. Estas herramientas
+                me permiten mantener un flujo de trabajo organizado y
+                colaborativo en el desarrollo de software.
+              </div>
+              <div class="tools">
+                <img src="{% static 'images/gulp.webp' %}" alt="website" />
+                <img src="{% static 'images/sass.webp' %}" alt="website" />
+                <img src="{% static 'images/npm.webp' %}" alt="website" />
+                <img src="{% static 'images/git.webp' %}" alt="website" />
+                <img src="{% static 'images/gitkraken.webp' %}" alt="website" />
+              </div>
+            </div>
+            <div id="databases" class="contentSkills">
+              <div class="textSkills">
+                Las bases de datos son la columna vertebral de muchas
+                aplicaciones, donde los datos deben ser almacenados y
+                gestionados de manera efectiva. Mi experiencia en sistemas de
+                bases de datos incluye MySQL, PostgreSQL, MongoDB y MariaDB. En
+                el mundo de las bases de datos relacionales, utilizo MySQL y
+                PostgreSQL para diseñar esquemas de bases de datos, crear
+                consultas complejas y asegurar un rendimiento óptimo. Además,
+                MongoDB es una excelente opción para bases de datos NoSQL y
+                aplicaciones que requieren flexibilidad en la estructura de los
+                datos. Mi capacidad para trabajar con diferentes sistemas de
+                bases de datos me permite abordar una amplia variedad de
+                necesidades de almacenamiento de datos.
+              </div>
+              <div class="tools">
+                <img src="{% static 'images/mariadb.webp' %}" alt="website" />
+                <img src="{% static 'images/mongo.webp' %}" alt="website" />
+                <img src="{% static 'images/postgres.webp' %}" alt="website" />
+                <img src="{% static 'images/mysql.webp' %}" alt="website" />
+              </div>
+            </div>
+            <div id="dataProcessing" class="contentSkills">
+              <div class="textSkills">
+                El procesamiento y análisis de datos son habilidades clave en la
+                era de la información. Mi experiencia con Hadoop y Spark me
+                permite abordar grandes conjuntos de datos y realizar análisis
+                de datos a gran escala, lo que es valioso en aplicaciones de big
+                data y procesamiento de datos en tiempo real. Además, utilizo
+                Jupyter Notebooks junto con bibliotecas como NumPy y Pandas para
+                análisis de datos más detallados. Estas herramientas son
+                fundamentales para la exploración de datos, la creación de
+                modelos predictivos y la toma de decisiones informadas. Mi
+                capacidad para extraer información valiosa de datos complejos es
+                esencial en el análisis de datos.
+              </div>
+              <div class="tools">
+                <img src="{% static 'images/spark.webp' %}" alt="website" />
+                <img src="{% static 'images/jupyter.webp' %}" alt="website" />
+                <img src="{% static 'images/hadoop.webp' %}" alt="website" />
+                <img src="{% static 'images/numpy.webp' %}" alt="website" />
+                <img src="{% static 'images/pandas.webp' %}" alt="website" />
+              </div>
+            </div>
+            <div id="operatingSystems" class="contentSkills">
+              <div class="textSkills">
+                Un sistema operativo sólido es fundamental para mantener un
+                entorno de desarrollo estable y eficiente. Como usuario avanzado
+                de Linux, con un enfoque en Arch Linux, tengo experiencia en la
+                administración de sistemas basados en Linux. Además, tengo un
+                buen control de Windows, lo que me permite trabajar de manera
+                eficaz en diversos entornos de desarrollo. La versatilidad de
+                los sistemas operativos es esencial para adaptarme a las
+                necesidades de desarrollo.
+              </div>
+              <div class="tools">
+                <img src="{% static 'images/linux.webp' %}" alt="website" />
+                <img src="{% static 'images/windows.webp' %}" alt="website" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="draggable4" class="terminal terminalBlog">
+      <div class="bar">
+        <p>Blog</p>
+        <div class="buttons">
+          <p id="minBlog" class="min">
+            <i class="fa-solid fa-window-minimize"></i>
+          </p>
+          <p id="restoreBlog" class="restore">
+            <i class="fa-regular fa-window-restore"></i>
+          </p>
+          <p id="maxBlog" class="max">
+            <i class="fa-regular fa-window-maximize"></i>
+          </p>
+          <p id="closeBlog" class="close" class="close">
+            <i class="fa-regular fa-rectangle-xmark"></i>
+          </p>
+        </div>
+      </div>
+      <div class="terminalContent">
+        <div class="comandLine">
+          <h3 class="readMore user">
+            User@DaarcyWebsite:<span class="simbols">~$ </span
+            ><span class="comand animationComand">sudo cat Blog.txt</span>
+          </h3>
+        </div>
+        <div class="text textBlog animationText">
+          <p class="readMore">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius,
+            dolores magnam. Rem excepturi cum itaque ea eos sapiente eius totam
+            alias maxime, quod sequi facere atque possimus modi cupiditate
+            expedita!
+          </p>
+          <br class="readMore" />
+          <p class="readMore">Amplíe la ventana para obtener más detalles...</p>
+
+          <div class="details">
+            <h3 class="userBlog">
+              User@DaarcyWebsite:<span class="simbols">~$ </span
+              ><span class="comandBlog animationComand"
+                >sudo ranger ~/.Blog/</span
+              >
+            </h3>
+            <div class="contentBlog">
+              <div class="categoryBlog">
+                <p id="category" class="select category" data-category="prueba">
+                  <i class="fa-solid fa-folder"></i> .prueba
+                </p>
+                <p class="category" data-category="adios">
+                  <i class="fa-solid fa-folder"></i> .adios
+                </p>
+              </div>
+              <div class="fileBlog">
+                <p
+                  class="project select"
+                  data-category="prueba"
+                  data-project-content="prueba"
+                >
+                  <i class="fa-solid fa-file-lines"></i> prueba.txt
+                </p>
+                <p
+                  class="project"
+                  data-category="prueba"
+                  data-project-content="prueba2"
+                >
+                  <i class="fa-solid fa-file-lines"></i> prueba2.txt
+                </p>
+                <p
+                  class="project"
+                  data-category="adios"
+                  data-project-content="adios"
+                >
+                  <i class="fa-solid fa-file-lines"></i> adios.txt
+                </p>
+                <p
+                  class="project"
+                  data-category="adios"
+                  data-project-content="adios2"
+                >
+                  <i class="fa-solid fa-file-lines"></i> adios2.txt
+                </p>
+              </div>
+              <div class="contentFile">
+                <p
+                  class="project-content"
+                  data-category="prueba"
+                  data-project-content="prueba"
+                >
+                  Contenido de .prueba
+                </p>
+                <p
+                  class="project-content"
+                  data-category="prueba"
+                  data-project-content="prueba2"
+                >
+                  Contenido de .prueba2
+                </p>
+                <p
+                  class="project-content"
+                  data-category="adios"
+                  data-project-content="adios"
+                >
+                  Contenido de .adios
+                </p>
+                <p
+                  class="project-content"
+                  data-category="adios"
+                  data-project-content="adios2"
+                >
+                  Contenido de .adios2
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="draggable5" class="terminal terminalContact">
+      <div class="bar">
+        <p>Contact</p>
+        <div class="buttons">
+          <p id="minContact" class="min">
+            <i class="fa-solid fa-window-minimize"></i>
+          </p>
+          <p id="restoreContact" class="restore">
+            <i class="fa-regular fa-window-restore"></i>
+          </p>
+          <p id="maxContact" class="max">
+            <i class="fa-regular fa-window-maximize"></i>
+          </p>
+          <p id="closeContact" class="close" class="close">
+            <i class="fa-regular fa-rectangle-xmark"></i>
+          </p>
+        </div>
+      </div>
+      <div class="terminalContent">
+        <div class="comandLine">
+          <h3 class="user">
+            User@DaarcyWebsite:<span class="simbols">~$ </span
+            ><span class="comand animationComand">sudo cat Contact.txt</span>
+          </h3>
+        </div>
+        <div class="text animationText">
+          <p class="readMore">
+            ¡Gracias por visitar mi portafolio! Si deseas ponerte en contacto
+            conmigo para discutir proyectos, oportunidades de colaboración,
+            hacer una consulta o simplemente saludar, no dudes en hacerlo. Estoy
+            siempre abierto a nuevas conexiones y oportunidades emocionantes.
+          </p>
+          <br class="readMore" />
+          <p class="readMore">Amplíe la ventana para obtener más detalles...</p>
+          <div class="details">
+            <p>
+              Puedes contactarme a través de mi dirección de correo electrónico
+              liam_alvarez@hotmail.com, o si prefieres las redes sociales, estoy
+              activo en redes sociales, como LinkedIn, Twitter o GitHub donde
+              puedes seguirme y enviarme un mensaje directo.
+            </p>
+            <div class="form">
+              <h2>Contacto</h2>
+              <form action="procesar_formulario.php" method="post">
+                <label for="nombre">Nombre:</label>
+                <input
+                  class="name"
+                  type="text"
+                  id="nombre"
+                  name="nombre"
+                  required
+                />
+
+                <label for="telefono">Número de Teléfono:</label>
+                <input class="phone" type="tel" id="telefono" name="telefono" />
+
+                <label for="correo">Correo Electrónico:</label>
+                <input
+                  class="email"
+                  type="email"
+                  id="correo"
+                  name="correo"
+                  required
+                />
+
+                <label for="mensaje">Mensaje:</label>
+                <textarea
+                  class="message"
+                  id="mensaje"
+                  name="mensaje"
+                  rows="4"
+                  required
+                ></textarea>
+
+                <button class="button-24" role="button">Enviar</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="display">
+      <section id="first" class="slide first"></section>
+      <section id="second" class="slide second"></section>
+      <section id="third" class="slide third"></section>
+      <section id="fourth" class="slide fourth"></section>
+      <section id="fifth" class="slide fifth"></section>
+    </div>
+  </main>
+</body>
 
 {% endblock content %}
