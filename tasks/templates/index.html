@@ -76,9 +76,9 @@
           <p class="readMore">Amplíe la ventana para obtener más detalles...</p>
 
           <div class="details">
-            {% for about in abouts %}
+            {% for aboutCom in abouts %}
             <p>
-              {{about.aboutComplete}}
+              {{aboutCom.aboutComplete|linebreaks}}
             </p>
           {% endfor %}
             <br />
@@ -116,7 +116,7 @@
           <p>
             En este espacio, les doy la bienvenida a mi portafolio, donde
             comparto mis proyectos en el emocionante mundo de la ciencia de
-            datos y el desarrollo web. A lo largo de mi trayecto como apasionado
+            datos y el web. A lo largo de mi trayecto como apasionado
             desarrollador y científico de datos, he tenido la oportunidad de
             trabajar en una variedad de proyectos intrigantes. Cada uno de ellos
             representa un desafío único y un logro en mi viaje de aprendizaje y

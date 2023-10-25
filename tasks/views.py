@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.contrib.auth import login
-from .models import Skill, About, Project, Blog 
+from .models import Skill, About
 # Create your views here.
 
 def index(request):
