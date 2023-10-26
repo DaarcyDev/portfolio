@@ -226,6 +226,8 @@ html {
   .text {
     p {
       font-size: 2rem;
+      margin: 3rem;
+      // text-align: center;
     }
   }
   .detailsProjects {
@@ -480,6 +482,19 @@ html {
 }
 .website{
   display: none;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem;
+  a{
+    color: $blanco;
+    font-size:2rem;
+  }
+}
+.websiteImageDescription{
+  img{
+    padding: 3rem;
+  }
+
 }
 
 .toolsSkills {

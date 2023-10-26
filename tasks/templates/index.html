@@ -171,57 +171,6 @@
               </div>
               {% endfor %} 
             </div>
-
-            {% comment %} 
-            <div id="website3Info" class="website3Info">
-              <p>
-                "Sheru Website" es una creación artística y un destino de
-                compras en uno. Este sitio web es el escaparate personal de un
-                talentoso artista independiente, que comparte sus canciones con
-                el mundo y ofrece una visión única de la inspiración detrás de
-                cada melodía. Además de su faceta musical, este proyecto incluye
-                una tienda en línea donde el artista puede vender su mercancía,
-                y todo es gestionado desde un panel de control de administrador
-                intuitivo que permite manipular noticias, usuarios, productos y
-                más.
-              </p>
-              <br />
-              <p>
-                El diseño responsive garantiza una experiencia perfecta en
-                cualquier dispositivo, y la implementación de tecnologías como
-                SASS, Gulp, NPM, PHP, JS y Node.js aseguran un rendimiento
-                excepcional. Además, un scroll horizontal adaptable a
-                dispositivos móviles brinda un toque único.
-              </p>
-              <br />
-              <p>
-                ¿Te gustaría analizar el código por ti mismo? ¡Puedes encontrar
-                este emocionante proyecto en mi GitHub! Explora la creatividad y
-                la versatilidad de Sheru Website para descubrir la música y el
-                arte con un giro personal.
-              </p>
-
-              <div class="websiteImageDescription">
-                <img src="{% static 'images/website3.webp' %}" alt="website" />
-                <img
-                  src="{% static 'images/website3Crud.webp' %}"
-                  alt="website"
-                />
-              </div>
-              <p>Codigo en github:</p>
-              <a href="https://github.com/DaarcyDev/Shell_Website_POO"
-                >https://github.com/DaarcyDev</a
-              >
-              <p>Herramientas que se ocuparon para este proyecto</p>
-
-              <div id="websites" class="tools">
-                <img src="{% static 'images/gulp.webp' %}" alt="website" />
-                <img src="{% static 'images/node.webp' %}" alt="website" />
-                <img src="{% static 'images/php.webp' %}" alt="website" />
-                <img src="{% static 'images/sass.webp' %}" alt="website" />
-                <img src="{% static 'images/js.webp' %}" alt="website" />
-              </div>
-            </div> {% endcomment %}
             <div id="datascience" class="readMore datascience">
               <p>pendiente</p>
             </div>
@@ -427,12 +376,11 @@
           </h3>
         </div>
         <div class="text textBlog animationText">
-          <p class="readMore">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eius,
-            dolores magnam. Rem excepturi cum itaque ea eos sapiente eius totam
-            alias maxime, quod sequi facere atque possimus modi cupiditate
-            expedita!
-          </p>
+          {% for blogCategory in blogCategories %}
+            <p class="readMore">
+              {{blogCategory.blogResume}}
+            </p>
+          {% endfor %}
           <br class="readMore" />
           <p class="readMore">Amplíe la ventana para obtener más detalles...</p>
 

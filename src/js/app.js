@@ -15,9 +15,6 @@ function projects() {
 
   websiteButtons.forEach((button) => {
     button.addEventListener('click', (event) => {
-      websiteButtons.forEach((btn) => {
-        btn.classList.remove("select");
-      });
       const selectedCategory = button.getAttribute('data-category');
       websiteSections.forEach((section) => {
         section.style.display = 'none';
@@ -25,7 +22,7 @@ function projects() {
 
       const selectedSection = document.querySelector('.website[data-category="' + selectedCategory + '"]');
       if (selectedSection) {
-        selectedSection.style.display = 'block';
+        selectedSection.style.display = 'flex';
         selectedSection.scrollIntoView({ behavior: "smooth", block: "end" });
       }
     });
@@ -335,30 +332,20 @@ function initializeTerminal() {
       websiteButton.addEventListener("click", function () {
         website.style.display ="flex"
         website.scrollIntoView({ behavior: "smooth", block: "end" });
-        // console.log(position())
         datascience.style.display ="none"
       })
       datascienceButton.addEventListener("click", function () {
         datascience.style.display ="flex"
         datascience.scrollIntoView({ behavior: "smooth", block: "end" });
         website.style.display ="none"
-        // website1Info.style.display="none"
-        // website2Info.style.display="none"
-        // website3Info.style.display="none"
       })
       restoreButton.addEventListener("click", function () {
         datascience.style.display ="none"
         website.style.display ="none"
-        // website1Info.style.display="none"
-        // website2Info.style.display="none"
-        // website3Info.style.display="none"
       })
       closeButton.addEventListener("click", function () {
         datascience.style.display ="none"
         website.style.display ="none"
-        // website1Info.style.display="none"
-        // website2Info.style.display="none"
-        // website3Info.style.display="none"
       })
     }
     option.addEventListener("click", function () {
