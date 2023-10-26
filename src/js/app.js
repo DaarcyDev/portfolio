@@ -9,6 +9,29 @@ var konsole3 = ""
 var konsole4 = ""
 var konsole5 = ""
 
+function projects() {
+  const websiteButtons = document.querySelectorAll('.websiteImage');
+  const websiteSections = document.querySelectorAll('.website');
+
+  websiteButtons.forEach((button) => {
+    button.addEventListener('click', (event) => {
+      websiteButtons.forEach((btn) => {
+        btn.classList.remove("select");
+      });
+      const selectedCategory = button.getAttribute('data-category');
+      websiteSections.forEach((section) => {
+        section.style.display = 'none';
+      });
+
+      const selectedSection = document.querySelector('.website[data-category="' + selectedCategory + '"]');
+      if (selectedSection) {
+        selectedSection.style.display = 'block';
+      }
+    });
+  });
+}
+
+
 
 function ranger() {
   const categories = document.querySelectorAll('.category');
@@ -218,12 +241,6 @@ function initializeTerminal() {
       const websiteButton = document.getElementById("websiteButton");
       const website = document.getElementById("websites")
       const datascience = document.getElementById("datascience")
-      const website1 = document.getElementById("website1")
-      const website1Info = document.getElementById("website1Info")
-      const website2 = document.getElementById("website2")
-      const website2Info = document.getElementById("website2Info")
-      const website3 = document.getElementById("website3")
-      const website3Info = document.getElementById("website3Info")
       const programmingLanguages = document.getElementById("programmingLanguages")
       const userInterface = document.getElementById("userInterface")
       const developmentTools = document.getElementById("developmentTools")
@@ -236,6 +253,32 @@ function initializeTerminal() {
       const databasesButton = document.getElementById("databasesButton")
       const dataProcessingButton = document.getElementById("dataProcessingButton")
       const operatingSystemsButton = document.getElementById("operatingSystemsButton")
+
+      // const website1 = document.getElementById("website1")
+      // const website1Info = document.getElementById("website1Info")
+      // const website2 = document.getElementById("website2")
+      // const website2Info = document.getElementById("website2Info")
+      // const website3 = document.getElementById("website3")
+      // const website3Info = document.getElementById("website3Info")
+
+      // website1.addEventListener("click",function(){
+      //   website1Info.style.display="flex"
+      //   website1Info.scrollIntoView({ behavior: "smooth", block: "end" });
+      //   website2Info.style.display="none"
+      //   website3Info.style.display="none"
+      // })
+      // website2.addEventListener("click",function(){
+      //   website1Info.style.display="none"
+      //   website2Info.style.display="flex"
+      //   website2Info.scrollIntoView({ behavior: "smooth", block: "end" });
+      //   website3Info.style.display="none"
+      // })
+      // website3.addEventListener("click",function(){
+      //   website1Info.style.display="none"
+      //   website2Info.style.display="none"
+      //   website3Info.style.display="flex"
+      //   website3Info.scrollIntoView({ behavior: "smooth", block: "end" });
+      // })
 
       programmingLanguagesButton.addEventListener("click",function(){
         programmingLanguages.classList.add("tools")
@@ -291,51 +334,34 @@ function initializeTerminal() {
         operatingSystems.classList.add("tools")
         operatingSystems.scrollIntoView({ behavior: "smooth", block: "end" });
       })
-      website1.addEventListener("click",function(){
-        website1Info.style.display="flex"
-        website1Info.scrollIntoView({ behavior: "smooth", block: "end" });
-        website2Info.style.display="none"
-        website3Info.style.display="none"
-      })
-      website2.addEventListener("click",function(){
-        website1Info.style.display="none"
-        website2Info.style.display="flex"
-        website2Info.scrollIntoView({ behavior: "smooth", block: "end" });
-        website3Info.style.display="none"
-      })
-      website3.addEventListener("click",function(){
-        website1Info.style.display="none"
-        website2Info.style.display="none"
-        website3Info.style.display="flex"
-        website3Info.scrollIntoView({ behavior: "smooth", block: "end" });
-      })
+
       websiteButton.addEventListener("click", function () {
         website.style.display ="flex"
         website.scrollIntoView({ behavior: "smooth", block: "end" });
-        console.log(position())
+        // console.log(position())
         datascience.style.display ="none"
       })
       datascienceButton.addEventListener("click", function () {
         datascience.style.display ="flex"
         datascience.scrollIntoView({ behavior: "smooth", block: "end" });
         website.style.display ="none"
-        website1Info.style.display="none"
-        website2Info.style.display="none"
-        website3Info.style.display="none"
+        // website1Info.style.display="none"
+        // website2Info.style.display="none"
+        // website3Info.style.display="none"
       })
       restoreButton.addEventListener("click", function () {
         datascience.style.display ="none"
         website.style.display ="none"
-        website1Info.style.display="none"
-        website2Info.style.display="none"
-        website3Info.style.display="none"
+        // website1Info.style.display="none"
+        // website2Info.style.display="none"
+        // website3Info.style.display="none"
       })
       closeButton.addEventListener("click", function () {
         datascience.style.display ="none"
         website.style.display ="none"
-        website1Info.style.display="none"
-        website2Info.style.display="none"
-        website3Info.style.display="none"
+        // website1Info.style.display="none"
+        // website2Info.style.display="none"
+        // website3Info.style.display="none"
       })
     }
     option.addEventListener("click", function () {
@@ -573,44 +599,36 @@ function draggable(terminal, minButton, restoreButton, maxButton, closeButton) {
       screenDiv = document.querySelector('.fifth');
     }
     
-    screenDiv.appendChild(terminal); // Mover la terminal al div .screen
+    screenDiv.appendChild(terminal); 
 
     terminal.style.position = 'absolute';
     terminal.style.zIndex = 100;
     
     moveAt(event.pageX, event.pageY);
 
-    // mueve el elemento a las coordenadas (pageX, pageY)
-    // tomando en cuenta la posición inicial
 
     function moveAt(pageX, pageY) {
-      // Obtén las coordenadas límite para mantener la terminal dentro del div .screen
       const minX = screenDiv.offsetLeft;
       const maxX = minX + screenDiv.offsetWidth - terminal.offsetWidth;
       const minY = screenDiv.offsetTop;
       const maxY = minY + screenDiv.offsetHeight - terminal.offsetHeight;
       
-      // Ajusta las coordenadas para que no salga del div .screen
       let adjustedX = pageX - shiftX;
       let adjustedY = pageY - shiftY;
       
-      // Limita las coordenadas a los valores máximos y mínimos
       adjustedX = Math.max(minX, Math.min(maxX, adjustedX));
       adjustedY = Math.max(minY, Math.min(maxY, adjustedY));
 
       terminal.style.left = adjustedX + 'px';
       terminal.style.top = adjustedY + 'px';
-      // terminal.style.transform = `translate(${adjustedX}px, ${adjustedY}px)`; 
     }
 
     function onMouseMove(event) {
       moveAt(event.pageX, event.pageY);
     }
     
-    // mueve el elemento con mousemove
     document.addEventListener('mousemove', onMouseMove);
     
-    // suelta el elemento, elimina el manejador innecesario
     terminal.onmouseup = function () {
       document.removeEventListener('mousemove', onMouseMove);
       terminal.onmouseup = null;
@@ -641,3 +659,4 @@ initializeTerminal();
 window.addEventListener('scroll', changeIcons);
 changeIcons();
 ranger()
+projects()

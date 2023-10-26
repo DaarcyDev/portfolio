@@ -478,33 +478,10 @@ html {
     border: 1px solid $azul;
   }
 }
-.website1Info,
-.website2Info,
-.website3Info {
+.website{
   display: none;
-  padding: 10rem;
-  padding-bottom: 0;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  a {
-    color: $blanco;
-    font-size: 2rem;
-  }
-  @include tablet {
-    padding: 1rem;
-  }
 }
-.websiteImageDescription {
-  width: 80%;
-  img {
-    margin: 2rem 0;
-    border: 1px solid $verde;
-  }
-  @include tablet {
-    width: 95%;
-  }
-}
+
 .toolsSkills {
   display: none;
   flex-direction: column;
