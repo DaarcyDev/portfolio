@@ -137,9 +137,7 @@
                {% for project in projects %}
                 <img src="{{ project.projectImage.url }}" alt="website" class="websiteImage" data-category="{{ project.projectName }}" />
               {% endfor %} 
-              {% comment %} <img src="{% static 'images/website1.webp' %}" alt="website" class="websiteImage" data-category="kefwebsite" />
-              <img src="{% static 'images/website2.webp' %}" alt="website" class="websiteImage" data-category="bienesRaices"/>
-              <img src="{% static 'images/website3.webp' %}" alt="website" class="websiteImage" data-category="sheruWebsite"/> {% endcomment %}
+              
             </div>
             <div class="websiteInfo">
               {% for project in projects %}
@@ -148,11 +146,13 @@
                   {{ project.projectWebsiteResume }}
                 </p>
                 <div class="websiteImageDescription">
-                  <img src="{% static 'images/website1.webp' %}" alt="website" />
-                  <img
-                    src="{% static 'images/website1Crud.webp' %}"
-                    alt="website"
-                  />
+
+                  {% for image in project.images.all %}
+                    {% if image.projectWebsiteImages %}
+                      <img src="{{ image.projectWebsiteImages.url }}" alt="website" />
+                    {% endif %}
+                  {% endfor %}
+
                 </div>
                 <p>Codigo en github:</p>
                 <a href="{{project.projectWebsiteUrl}}"
@@ -161,96 +161,18 @@
                 <p>Herramientas que se ocuparon para este proyecto</p>
   
                 <div id="websites" class="tools">
-                  <img src="{% static 'images/gulp.webp' %}" alt="website" />
-                  <img src="{% static 'images/node.webp' %}" alt="website" />
-                  <img src="{% static 'images/python.webp' %}" alt="website" />
-                  <img src="{% static 'images/django.webp' %}" alt="website" />
-                  <img src="{% static 'images/sass.webp' %}" alt="website" />
-                  <img src="{% static 'images/js.webp' %}" alt="website" />
+                  {% for image in project.images.all %}
+                    {% if image.projectWebsiteTools %}
+                      <img src="{{ image.projectWebsiteTools.url }}" alt="website" />
+                    {% endif %}
+                  {% endfor %}
+
                 </div>
               </div>
               {% endfor %} 
-              
-              <div class="website" data-category="bienesRaices" >
-                <p>bienesRaices</p>
-              </div>
-              <div class="website" data-category="sheruWebsite" >
-                <p>sheruWebsite</p>
-              </div>
             </div>
 
-            {% comment %} <div id="website1Info" class="website1Info">
-              <p>
-                Este es un proyecto de una tienda de ropa en línea que ofrece
-                una experiencia de compra simplificada y personalizada. Los
-                visitantes pueden elegir entre ropa para hombre o mujer, así
-                como tipos de prendas con un solo clic. El carrito de compras
-                mantiene un seguimiento en tiempo real del total de artículos
-                seleccionados, brindando transparencia en el proceso. Además,
-                los usuarios pueden registrarse y tener sus propias cuentas para
-                una experiencia más personalizada. Todo esto fue posible gracias
-                al uso de las tecnologías de Django, JavaScript, npm, Gulp y
-                Sass. Es tu destino ideal para descubrir moda de manera
-                eficiente y elegante.
-              </p>
-              <div class="websiteImageDescription">
-                <img src="{% static 'images/website1.webp' %}" alt="website" />
-                <img
-                  src="{% static 'images/website1Crud.webp' %}"
-                  alt="website"
-                />
-              </div>
-              <p>Codigo en github:</p>
-              <a href="https://github.com/DaarcyDev/kefWebsite"
-                >https://github.com/DaarcyDev</a
-              >
-              <p>Herramientas que se ocuparon para este proyecto</p>
-
-              <div id="websites" class="tools">
-                <img src="{% static 'images/gulp.webp' %}" alt="website" />
-                <img src="{% static 'images/node.webp' %}" alt="website" />
-                <img src="{% static 'images/python.webp' %}" alt="website" />
-                <img src="{% static 'images/django.webp' %}" alt="website" />
-                <img src="{% static 'images/sass.webp' %}" alt="website" />
-                <img src="{% static 'images/js.webp' %}" alt="website" />
-              </div>
-            </div>
-            <div id="website2Info" class="website2Info">
-              <p>
-                BienesRaices es tu puerta de entrada al emocionante mundo de la
-                compra y venta de propiedades. En esta plataforma, el
-                administrador tiene el control total, con la capacidad de listar
-                propiedades y crear vendedores, todo con un diseño intuitivo y
-                fácil de usar. Los vendedores también pueden gestionar sus
-                propias ofertas y propiedades a través de un panel de control.
-                Este proyecto se ha desarrollado utilizando PHP con el paradigma
-                de "Active Record", junto con JS, npm, Gulp y Sass para una
-                experiencia de usuario fluida y atractiva. ¿Quieres analizar el
-                código por ti mismo? ¡Puedes encontrar el proyecto en mi GitHub!
-                Descubre la comodidad y la eficiencia de BienesRaices y comienza
-                tu viaje en bienes raíces hoy.
-              </p>
-              <div class="websiteImageDescription">
-                <img src="{% static 'images/website2.webp' %}" alt="website" />
-                <img
-                  src="{% static 'images/website2Crud.webp' %}"
-                  alt="website"
-                />
-              </div>
-              <p>Codigo en github:</p>
-              <a href="https://github.com/DaarcyDev/bienesRaicesPOO"
-                >https://github.com/DaarcyDev</a
-              >
-              <p>Herramientas que se ocuparon para este proyecto</p>
-
-              <div id="websites" class="tools">
-                <img src="{% static 'images/gulp.webp' %}" alt="website" />
-                <img src="{% static 'images/node.webp' %}" alt="website" />
-                <img src="{% static 'images/php.webp' %}" alt="website" />
-                <img src="{% static 'images/sass.webp' %}" alt="website" />
-                <img src="{% static 'images/js.webp' %}" alt="website" />
-              </div>
-            </div>
+            {% comment %} 
             <div id="website3Info" class="website3Info">
               <p>
                 "Sheru Website" es una creación artística y un destino de

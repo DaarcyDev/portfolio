@@ -26,12 +26,11 @@ function projects() {
       const selectedSection = document.querySelector('.website[data-category="' + selectedCategory + '"]');
       if (selectedSection) {
         selectedSection.style.display = 'block';
+        selectedSection.scrollIntoView({ behavior: "smooth", block: "end" });
       }
     });
   });
 }
-
-
 
 function ranger() {
   const categories = document.querySelectorAll('.category');
@@ -164,7 +163,6 @@ function changeIcons() {
 
 }
 
-
 function setNextElementPosition(konsole, restoreButton, maxButton) {
   maxButton.addEventListener("click", function () {
     if (konsole1 === konsole) {
@@ -202,7 +200,6 @@ function setNextElementPosition(konsole, restoreButton, maxButton) {
   });
 
 }
-
 
 function initializeTerminal() {
   const closeAbout = document.getElementById("closeAbout");
