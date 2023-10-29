@@ -1,18 +1,9 @@
 from django.forms import ModelForm 
-from .models import Product
+from django import forms
+# from .models import 
 
-
-class productForm(ModelForm):
-    class Meta:
-        model = Product
-        fields = [
-            "title",
-            "price",
-            "exist",
-            "description",
-            "image",
-            "is_male",
-            "is_female",
-            "is_child",
-            "category",
-        ]
+class CreateAbout(forms.Form):
+    aboutResume = models.CharField(label="about_resume", max_length=500)
+    aboutComplete = models.TextField(widget=forms.Textarea)
+    aboutImages = models.ImageField(upload_to='about_images/', blank=True, null=True)
+    

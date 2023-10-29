@@ -3,7 +3,12 @@
 <body class="bodyAdmin">
     
 <div class="admin">
-    <h1>hola</h1>
+    <h2>Iniciar sesión</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Iniciar sesión</button>
+    </form>
 </div>
 </body>
 

@@ -78,11 +78,9 @@
           <div class="details">
             {% for aboutCom in abouts %}
             <p>
-              {{aboutCom.aboutComplete|linebreaks}}
+              {{aboutCom.aboutComplete|linebreaks|safe}}
             </p>
           {% endfor %}
-            <br />
-            <p>Gracias por visitar mi portafolio.</p>
           </div>
         </div>
       </div>
@@ -115,7 +113,7 @@
         <div class="text animationText">
           {% for project in projects %}
             <p>
-              {{project.projectResume}}
+              {{project.projectResume|linebreaks}}
             </p>
           {% endfor %}
           <br class="readMore" />
@@ -392,74 +390,36 @@
               >
             </h3>
             <div class="contentBlog">
+              {% for blogCat in blogCategories %}
               <div class="categoryBlog">
-                <p id="category" class="select category" data-category="prueba">
-                  <i class="fa-solid fa-folder"></i> .prueba
-                </p>
-                <p class="category" data-category="adios">
-                  <i class="fa-solid fa-folder"></i> .adios
+                <p id="category" class="select category" data-category="{{blogCat.name}}">
+                  <i class="fa-solid fa-folder"></i> {{blogCat.name}}
                 </p>
               </div>
               <div class="fileBlog">
+                {% for blogFile in blogFiles %}
                 <p
                   class="project select"
-                  data-category="prueba"
-                  data-project-content="prueba"
+                  data-category="{{blogCat.name}}"
+                  data-project-content="{{blogFile.file}}"
                 >
-                  <i class="fa-solid fa-file-lines"></i> prueba.txt
+                  <i class="fa-solid fa-file-lines"></i> {{blogFile.file}}
                 </p>
-                <p
-                  class="project"
-                  data-category="prueba"
-                  data-project-content="prueba2"
-                >
-                  <i class="fa-solid fa-file-lines"></i> prueba2.txt
-                </p>
-                <p
-                  class="project"
-                  data-category="adios"
-                  data-project-content="adios"
-                >
-                  <i class="fa-solid fa-file-lines"></i> adios.txt
-                </p>
-                <p
-                  class="project"
-                  data-category="adios"
-                  data-project-content="adios2"
-                >
-                  <i class="fa-solid fa-file-lines"></i> adios2.txt
-                </p>
+                {% endfor %}
               </div>
               <div class="contentFile">
+                {% for blogFile in blogFiles %}
                 <p
                   class="project-content"
-                  data-category="prueba"
-                  data-project-content="prueba"
+                  data-category="{{blogCat.name}}"
+                  data-project-content="{{blogFile.file}}"
                 >
-                  Contenido de .prueba
-                </p>
-                <p
-                  class="project-content"
-                  data-category="prueba"
-                  data-project-content="prueba2"
-                >
-                  Contenido de .prueba2
-                </p>
-                <p
-                  class="project-content"
-                  data-category="adios"
-                  data-project-content="adios"
-                >
-                  Contenido de .adios
-                </p>
-                <p
-                  class="project-content"
-                  data-category="adios"
-                  data-project-content="adios2"
-                >
-                  Contenido de .adios2
-                </p>
+                {{ blogFile.fileContent|linebreaksbr|safe }}
+            
+              </p>
+                {% endfor %}
               </div>
+              {% endfor %}
             </div>
           </div>
         </div>
@@ -491,21 +451,19 @@
           </h3>
         </div>
         <div class="text animationText">
-          <p class="readMore">
-            ¡Gracias por visitar mi portafolio! Si deseas ponerte en contacto
-            conmigo para discutir proyectos, oportunidades de colaboración,
-            hacer una consulta o simplemente saludar, no dudes en hacerlo. Estoy
-            siempre abierto a nuevas conexiones y oportunidades emocionantes.
-          </p>
+          {% for contact in contacts %}
+            <p class="readMore">
+              {{contact.contactResume}}
+            </p>
+          {% endfor %}
           <br class="readMore" />
           <p class="readMore">Amplíe la ventana para obtener más detalles...</p>
           <div class="details">
+            {% for contact in contacts %}
             <p>
-              Puedes contactarme a través de mi dirección de correo electrónico
-              liam_alvarez@hotmail.com, o si prefieres las redes sociales, estoy
-              activo en redes sociales, como LinkedIn, Twitter o GitHub donde
-              puedes seguirme y enviarme un mensaje directo.
+              {{contact.contactComplete}}
             </p>
+          {% endfor %}
             <div class="form">
               <h2>Contacto</h2>
               <form action="procesar_formulario.php" method="post">
@@ -541,6 +499,23 @@
 
                 <button class="button-24" role="button">Enviar</button>
               </form>
+              <div class="tools">
+                {% for contact in contacts %}
+                <a href="{{contact.youtubeUrl}}">
+                  <img src="{{ contact.youtubeImage.url }}" alt="website" />
+                </a>
+                <a href="{{contact.InstagramUrl}}">
+                  <img src="{{ contact.instagramImage.url }}" alt="website" />
+                </a>
+                <a href="{{contact.githubUrl}}">
+                  <img src="{{ contact.githubImage.url }}" alt="website" />
+                </a>
+                <a href="{{contact.linkedinUrl}}">
+                  <img src="{{ contact.linkedinImage.url }}" alt="website" />
+                </a>
+
+                  {% endfor %}
+              </div>
             </div>
           </div>
         </div>

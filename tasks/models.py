@@ -46,3 +46,15 @@ class BlogFile(models.Model):
     category = models.ForeignKey(BlogCategory, on_delete=models.CASCADE, related_name='blog_files')
     file = models.CharField(max_length=255) 
     fileContent = models.TextField()
+
+class Contact(models.Model):
+    contactResume = models.CharField(max_length=500)
+    contactComplete = models.TextField()
+    youtubeUrl = models.URLField()
+    instagramUrl = models.URLField()
+    githubUrl = models.URLField()
+    linkedinUrl = models.URLField()
+    youtubeImage = models.ImageField(upload_to='contact_images/', blank=True)
+    instagramImage = models.ImageField(upload_to='contact_images/', blank=True)
+    githubImage = models.ImageField(upload_to='contact_images/', blank=True)
+    linkedinImage = models.ImageField(upload_to='contact_images/', blank=True)

@@ -603,6 +603,7 @@ html {
   }
   .contentFile {
     overflow-y: scroll;
+    overflow-x: hidden;
     p {
       color: $blanco;
       padding: 2rem;
@@ -683,6 +684,21 @@ html {
 
     .button-24:active {
       opacity: .5;
+    }
+    
+  }
+  .tools{
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    img {
+      width: 20rem;
+      border-radius: 50%;
+      margin: 3rem;
+      @include tablet {
+        margin: 1rem;
+        width: 10rem;
+      }
     }
   }
 }

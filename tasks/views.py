@@ -1,7 +1,9 @@
-from django.shortcuts import render
 from django.http import HttpResponse
 from django.contrib.auth import login
-from .models import Skill, About, Project, SkillsImages, ProjectImages, BlogCategory, BlogFile
+from django.contrib.auth.forms import AuthenticationForm
+from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import user_passes_test, login_required
+from .models import Skill, About, Project, SkillsImages, ProjectImages, BlogCategory, BlogFile, Contact
 # Create your views here.
 
 def index(request):
@@ -12,6 +14,7 @@ def index(request):
     projectImages = ProjectImages.objects.all()
     blogCategory = BlogCategory.objects.all()
     blogFile = BlogFile.objects.all()
+    contact = Contact.objects.all()
     return render ( request, 'index.html', {
         "abouts":about,
         "projects":projects,
@@ -19,11 +22,24 @@ def index(request):
         "skillsImages":skillsImage,
         "projectImages": projectImages,
         "blogCategories": blogCategory,
-        "blogFiles": blogFile
+        "blogFiles": blogFile,
+        "contacts": contact
     })
 
-
 def DaarcyDevAdmin(request):
-    return render ( request, 'adminDaarcyDev.html')
+    
+    if request.method == 'GET':
+        return render(request, 'adminDaarcyDev.html')
+    else
+        form = AuthenticationForm(data=request.POST)
+        if form.is_valid():
+            user = form.get_user()
+            login(request, user)
+            return redirect('crud') 
 
     
+
+@login_required
+def crud(request):
+    return render ( request, 'crud.html')
+
