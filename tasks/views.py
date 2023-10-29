@@ -29,8 +29,13 @@ def index(request):
 def DaarcyDevAdmin(request):
     
     if request.method == 'GET':
-        return render(request, 'adminDaarcyDev.html')
-    else
+        form = AuthenticationForm()
+        return render(request, 'adminDaarcyDev.html',
+                      {
+                          'form': form
+                          })
+    
+    else:
         form = AuthenticationForm(data=request.POST)
         if form.is_valid():
             user = form.get_user()
