@@ -3,9 +3,11 @@ from .models import Skill, About, Project, BlogCategory, BlogFile, ProjectImages
 
 class ProjectImagesInline(admin.TabularInline):
     model = ProjectImages
+    
 
 class ProjectAdmin(admin.ModelAdmin):
     inlines = [ProjectImagesInline]  
+    
 
 class SkillsImagesInline(admin.TabularInline):
     model = SkillsImages

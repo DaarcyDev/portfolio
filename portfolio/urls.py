@@ -8,7 +8,8 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("",views.index, name="index"),
     path("DaarcyDevAdmin/",views.DaarcyDevAdmin, name="admin"),
-    path("DaarcyDevAdminCrud/",views.crud, name="crud"),
+    path("DaarcyDevAdmin/Crud/",views.crud, name="crud"),
+    path("DaarcyDevAdmin/Crud/About",views.crudAbout, name="crudAbout"),
 ]
 
 if settings.DEBUG:

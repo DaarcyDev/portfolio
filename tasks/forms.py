@@ -1,9 +1,44 @@
-from django.forms import ModelForm 
 from django import forms
-# from .models import 
+from .models import About,Project, ProjectImages
+from django.forms import ClearableFileInput, FileField
 
-class CreateAbout(forms.Form):
-    aboutResume = models.CharField(label="about_resume", max_length=500)
-    aboutComplete = models.TextField(widget=forms.Textarea)
-    aboutImages = models.ImageField(upload_to='about_images/', blank=True, null=True)
-    
+class AboutForm(forms.ModelForm):
+    class Meta:
+        model = About
+        fields = ['aboutResume', 'aboutComplete', 'aboutImages']
+
+# class ProjectAndImagesForm(forms.ModelForm):
+#     class Meta:
+#         model = Project
+#         fields = ['projectResume', 'projectComplete', 'projectName', 'projectImage', 'projectWebsiteResume', 'projectWebsiteUrl', 'image']
+#         widgets = {
+#             'image': ClearableFileInput(attrs={'multiple': True}),
+#         }
+
+class MultipleFileInput(forms.ClearableFileInput):
+    allow_multiple_selected = True
+
+# class MultipleFileInput(forms.ClearableFileInput):
+#     template_name = 'your_template_name.html'
+
+#     def get_context(self, name, value, attrs):
+#         context = super().get_context(name, value, attrs)
+#         context['widget']['attrs'].update({'multiple': True})
+#         return context
+
+class ProjectForm(forms.ModelForm):
+
+    class Meta:
+        model = Project
+        fields = ['projectResume', 'projectComplete', 'projectName', 'projectImage', 'projectWebsiteResume', 'projectWebsiteUrl']
+
+
+class ProjectImageForm(forms.ModelForm):
+    class Meta:
+        model = ProjectImages
+        fields = ['projectWebsiteImages', 'projectWebsiteTools']
+        widgets = {
+            'projectWebsiteImages': MultipleFileInput(attrs={'multiple': True}),
+            'projectWebsiteTools': MultipleFileInput(attrs={'multiple': True}),
+        }
+

@@ -4,6 +4,9 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import user_passes_test, login_required
 from .models import Skill, About, Project, SkillsImages, ProjectImages, BlogCategory, BlogFile, Contact
+from .forms import AboutForm, ProjectForm, ProjectImageForm
+
+
 # Create your views here.
 
 def index(request):
@@ -34,17 +37,37 @@ def DaarcyDevAdmin(request):
                       {
                           'form': form
                           })
-    
     else:
         form = AuthenticationForm(data=request.POST)
         if form.is_valid():
             user = form.get_user()
             login(request, user)
             return redirect('crud') 
-
-    
-
+        
 @login_required
 def crud(request):
-    return render ( request, 'crud.html')
+    return render(request, 'crud.html')
 
+
+@login_required
+def crudAbout(request):
+    return render(request, 'aboutCrud.html', {
+            'formAbout': AboutForm,
+        })
+    # if(request.method == "GET"):
+    #     return render(request, 'aboutCrud.html', {
+    #         'formAbout': AboutForm,
+    #     })
+    # else:
+    #     try:
+    #         formAbout = AboutForm(request.POST, request.FILES)
+    #         new_product = formAbout.save(commit=False)
+    #         new_product.user = request.user
+    #         new_product.save()
+    #         return redirect("admin")
+    #     except:
+    #         return render(request, 'aboutCrud.html',{
+    #         'formAbout': AboutForm,
+    #         'error': 'please provide valide data'
+    #     })
+ 

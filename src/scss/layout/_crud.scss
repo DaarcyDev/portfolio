@@ -3,7 +3,94 @@
         width: 80%;
         border: 2px solid #000;
         border-radius: 1rem;
-        margin: 5rem auto;
+        margin-top: 5rem;
+        margin: 3rem auto;
         background: rgba($color: #000000, $alpha: 0.8);
+        height: 90vh;
+        @include tablet{
+            width: 95%;
+        }
+        
+        .text{
+            height: 90%;
+            .form{
+                height: 70%;
+                justify-content: center;
+            }
+            .options{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                h2{
+                    color: $blanco;
+                }
+                height: 70%;
+                justify-content: center;
+                .buttonsOption{
+                    align-items: center;
+                    display: flex;
+                    width: 100%;
+                    gap: 3rem;
+                    justify-content: center;
+                    flex-wrap: wrap;
+                    a{
+                        background: hsla(0,0%,100%,.3);
+                        border: 3px solid $verde;
+                        color: #000;
+                        width: 35%;
+                        text-align: center;
+                        font-size: 3rem;
+                        font-family: "Chakra Petch", sans-serif;
+
+                        &:hover{
+                            background: $verde;
+                            border: 3px solid $blanco;
+                            opacity: .8;
+                        }
+                    }
+                }
+                
+            }
+        }
+    }
+    .crud{
+        display: block;
+    }
+    .about{
+        display: block;
+        form{
+            display: flex;
+            flex-direction: column;
+            color: $blanco;
+        }
+    }
+    .projects{
+        display: block;
+        .options{
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            height: 100% !important;
+            justify-content: flex-start !important;
+            form{
+                display: flex;
+                flex-direction: column;
+                color: $blanco;
+                width: 100% !important;
+                textarea{
+                    height: 2rem;
+                }
+            }
+        }
+        
+    }
+    .skills{
+        display: block;
+    }
+    .blog{
+        display: block;
+    }
+    .contact{
+        display: block;
     }
 }
