@@ -51,23 +51,46 @@ def crud(request):
 
 @login_required
 def crudAbout(request):
-    return render(request, 'aboutCrud.html', {
+    if(request.method == "GET"):
+        return render(request, 'aboutCrud.html', {
             'formAbout': AboutForm,
         })
-    # if(request.method == "GET"):
-    #     return render(request, 'aboutCrud.html', {
-    #         'formAbout': AboutForm,
-    #     })
-    # else:
-    #     try:
-    #         formAbout = AboutForm(request.POST, request.FILES)
-    #         new_product = formAbout.save(commit=False)
-    #         new_product.user = request.user
-    #         new_product.save()
-    #         return redirect("admin")
-    #     except:
-    #         return render(request, 'aboutCrud.html',{
-    #         'formAbout': AboutForm,
-    #         'error': 'please provide valide data'
-    #     })
- 
+    else:
+        try:
+            formAbout = AboutForm(request.POST, request.FILES)
+            new_product = formAbout.save(commit=False)
+            new_product.user = request.user
+            new_product.save()
+            return redirect("admin")
+        except:
+            return render(request, 'aboutCrud.html',{
+            'formAbout': AboutForm,
+            'error': 'please provide valide data'
+        })
+
+@login_required
+def crudProject(request):
+    if(request.method == "GET"):
+        return render(request, 'projectCrud.html', {
+            'projectForm': ProjectForm,
+            'projectImageForm': ProjectImageForm,
+        })
+    else:
+        try:
+            formProject = ProjectForm(request.POST, request.FILES)
+            formProjectImage = ProjectImageForm(request.POST, request.FILES)
+            new_product = formProject.save(commit=False)
+            new_product.user = request.user
+            new_product.save()
+            for image in formProjectImage.cleaned_data['projectWebsiteImages']:
+                new_productImage = ProjectImages(projectWebsiteImages=image)
+                new_productImage.user = request.user
+                new_productImage.save()
+
+            return redirect("admin")
+        except:
+            return render(request, 'projectCrud.html',{
+            'projectForm': ProjectForm,
+            'projectImageForm': ProjectImageForm,
+            'error': 'please provide valide data'
+        })
