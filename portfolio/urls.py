@@ -11,6 +11,7 @@ urlpatterns = [
     path("DaarcyDevAdmin/Crud/",views.crud, name="crud"),
     path("DaarcyDevAdmin/Crud/About",views.crudAbout, name="crudAbout"),
     path("DaarcyDevAdmin/Crud/Project",views.crudProject, name="crudProject"),
+    path("DaarcyDevAdmin/Crud/Project/Create",views.crudProjectCreate, name="crudProjectCreate"),
 ]
 
 if settings.DEBUG:

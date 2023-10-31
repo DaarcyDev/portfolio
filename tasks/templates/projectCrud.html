@@ -1,6 +1,6 @@
 {% extends 'base.html' %} {% load static %} {% block content %}
 <body class="bodyAdmin">
-      <div class="terminalContent about">
+      <div class="terminalContent projects">
         <div class="comandLine">
           <h3 class="user">
             User@DaarcyWebsite:<span class="simbols">~$ </span
@@ -10,30 +10,56 @@
         <div class="text animationText">
             <div class="options">
                 <h2>Crud</h2>
-                <form method="post" enctype="multipart/form-data">
-                  {% csrf_token %}
-                  {% comment %} {{ formAbout.as_p }} {% endcomment %}
-                    {{ projectForm.projectResume.label_tag }}
-                    {{ projectForm.projectResume }}
-                    {{ projectForm.projectComplete.label_tag }}
-                    {{ projectForm.projectComplete }}
-                    {{ projectForm.projectName.label_tag }}
-                    {{ projectForm.projectName }}
-                    {{ projectForm.projectImage.label_tag }}
-                    {{ projectForm.projectImage }}
-                    {{ projectForm.projectWebsiteResume.label_tag }}
-                    {{ projectForm.projectWebsiteResume }}
-                    {{ projectForm.projectWebsiteUrl.label_tag }}
-                    {{ projectForm.projectWebsiteUrl }}
-                    {{ projectImageForm.projectWebsiteImages.label_tag }}
-                    {{ projectImageForm.projectWebsiteImages }}
-                    {{ projectImageForm.projectWebsiteTools.label_tag }}
-                    {{ projectImageForm.projectWebsiteTools }}
-                  <button type="submit">Guardar</button>
-                </form>
+                <div class="buttonsOption">
+                  <a href="{% url 'crudProjectCreate' %}">Create</a>
+              </div>
+              <div class="details">
+                <div class="websiteInfo">
+                  <table class="propiedades">
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Name</th>
+                            <th>Resume</th>
+                            <th>Imagenes</th>
+                            <th>ResumeWebsite</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+        
+                    <tbody> <!-- Mostrar los Resultados -->
+                        {% for project in projects %}
+                        <tr>
+                            <td><img src="{{ project.projectImage.url }}" alt="website" class="websiteImage" data-category="{{ project.projectName }}" /></td>
+                            <td>{{ project.projectName }}</td>
+                            <td>{{ project.projectResume|truncatewords:10}}</td>
+                            <td>{% for image in project.images.all %}
+                              {% if image.projectWebsiteImages %}
+                              <img src="{{ image.projectWebsiteImages.url }}" alt="website" />
+                              {% endif %}
+                            {% endfor %}</td>
+                            <td>{{ project.projectWebsiteResume|truncatewords:15 }}</td>
+                            <td>
+                                <form method="POST" class="w-100">
+                                    <input type="hidden" name="id" value="">
+                                    <input type="hidden" name="tipo" value="propiedad">
+                                    <input type="submit" class="boton-rojo-block" value="Eliminar">
+                                </form>
+                                
+                                <a href="" class="boton-amarillo-block">Actualizar</a>
+                            </td>
+                        </tr>
+                        {% endfor %} 
+                    </tbody>
+                </table>
+                </div>
+              </div>
+
+              <div class="buttonsOption">
+                <a href="{% url 'crud' %}">volver</a>
+              </div>
             </div>
           </div>
-          <a href="{% url 'crud' %}">volver</a>
         </div>
       </div>
       

@@ -6,7 +6,6 @@ from django.contrib.auth.decorators import user_passes_test, login_required
 from .models import Skill, About, Project, SkillsImages, ProjectImages, BlogCategory, BlogFile, Contact
 from .forms import AboutForm, ProjectForm, ProjectImageForm
 
-
 # Create your views here.
 
 def index(request):
@@ -70,27 +69,45 @@ def crudAbout(request):
 
 @login_required
 def crudProject(request):
+    projects = Project.objects.all()
+    projectImages = ProjectImages.objects.all()
+    return render ( request, 'projectCrud.html', {
+        "projects":projects,
+        "projectImages": projectImages,
+    })
+
+
+@login_required
+def crudProjectCreate(request):
     if(request.method == "GET"):
-        return render(request, 'projectCrud.html', {
+        return render(request, 'projectCrudCreate.html', {
             'projectForm': ProjectForm,
             'projectImageForm': ProjectImageForm,
         })
     else:
         try:
             formProject = ProjectForm(request.POST, request.FILES)
-            formProjectImage = ProjectImageForm(request.POST, request.FILES)
             new_product = formProject.save(commit=False)
             new_product.user = request.user
             new_product.save()
-            for image in formProjectImage.cleaned_data['projectWebsiteImages']:
-                new_productImage = ProjectImages(projectWebsiteImages=image)
-                new_productImage.user = request.user
-                new_productImage.save()
+
+            projectWebsiteImages = request.FILES.getlist('projectWebsiteImages')
+            projectWebsiteTools = request.FILES.getlist('projectWebsiteTools')
+
+            for image in projectWebsiteImages:
+                new_image = ProjectImages(projectWebsiteImages=image)
+                new_image.project = new_product
+                new_image.save()
+
+            for image in projectWebsiteTools:
+                new_image = ProjectImages(projectWebsiteTools=image)
+                new_image.project = new_product
+                new_image.save()
 
             return redirect("admin")
         except:
-            return render(request, 'projectCrud.html',{
-            'projectForm': ProjectForm,
-            'projectImageForm': ProjectImageForm,
-            'error': 'please provide valide data'
-        })
+            return render(request, 'projectCrudCreate.html',{
+                'projectForm': ProjectForm,
+                'projectImageForm': ProjectImageForm,
+                'error': 'please provide valide data'
+            })

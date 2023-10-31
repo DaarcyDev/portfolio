@@ -22,8 +22,8 @@ class Project(models.Model):
     
 
 class ProjectImages(models.Model):
-    projectWebsiteImages = models.ImageField(upload_to='project_website_images/',blank=True)
-    projectWebsiteTools = models.ImageField(upload_to='project_website_images_tools/',blank=True)
+    projectWebsiteImages = models.FileField(upload_to='project_website_images/',blank=True)
+    projectWebsiteTools = models.FileField(upload_to='project_website_images_tools/',blank=True)
     project = models.ForeignKey(Project,on_delete=models.CASCADE,related_name="images")
     
     def __str__(self):

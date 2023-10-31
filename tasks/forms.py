@@ -7,24 +7,11 @@ class AboutForm(forms.ModelForm):
         model = About
         fields = ['aboutResume', 'aboutComplete', 'aboutImages']
 
-# class ProjectAndImagesForm(forms.ModelForm):
-#     class Meta:
-#         model = Project
-#         fields = ['projectResume', 'projectComplete', 'projectName', 'projectImage', 'projectWebsiteResume', 'projectWebsiteUrl', 'image']
-#         widgets = {
-#             'image': ClearableFileInput(attrs={'multiple': True}),
-#         }
 
 class MultipleFileInput(forms.ClearableFileInput):
     allow_multiple_selected = True
 
-# class MultipleFileInput(forms.ClearableFileInput):
-#     template_name = 'your_template_name.html'
 
-#     def get_context(self, name, value, attrs):
-#         context = super().get_context(name, value, attrs)
-#         context['widget']['attrs'].update({'multiple': True})
-#         return context
 
 class ProjectForm(forms.ModelForm):
 
