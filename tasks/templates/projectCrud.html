@@ -18,11 +18,13 @@
                   <table class="propiedades">
                     <thead>
                         <tr>
-                            <th>Image</th>
-                            <th>Name</th>
-                            <th>Resume</th>
-                            <th>Imagenes</th>
-                            <th>ResumeWebsite</th>
+                          <th>Image</th>
+                          <th>Name</th>
+                          <th>Resume</th>
+                          <th>Imagenes</th>
+                          <th>ResumeWebsite</th>
+                          <th>Url</th>
+                          <th>Tools</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
@@ -32,22 +34,33 @@
                         <tr>
                             <td><img src="{{ project.projectImage.url }}" alt="website" class="websiteImage" data-category="{{ project.projectName }}" /></td>
                             <td>{{ project.projectName }}</td>
-                            <td>{{ project.projectResume|truncatewords:10}}</td>
-                            <td>{% for image in project.images.all %}
+                            <td>{{ project.projectResume|truncatewords:20}}</td>
+                            <td>
+                            {% for image in project.images.all %}
                               {% if image.projectWebsiteImages %}
                               <img src="{{ image.projectWebsiteImages.url }}" alt="website" />
                               {% endif %}
-                            {% endfor %}</td>
-                            <td>{{ project.projectWebsiteResume|truncatewords:15 }}</td>
+                            {% endfor %}
+                            </td>
+                            <td>{{ project.projectWebsiteResume|truncatewords:50 }}</td>
+                            <td>{{project.projectWebsiteUrl}}</td>
+                            <td class="tdImage">
+                            {% for image in project.images.all %}
+                              {% if image.projectWebsiteTools %}
+                              <img src="{{ image.projectWebsiteTools.url }}" alt="website" />
+                              {% endif %}
+                            {% endfor %}
+                            </td>
                             <td>
-                                <form method="POST" class="w-100">
-                                    <input type="hidden" name="id" value="">
+                                <form method="POST" action="{% url 'crudProjectDelete' project.id %}"  class="w-100">
+                                  {% csrf_token %}
+                                    <input type="hidden" name="id" value="{{ project.id }}">
                                     <input type="hidden" name="tipo" value="propiedad">
                                     <input type="submit" class="boton-rojo-block" value="Eliminar">
                                 </form>
                                 
-                                <a href="" class="boton-amarillo-block">Actualizar</a>
-                            </td>
+                                <a href="{% url 'crudProjectUpdate' project.id %}" class="boton-amarillo-block">Actualizar</a>
+                              </td>
                         </tr>
                         {% endfor %} 
                     </tbody>

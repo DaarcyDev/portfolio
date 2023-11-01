@@ -5,6 +5,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import user_passes_test, login_required
 from .models import Skill, About, Project, SkillsImages, ProjectImages, BlogCategory, BlogFile, Contact
 from .forms import AboutForm, ProjectForm, ProjectImageForm
+from django.shortcuts import get_object_or_404
 
 # Create your views here.
 
@@ -47,11 +48,18 @@ def DaarcyDevAdmin(request):
 def crud(request):
     return render(request, 'crud.html')
 
-
 @login_required
 def crudAbout(request):
+    about = About.objects.all()
+    return render ( request, 'aboutCrud.html', {
+        "abouts":about,
+    })
+
+
+@login_required
+def crudAboutCreate(request):
     if(request.method == "GET"):
-        return render(request, 'aboutCrud.html', {
+        return render(request, 'aboutCrudCreate.html', {
             'formAbout': AboutForm,
         })
     else:
@@ -62,7 +70,7 @@ def crudAbout(request):
             new_product.save()
             return redirect("admin")
         except:
-            return render(request, 'aboutCrud.html',{
+            return render(request, 'aboutCrudCreate.html',{
             'formAbout': AboutForm,
             'error': 'please provide valide data'
         })
@@ -104,9 +112,136 @@ def crudProjectCreate(request):
                 new_image.project = new_product
                 new_image.save()
 
-            return redirect("admin")
+            return redirect("crudProject")
         except:
             return render(request, 'projectCrudCreate.html',{
+                'projectForm': ProjectForm,
+                'projectImageForm': ProjectImageForm,
+                'error': 'please provide valide data'
+            })
+
+
+@login_required
+def crudProjectUpdate(request, pk):
+    project = Project.objects.get(pk=pk)
+
+    if request.method == "GET":
+        projectForm = ProjectForm(instance=project)
+        projectImageForm = ProjectImageForm(instance=project)
+    else:
+        projectForm = ProjectForm(request.POST, request.FILES, instance=project)
+        if projectForm.is_valid():
+            new_product = projectForm.save(commit=False)
+            new_product.save()
+
+            projectWebsiteImages = request.FILES.getlist('projectWebsiteImages')
+            projectWebsiteTools = request.FILES.getlist('projectWebsiteTools')
+            
+            if projectWebsiteImages:
+                images = project.images.filter(project_id=project, projectWebsiteImages__isnull=False).values('projectWebsiteImages')
+                filtered_images = images.exclude(projectWebsiteImages="")
+                image_ids = filtered_images.values_list('id', flat=True)
+
+                if image_ids:
+                    for value1 in image_ids:
+
+                        images_to_delete = ProjectImages.objects.filter(id=value1)
+                        images_to_delete.delete()
+
+                    if projectWebsiteImages:
+                        for image in projectWebsiteImages:
+                            new_image = ProjectImages(projectWebsiteImages=image)
+                            new_image.project = new_product
+                            new_image.save()
+                else:
+                    if projectWebsiteImages:
+                        for image in projectWebsiteImages:
+                            new_image = ProjectImages(projectWebsiteImages=image)
+                            new_image.project = new_product
+                            new_image.save()
+                        
+            
+            if projectWebsiteTools:
+                images = project.images.filter(project_id=project, projectWebsiteTools__isnull=False).values('projectWebsiteTools')
+                filtered_images = images.exclude(projectWebsiteTools="")
+                image_ids = filtered_images.values_list('id', flat=True)
+
+                if image_ids:
+                    for value1 in image_ids:
+
+                        images_to_delete = ProjectImages.objects.filter(id=value1)
+                        images_to_delete.delete()
+
+                    if projectWebsiteTools:
+                        for image in projectWebsiteTools:
+                            new_image = ProjectImages(projectWebsiteTools=image)
+                            new_image.project = new_product
+                            new_image.save()
+                else:
+                    if projectWebsiteTools:
+                        for image in projectWebsiteTools:
+                            new_image = ProjectImages(projectWebsiteTools=image)
+                            new_image.project = new_product
+                            new_image.save()
+
+
+            
+            
+            return redirect("crudProject")
+    
+    return render(request, 'projectCrudUpdate.html', {
+        'projectForm': projectForm,
+        'projectImageForm': projectImageForm,
+    })
+
+
+
+def crudProjectDelete(request, pk):
+    project = Project.objects.get(pk=pk)
+    project.delete()
+
+    return redirect("crudProject")
+
+@login_required
+def crudSkill(request):
+    skills = Skill.objects.all()
+    skillsImage = SkillsImages.objects.all()
+    return render ( request, 'skillCrud.html', {
+        "skills":skills,
+        "skillsImages":skillsImage,
+    })
+
+
+@login_required
+def crudSkillCreate(request):
+    if(request.method == "GET"):
+        return render(request, 'skillCrudCreate.html', {
+            'projectForm': ProjectForm,
+            'projectImageForm': ProjectImageForm,
+        })
+    else:
+        try:
+            formProject = ProjectForm(request.POST, request.FILES)
+            new_product = formProject.save(commit=False)
+            new_product.user = request.user
+            new_product.save()
+
+            projectWebsiteImages = request.FILES.getlist('projectWebsiteImages')
+            projectWebsiteTools = request.FILES.getlist('projectWebsiteTools')
+
+            for image in projectWebsiteImages:
+                new_image = ProjectImages(projectWebsiteImages=image)
+                new_image.project = new_product
+                new_image.save()
+
+            for image in projectWebsiteTools:
+                new_image = ProjectImages(projectWebsiteTools=image)
+                new_image.project = new_product
+                new_image.save()
+
+            return redirect("admin")
+        except:
+            return render(request, 'skillCrudCreate.html',{
                 'projectForm': ProjectForm,
                 'projectImageForm': ProjectImageForm,
                 'error': 'please provide valide data'

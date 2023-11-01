@@ -8,7 +8,6 @@ class About(models.Model):
     def __str__(self):
         return self.aboutResume
     
-    
 class Project(models.Model):
     projectResume = models.CharField(max_length=500, blank=True)
     projectComplete = models.TextField(blank=True)
@@ -28,6 +27,7 @@ class ProjectImages(models.Model):
     
     def __str__(self):
         return self.project.projectName
+
 
 class Skill(models.Model):
     skillsResume = models.CharField(max_length=500,blank=True)

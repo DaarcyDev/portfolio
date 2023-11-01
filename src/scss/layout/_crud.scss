@@ -81,10 +81,13 @@
                 }
                 .websiteInfo{
                     display: block;
+                    margin: 3rem 0;
                     thead{
                         tr{
                             th{
                                 color: $blanco;
+                                border: 2px solid $blanco;
+
                             }
                         }
                     }
@@ -92,13 +95,24 @@
                         tr{
                             td{
                                 color: $blanco;
+                                border: 2px solid $blanco;
+                                padding: 1rem;
+                                text-align: center;
+                                    
                                 .websiteImage{
                                     width: 100% !important;
+                                    border: none;
                                 }
+                                
+                            }
+                            .tdImage{
                                 img{
-                                    margin: 1rem 0;
+                                    margin: 1rem auto;
+                                    max-width: 10rem;
+                                    border-radius: 50%;
                                 }
                             }
+
                         }
                     }
                 }
