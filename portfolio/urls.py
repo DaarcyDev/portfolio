@@ -9,8 +9,12 @@ urlpatterns = [
     path("",views.index, name="index"),
     path("DaarcyDevAdmin/",views.DaarcyDevAdmin, name="admin"),
     path("DaarcyDevAdmin/Crud/",views.crud, name="crud"),
+    
     path("DaarcyDevAdmin/Crud/About",views.crudAbout, name="crudAbout"),
     path("DaarcyDevAdmin/Crud/About/Create",views.crudAboutCreate, name="crudAboutCreate"),
+    path('DaarcyDevAdmin/Crud/About/Update/<int:pk>/', views.crudAboutUpdate, name='crudAboutUpdate'),
+    path("DaarcyDevAdmin/Crud/About/Delete/<int:pk>", views.crudAboutDelete, name="crudAboutDelete"),
+
 
     path("DaarcyDevAdmin/Crud/Project",views.crudProject, name="crudProject"),
     path("DaarcyDevAdmin/Crud/Project/Create",views.crudProjectCreate, name="crudProjectCreate"),

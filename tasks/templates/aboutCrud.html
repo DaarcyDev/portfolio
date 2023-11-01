@@ -10,14 +10,11 @@
         <div class="text animationText">
             <div class="options">
                 <h2>Crud</h2>
-                {% for about in abouts %}
-                  {% if not about.aboutResume %}
+                  {% if not abouts %}
                   <div class="buttonsOption">
                     <a href="{% url 'crudAboutCreate' %}">Create</a>
                   </div>
-                  {% endif %}
-                {% endfor %}
-                
+                  {% endif %}                
               <div class="details">
                 <div class="websiteInfo">
                   <table class="propiedades">
@@ -36,13 +33,14 @@
                             <td>{{ about.aboutComplete }}</td>
    
                             <td>
-                                <form method="POST" class="w-100">
-                                    <input type="hidden" name="id" value="">
+                                <form method="POST" action="{% url 'crudAboutDelete' about.id %}" class="w-100">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="id" value="{{ project.id }}">
                                     <input type="hidden" name="tipo" value="propiedad">
                                     <input type="submit" class="boton-rojo-block" value="Eliminar">
                                 </form>
                                 
-                                <a href="" class="boton-amarillo-block">Actualizar</a>
+                                <a href="{% url 'crudAboutUpdate' about.id %}" class="boton-amarillo-block">Actualizar</a>
                             </td>
                         </tr>
                         {% endfor %} 

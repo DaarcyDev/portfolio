@@ -55,7 +55,6 @@ def crudAbout(request):
         "abouts":about,
     })
 
-
 @login_required
 def crudAboutCreate(request):
     if(request.method == "GET"):
@@ -66,14 +65,42 @@ def crudAboutCreate(request):
         try:
             formAbout = AboutForm(request.POST, request.FILES)
             new_product = formAbout.save(commit=False)
-            new_product.user = request.user
             new_product.save()
-            return redirect("admin")
+            return redirect("crudAbout")
         except:
             return render(request, 'aboutCrudCreate.html',{
             'formAbout': AboutForm,
             'error': 'please provide valide data'
         })
+
+@login_required
+def crudAboutUpdate(request, pk):
+    about = About.objects.get(pk=pk)
+    if request.method == "GET":
+        formAbout = AboutForm(instance=about)
+
+    else:
+        try:
+            formAbout = AboutForm(request.POST, request.FILES, instance=about)
+            new_product = formAbout.save(commit=False)
+            new_product.save()
+            return redirect("crudAbout")
+        except:
+            return render(request, 'aboutCrudUpdate.html',{
+                'formAbout': formAbout,
+                'error': 'please provide valide data'
+            })
+    return render(request, 'aboutCrudUpdate.html', {
+        'formAbout': formAbout,
+    })
+
+@login_required
+def crudAboutDelete(request, pk):
+    about = About.objects.get(pk=pk)
+    about.delete()
+
+    return redirect("crudAbout")
+
 
 @login_required
 def crudProject(request):
@@ -83,7 +110,6 @@ def crudProject(request):
         "projects":projects,
         "projectImages": projectImages,
     })
-
 
 @login_required
 def crudProjectCreate(request):
@@ -119,7 +145,6 @@ def crudProjectCreate(request):
                 'projectImageForm': ProjectImageForm,
                 'error': 'please provide valide data'
             })
-
 
 @login_required
 def crudProjectUpdate(request, pk):
@@ -160,7 +185,6 @@ def crudProjectUpdate(request, pk):
                             new_image.project = new_product
                             new_image.save()
                         
-            
             if projectWebsiteTools:
                 images = project.images.filter(project_id=project, projectWebsiteTools__isnull=False).values('projectWebsiteTools')
                 filtered_images = images.exclude(projectWebsiteTools="")
@@ -183,8 +207,6 @@ def crudProjectUpdate(request, pk):
                             new_image = ProjectImages(projectWebsiteTools=image)
                             new_image.project = new_product
                             new_image.save()
-
-
             
             
             return redirect("crudProject")
@@ -194,8 +216,7 @@ def crudProjectUpdate(request, pk):
         'projectImageForm': projectImageForm,
     })
 
-
-
+@login_required
 def crudProjectDelete(request, pk):
     project = Project.objects.get(pk=pk)
     project.delete()
@@ -210,7 +231,6 @@ def crudSkill(request):
         "skills":skills,
         "skillsImages":skillsImage,
     })
-
 
 @login_required
 def crudSkillCreate(request):
