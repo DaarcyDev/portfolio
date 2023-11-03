@@ -289,3 +289,176 @@ def crudSkillCreate(request):
                 'skillImageForm': SkillsImageForm(),
                 'error': 'Por favor, proporciona datos válidos'
             })
+
+
+@login_required
+def crudSkillUpdate(request, pk):
+    skill = Skill.objects.get(pk=pk)
+    if request.method == "GET":
+        skillForm = SkillsForm(instance=skill)
+        skillImageForm = SkillsImageForm(instance=skill)
+    else:
+        skillForm = SkillsForm(request.POST, request.FILES, instance=skill)
+        if skillForm.is_valid():
+            new_product = skillForm.save(commit=False)
+            new_product.save()
+
+            programingLanguageImages = request.FILES.getlist('programingLanguageImages')
+            userInterfaceImages = request.FILES.getlist('userInterfaceImages')
+            developmentToolsImages = request.FILES.getlist('developmentToolsImages')
+            databasesImages = request.FILES.getlist('databasesImages')
+            dataProcessingImages = request.FILES.getlist('dataProcessingImages')
+            operatingSystemsImages = request.FILES.getlist('operatingSystemsImages')
+
+            if programingLanguageImages:
+                images = skill.images.filter(skill_id=skill, programingLanguageImages__isnull=False).values('programingLanguageImages')
+                filtered_images = images.exclude(programingLanguageImages="")
+                image_ids = filtered_images.values_list('id', flat=True)
+
+                if image_ids:
+                    for value1 in image_ids:
+
+                        images_to_delete = SkillsImages.objects.filter(id=value1)
+                        images_to_delete.delete()
+
+                    if programingLanguageImages:
+                        for image in programingLanguageImages:
+                            new_image = SkillsImages(programingLanguageImages=image)
+                            new_image.project = new_product
+                            new_image.save()
+                else:
+                    if programingLanguageImages:
+                        for image in programingLanguageImages:
+                            new_image = SkillsImages(programingLanguageImages=image)
+                            new_image.project = new_product
+                            new_image.save()
+                        
+            if userInterfaceImages:
+                images = skill.images.filter(skill_id=skill, userInterfaceImages__isnull=False).values('userInterfaceImages')
+                filtered_images = images.exclude(userInterfaceImages="")
+                image_ids = filtered_images.values_list('id', flat=True)
+
+                if image_ids:
+                    for value1 in image_ids:
+
+                        images_to_delete = SkillsImages.objects.filter(id=value1)
+                        images_to_delete.delete()
+
+                    if userInterfaceImages:
+                        for image in userInterfaceImages:
+                            new_image = SkillsImages(userInterfaceImages=image)
+                            new_image.project = new_product
+                            new_image.save()
+                else:
+                    if userInterfaceImages:
+                        for image in userInterfaceImages:
+                            new_image = SkillsImages(userInterfaceImages=image)
+                            new_image.project = new_product
+                            new_image.save()
+            
+            if developmentToolsImages:
+                images = skill.images.filter(skill_id=skill, developmentToolsImages__isnull=False).values('developmentToolsImages')
+                filtered_images = images.exclude(developmentToolsImages="")
+                image_ids = filtered_images.values_list('id', flat=True)
+
+                if image_ids:
+                    for value1 in image_ids:
+
+                        images_to_delete = SkillsImages.objects.filter(id=value1)
+                        images_to_delete.delete()
+
+                    if developmentToolsImages:
+                        for image in developmentToolsImages:
+                            new_image = SkillsImages(developmentToolsImages=image)
+                            new_image.project = new_product
+                            new_image.save()
+                else:
+                    if developmentToolsImages:
+                        for image in developmentToolsImages:
+                            new_image = SkillsImages(developmentToolsImages=image)
+                            new_image.project = new_product
+                            new_image.save()
+                            
+            if databasesImages:
+                images = skill.images.filter(skill_id=skill, databasesImages__isnull=False).values('databasesImages')
+                filtered_images = images.exclude(databasesImages="")
+                image_ids = filtered_images.values_list('id', flat=True)
+
+                if image_ids:
+                    for value1 in image_ids:
+
+                        images_to_delete = SkillsImages.objects.filter(id=value1)
+                        images_to_delete.delete()
+
+                    if databasesImages:
+                        for image in databasesImages:
+                            new_image = SkillsImages(databasesImages=image)
+                            new_image.project = new_product
+                            new_image.save()
+                else:
+                    if databasesImages:
+                        for image in databasesImages:
+                            new_image = SkillsImages(databasesImages=image)
+                            new_image.project = new_product
+                            new_image.save()
+                            
+            if dataProcessingImages:
+                images = skill.images.filter(skill_id=skill, dataProcessingImages__isnull=False).values('dataProcessingImages')
+                filtered_images = images.exclude(dataProcessingImages="")
+                image_ids = filtered_images.values_list('id', flat=True)
+
+                if image_ids:
+                    for value1 in image_ids:
+
+                        images_to_delete = SkillsImages.objects.filter(id=value1)
+                        images_to_delete.delete()
+
+                    if dataProcessingImages:
+                        for image in dataProcessingImages:
+                            new_image = SkillsImages(dataProcessingImages=image)
+                            new_image.project = new_product
+                            new_image.save()
+                else:
+                    if dataProcessingImages:
+                        for image in dataProcessingImages:
+                            new_image = SkillsImages(dataProcessingImages=image)
+                            new_image.project = new_product
+                            new_image.save()
+                            
+            if operatingSystemsImages:
+                images = skill.images.filter(skill_id=skill, operatingSystemsImages__isnull=False).values('operatingSystemsImages')
+                filtered_images = images.exclude(operatingSystemsImages="")
+                image_ids = filtered_images.values_list('id', flat=True)
+
+                if image_ids:
+                    for value1 in image_ids:
+
+                        images_to_delete = SkillsImages.objects.filter(id=value1)
+                        images_to_delete.delete()
+
+                    if operatingSystemsImages:
+                        for image in operatingSystemsImages:
+                            new_image = SkillsImages(operatingSystemsImages=image)
+                            new_image.project = new_product
+                            new_image.save()
+                else:
+                    if operatingSystemsImages:
+                        for image in operatingSystemsImages:
+                            new_image = SkillsImages(operatingSystemsImages=image)
+                            new_image.project = new_product
+                            new_image.save()
+            
+            
+            return redirect("crudSkill")
+    
+    return render(request, 'projectCrudUpdate.html', {
+        'projectForm': projectForm,
+        'projectImageForm': projectImageForm,
+    })
+
+@login_required
+def crudSkillDelete(request, pk):
+    skill = Skill.objects.get(pk=pk)
+    skill.delete()
+
+    return redirect("crudSkill")

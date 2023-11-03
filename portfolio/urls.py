@@ -24,6 +24,9 @@ urlpatterns = [
 
     path("DaarcyDevAdmin/Crud/Skill",views.crudSkill, name="crudSkill"),
     path("DaarcyDevAdmin/Crud/Skill/Create",views.crudSkillCreate, name="crudSkillCreate"),
+    path("DaarcyDevAdmin/Crud/Skill/Update/<int:pk>",views.crudSkillUpdate, name="crudSkillUpdate"),
+    path("DaarcyDevAdmin/Crud/Skill/Delete/<int:pk>",views.crudSkillDelete, name="crudSkillDelete"),
+
 ]
 
 if settings.DEBUG:
