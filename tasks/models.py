@@ -43,12 +43,12 @@ class Skill(models.Model):
         return self.skillsResume
 
 class SkillsImages(models.Model):
-    programingLanguageImages = models.ImageField(upload_to='programming_language_images/', blank=True)
-    userInterfaceImages = models.ImageField(upload_to='user_interface_images/', blank=True)
-    developmentToolsImages = models.ImageField(upload_to='development_tools_images/', blank=True)
-    databasesImages = models.ImageField(upload_to='databases_images/', blank=True)
-    dataProcessingImages = models.ImageField(upload_to='data_processing_images/', blank=True)
-    operatingSystemsImages = models.ImageField(upload_to='operating_systems_images/', blank=True)
+    programingLanguageImages = models.FileField(upload_to='programming_language_images/', blank=True)
+    userInterfaceImages = models.FileField(upload_to='user_interface_images/', blank=True)
+    developmentToolsImages = models.FileField(upload_to='development_tools_images/', blank=True)
+    databasesImages = models.FileField(upload_to='databases_images/', blank=True)
+    dataProcessingImages = models.FileField(upload_to='data_processing_images/', blank=True)
+    operatingSystemsImages = models.FileField(upload_to='operating_systems_images/', blank=True)
     skills = models.ForeignKey(Skill,on_delete=models.CASCADE, related_name="images")
 
     def __str__(self):

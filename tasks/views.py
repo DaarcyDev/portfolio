@@ -4,7 +4,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import user_passes_test, login_required
 from .models import Skill, About, Project, SkillsImages, ProjectImages, BlogCategory, BlogFile, Contact
-from .forms import AboutForm, ProjectForm, ProjectImageForm
+from .forms import AboutForm, ProjectForm, ProjectImageForm, SkillsForm, SkillsImageForm
 from django.shortcuts import get_object_or_404
 
 # Create your views here.
@@ -100,7 +100,6 @@ def crudAboutDelete(request, pk):
     about.delete()
 
     return redirect("crudAbout")
-
 
 @login_required
 def crudProject(request):
@@ -226,43 +225,67 @@ def crudProjectDelete(request, pk):
 @login_required
 def crudSkill(request):
     skills = Skill.objects.all()
-    skillsImage = SkillsImages.objects.all()
+    skillsImages = SkillsImages.objects.all()
     return render ( request, 'skillCrud.html', {
         "skills":skills,
-        "skillsImages":skillsImage,
+        "skillsImages":skillsImages,
     })
 
 @login_required
 def crudSkillCreate(request):
-    if(request.method == "GET"):
+    if request.method == "GET":
         return render(request, 'skillCrudCreate.html', {
-            'projectForm': ProjectForm,
-            'projectImageForm': ProjectImageForm,
+            'skillForm': SkillsForm(),
+            'skillImageForm': SkillsImageForm(),
         })
     else:
         try:
-            formProject = ProjectForm(request.POST, request.FILES)
-            new_product = formProject.save(commit=False)
-            new_product.user = request.user
-            new_product.save()
+            formSkill = SkillsForm(request.POST, request.FILES)
+            new_skill = formSkill.save(commit=False)
+            new_skill.user = request.user
+            new_skill.save()
 
-            projectWebsiteImages = request.FILES.getlist('projectWebsiteImages')
-            projectWebsiteTools = request.FILES.getlist('projectWebsiteTools')
+            programingLanguageImages = request.FILES.getlist('programingLanguageImages')
+            userInterfaceImages = request.FILES.getlist('userInterfaceImages')
+            developmentToolsImages = request.FILES.getlist('developmentToolsImages')
+            databasesImages = request.FILES.getlist('databasesImages')
+            dataProcessingImages = request.FILES.getlist('dataProcessingImages')
+            operatingSystemsImages = request.FILES.getlist('operatingSystemsImages')
 
-            for image in projectWebsiteImages:
-                new_image = ProjectImages(projectWebsiteImages=image)
-                new_image.project = new_product
+            for image in programingLanguageImages:
+                new_image = SkillsImages(programingLanguageImages=image)
+                new_image.skills = new_skill
                 new_image.save()
 
-            for image in projectWebsiteTools:
-                new_image = ProjectImages(projectWebsiteTools=image)
-                new_image.project = new_product
+            for image in userInterfaceImages:
+                new_image = SkillsImages(userInterfaceImages=image)
+                new_image.skills = new_skill
                 new_image.save()
 
-            return redirect("admin")
+            for image in developmentToolsImages:
+                new_image = SkillsImages(developmentToolsImages=image)
+                new_image.skills = new_skill
+                new_image.save()
+                
+            for image in databasesImages:
+                new_image = SkillsImages(databasesImages=image)
+                new_image.skills = new_skill
+                new_image.save()
+            
+            for image in dataProcessingImages:
+                new_image = SkillsImages(dataProcessingImages=image)
+                new_image.skills = new_skill
+                new_image.save()
+            
+            for image in operatingSystemsImages:
+                new_image = SkillsImages(operatingSystemsImages=image)
+                new_image.skills = new_skill
+                new_image.save()
+
+            return redirect("crud")
         except:
-            return render(request, 'skillCrudCreate.html',{
-                'projectForm': ProjectForm,
-                'projectImageForm': ProjectImageForm,
-                'error': 'please provide valide data'
+            return render(request, 'skillCrudCreate.html', {
+                'skillForm': SkillsForm(),
+                'skillImageForm': SkillsImageForm(),
+                'error': 'Por favor, proporciona datos válidos'
             })

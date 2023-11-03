@@ -13,18 +13,18 @@
                 <form method="post" enctype="multipart/form-data">
                   {% csrf_token %}
                   {% comment %} {{ formAbout.as_p }} {% endcomment %}
-                    {{ projectForm.projectResume.label_tag }}
-                    {{ projectForm.projectResume }}
-                    {{ projectForm.projectComplete.label_tag }}
-                    {{ projectForm.projectComplete }}
-                    {{ projectForm.projectName.label_tag }}
-                    {{ projectForm.projectName }}
-                    {{ projectForm.projectImage.label_tag }}
-                    {{ projectForm.projectImage }}
-                    {{ projectForm.projectWebsiteResume.label_tag }}
-                    {{ projectForm.projectWebsiteResume }}
-                    {{ projectForm.projectWebsiteUrl.label_tag }}
-                    {{ projectForm.projectWebsiteUrl }}
+                    {{ skillForm.skillsResume.label_tag }}
+                    {{ skillsResume.skillsResume }}
+                    {{ skillsResume.skillComplete.label_tag }}
+                    {{ skillsResume.skillComplete }}
+                    {{ skillsResume.programingLanguageResume.label_tag }}
+                    {{ skillsResume.programingLanguageResume }}
+                    {{ skillsResume.developmentToolsResume.label_tag }}
+                    {{ skillsResume.developmentToolsResume }}
+                    {{ skillsResume.databasesResume.label_tag }}
+                    {{ skillsResume.databasesResume }}
+                    {{ skillsResume.dataProcessingResume.label_tag }}
+                    {{ skillsResume.dataProcessingResume }}
                     {{ projectImageForm.projectWebsiteImages.label_tag }}
                     <input type="file"  multiple name="projectWebsiteImages" id="projectWebsiteImages"/>
                     {{ projectImageForm.projectWebsiteTools.label_tag }}

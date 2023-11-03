@@ -10,13 +10,13 @@
         <div class="text animationText">
             <div class="options">
                 <h2>Crud</h2>
-                {% for skill in skills %}
-                  {% if not skill.skillsResume %}
+                {% comment %} {% for skill in skills %}
+                  {% if not skill.skillsResume %} {% endcomment %}
                   <div class="buttonsOption">
                     <a href="{% url 'crudSkillCreate' %}">Create</a>
                   </div>
-                  {% endif %}
-                {% endfor %}
+                  {% comment %} {% endif %}
+                {% endfor %} {% endcomment %}
               <div class="details">
                 <div class="websiteInfo">
                   <table class="propiedades">
@@ -105,13 +105,7 @@
                             {% endfor %}
                           </td>
                           <td>
-                              <form method="POST" class="w-100">
-                                  <input type="hidden" name="id" value="">
-                                  <input type="hidden" name="tipo" value="propiedad">
-                                  <input type="submit" class="boton-rojo-block" value="Eliminar">
-                              </form>
                               
-                              <a href="" class="boton-amarillo-block">Actualizar</a>
                           </td>
                       </tr>
                       {% endfor %} 
