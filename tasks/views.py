@@ -451,9 +451,10 @@ def crudSkillUpdate(request, pk):
             
             return redirect("crudSkill")
     
-    return render(request, 'projectCrudUpdate.html', {
-        'projectForm': projectForm,
-        'projectImageForm': projectImageForm,
+    return render(request, 'skillCrudCreate.html', {
+            'skillForm': SkillsForm(),
+            'skillImageForm': SkillsImageForm(),
+            'error': 'Por favor, proporciona datos válidos'
     })
 
 @login_required
