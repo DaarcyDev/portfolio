@@ -464,3 +464,12 @@ def crudSkillDelete(request, pk):
     skill.delete()
 
     return redirect("crudSkill")
+
+@login_required
+def crudBlog(request):
+    blogCategory = BlogCategory.objects.all()
+    blogFile = BlogFile.objects.all()
+    return render ( request, 'blogCrud.html', {
+        "blogCategories":blogCategory,
+        "blogFiles":blogFile,
+    })
