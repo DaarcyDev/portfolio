@@ -10,13 +10,12 @@
         <div class="text animationText">
             <div class="options">
                 <h2>Crud</h2>
-                {% comment %} {% for skill in skills %}
-                  {% if not skill.skillsResume %} {% endcomment %}
+                  {% if not skills %}
+
                   <div class="buttonsOption">
                     <a href="{% url 'crudSkillCreate' %}">Create</a>
                   </div>
-                  {% comment %} {% endif %}
-                {% endfor %} {% endcomment %}
+                  {% endif %}
               <div class="details">
                 <div class="websiteInfo">
                   <table class="propiedades">

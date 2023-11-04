@@ -7,7 +7,7 @@ from .models import Skill, About, Project, SkillsImages, ProjectImages, BlogCate
 from .forms import AboutForm, ProjectForm, ProjectImageForm, SkillsForm, SkillsImageForm
 from django.shortcuts import get_object_or_404
 
-# Create your views here.
+
 
 def index(request):
     about = About.objects.all()
@@ -290,13 +290,14 @@ def crudSkillCreate(request):
                 'error': 'Por favor, proporciona datos válidos'
             })
 
-
 @login_required
 def crudSkillUpdate(request, pk):
     skill = Skill.objects.get(pk=pk)
+    print(skill)
     if request.method == "GET":
         skillForm = SkillsForm(instance=skill)
         skillImageForm = SkillsImageForm(instance=skill)
+
     else:
         skillForm = SkillsForm(request.POST, request.FILES, instance=skill)
         if skillForm.is_valid():
@@ -311,7 +312,7 @@ def crudSkillUpdate(request, pk):
             operatingSystemsImages = request.FILES.getlist('operatingSystemsImages')
 
             if programingLanguageImages:
-                images = skill.images.filter(skill_id=skill, programingLanguageImages__isnull=False).values('programingLanguageImages')
+                images = skill.images.filter(skills_id=skill, programingLanguageImages__isnull=False).values('programingLanguageImages')
                 filtered_images = images.exclude(programingLanguageImages="")
                 image_ids = filtered_images.values_list('id', flat=True)
 
@@ -324,17 +325,18 @@ def crudSkillUpdate(request, pk):
                     if programingLanguageImages:
                         for image in programingLanguageImages:
                             new_image = SkillsImages(programingLanguageImages=image)
-                            new_image.project = new_product
+                            new_image.skills = skill
                             new_image.save()
                 else:
                     if programingLanguageImages:
+                        
                         for image in programingLanguageImages:
                             new_image = SkillsImages(programingLanguageImages=image)
-                            new_image.project = new_product
+                            new_image.skills = skill
                             new_image.save()
                         
             if userInterfaceImages:
-                images = skill.images.filter(skill_id=skill, userInterfaceImages__isnull=False).values('userInterfaceImages')
+                images = skill.images.filter(skills_id=skill, userInterfaceImages__isnull=False).values('userInterfaceImages')
                 filtered_images = images.exclude(userInterfaceImages="")
                 image_ids = filtered_images.values_list('id', flat=True)
 
@@ -347,17 +349,17 @@ def crudSkillUpdate(request, pk):
                     if userInterfaceImages:
                         for image in userInterfaceImages:
                             new_image = SkillsImages(userInterfaceImages=image)
-                            new_image.project = new_product
+                            new_image.skills = skill
                             new_image.save()
                 else:
                     if userInterfaceImages:
                         for image in userInterfaceImages:
                             new_image = SkillsImages(userInterfaceImages=image)
-                            new_image.project = new_product
+                            new_image.skills = skill
                             new_image.save()
             
             if developmentToolsImages:
-                images = skill.images.filter(skill_id=skill, developmentToolsImages__isnull=False).values('developmentToolsImages')
+                images = skill.images.filter(skills_id=skill, developmentToolsImages__isnull=False).values('developmentToolsImages')
                 filtered_images = images.exclude(developmentToolsImages="")
                 image_ids = filtered_images.values_list('id', flat=True)
 
@@ -370,17 +372,17 @@ def crudSkillUpdate(request, pk):
                     if developmentToolsImages:
                         for image in developmentToolsImages:
                             new_image = SkillsImages(developmentToolsImages=image)
-                            new_image.project = new_product
+                            new_image.skills = skill
                             new_image.save()
                 else:
                     if developmentToolsImages:
                         for image in developmentToolsImages:
                             new_image = SkillsImages(developmentToolsImages=image)
-                            new_image.project = new_product
+                            new_image.skills = skill
                             new_image.save()
                             
             if databasesImages:
-                images = skill.images.filter(skill_id=skill, databasesImages__isnull=False).values('databasesImages')
+                images = skill.images.filter(skills_id=skill, databasesImages__isnull=False).values('databasesImages')
                 filtered_images = images.exclude(databasesImages="")
                 image_ids = filtered_images.values_list('id', flat=True)
 
@@ -393,17 +395,17 @@ def crudSkillUpdate(request, pk):
                     if databasesImages:
                         for image in databasesImages:
                             new_image = SkillsImages(databasesImages=image)
-                            new_image.project = new_product
+                            new_image.skills = skill
                             new_image.save()
                 else:
                     if databasesImages:
                         for image in databasesImages:
                             new_image = SkillsImages(databasesImages=image)
-                            new_image.project = new_product
+                            new_image.skills = skill
                             new_image.save()
                             
             if dataProcessingImages:
-                images = skill.images.filter(skill_id=skill, dataProcessingImages__isnull=False).values('dataProcessingImages')
+                images = skill.images.filter(skills_id=skill, dataProcessingImages__isnull=False).values('dataProcessingImages')
                 filtered_images = images.exclude(dataProcessingImages="")
                 image_ids = filtered_images.values_list('id', flat=True)
 
@@ -416,17 +418,17 @@ def crudSkillUpdate(request, pk):
                     if dataProcessingImages:
                         for image in dataProcessingImages:
                             new_image = SkillsImages(dataProcessingImages=image)
-                            new_image.project = new_product
+                            new_image.skills = skill
                             new_image.save()
                 else:
                     if dataProcessingImages:
                         for image in dataProcessingImages:
                             new_image = SkillsImages(dataProcessingImages=image)
-                            new_image.project = new_product
+                            new_image.skills = skill
                             new_image.save()
                             
             if operatingSystemsImages:
-                images = skill.images.filter(skill_id=skill, operatingSystemsImages__isnull=False).values('operatingSystemsImages')
+                images = skill.images.filter(skills_id=skill, operatingSystemsImages__isnull=False).values('operatingSystemsImages')
                 filtered_images = images.exclude(operatingSystemsImages="")
                 image_ids = filtered_images.values_list('id', flat=True)
 
@@ -439,22 +441,21 @@ def crudSkillUpdate(request, pk):
                     if operatingSystemsImages:
                         for image in operatingSystemsImages:
                             new_image = SkillsImages(operatingSystemsImages=image)
-                            new_image.project = new_product
+                            new_image.skills = skill
                             new_image.save()
                 else:
                     if operatingSystemsImages:
                         for image in operatingSystemsImages:
                             new_image = SkillsImages(operatingSystemsImages=image)
-                            new_image.project = new_product
+                            new_image.skills = skill
                             new_image.save()
             
             
             return redirect("crudSkill")
     
-    return render(request, 'skillCrudCreate.html', {
-            'skillForm': SkillsForm(),
-            'skillImageForm': SkillsImageForm(),
-            'error': 'Por favor, proporciona datos válidos'
+    return render(request, 'skillCrudUpdate.html', {
+            'skillForm': skillForm,
+            'skillImageForm': skillImageForm,
     })
 
 @login_required
