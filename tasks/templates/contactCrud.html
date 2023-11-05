@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+  <body class="bodyAdmin">
+    <div class="terminalContent projects">
+      <div class="comandLine">
+        <h3 class="user">
+          User@DaarcyWebsite:<span class="simbols">~$</span><span class="comand animationComand">sudo cat crudContact.txt</span>
+        </h3>
+      </div>
+      <div class="text animationText">
+        <div class="options">
+          <h2>Crud</h2>
+          {% if not contacts %}
+            <div class="buttonsOption">
+              <a href="{% url 'crudContactCreate' %}">Create</a>
+            </div>
+          {% endif %}
+          <div class="details">
+            <div class="websiteInfo">
+              <table class="propiedades">
+                <thead>
+                  <tr>
+                    <th>contactResume</th>
+                    <th>contactComplete</th>
+                    <th>youtubeUrl</th>
+                    <th>instagramUrl</th>
+                    <th>githubUrl</th>
+                    <th>linkedinUrl</th>
+                    <th>Acciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for contact in contacts %}
+                    <tr>
+                      <td>{{ contact.contactResume|truncatewords:30 }}</td>
+                      <td>{{ contact.contactComplete|truncatewords:30 }}</td>
+                      <td>{{ contact.youtubeUrl|truncatewords:30 }}</td>
+                      <td>{{ contact.instagramUrl|truncatewords:30 }}</td>
+                      <td>{{ contact.githubUrl|truncatewords:30 }}</td>
+                      <td>{{ contact.linkedinUrl|truncatewords:30 }}</td>
+                      <td>
+                      <form method="POST" action="{% url 'crudContactDelete' contact.id %}" class="w-100">
+                          {% csrf_token %}
+                          <input type="hidden" name="id" value="{{ project.id }}">
+                          <input type="hidden" name="tipo" value="propiedad">
+                          <input type="submit" class="boton-rojo-block" value="Eliminar">
+                        </form>
+                        <a href="{% url 'crudContactUpdate' contact.id %}"
+                           class="boton-amarillo-block">Actualizar</a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td></td>
+                      <td class="tdImage">
+                        {% if contact.youtubeImage %}
+                        <img src="{{ contact.youtubeImage.url }}" alt="website" />
+                        {% endif %}
+                      </td>
+                      <td class="tdImage">
+                        {% if contact.instagramImage %}
+                        <img src="{{ contact.instagramImage.url }}" alt="website" />
+                        {% endif %}
+                      </td>
+                      <td class="tdImage">
+                        {% if contact.githubImage %}
+                        <img src="{{ contact.githubImage.url }}" alt="website" />
+                        {% endif %}
+                      </td>
+                      
+                      <td class="tdImage">
+                        {% if contact.linkedinImage %}
+                        <img src="{{ contact.linkedinImage.url }}" alt="website" />
+                        {% endif %}
+                      </td>
+                      
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="buttonsOption">
+            <a href="{% url 'crud' %}">volver</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+{% endblock content %}

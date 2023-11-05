@@ -4,10 +4,9 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import user_passes_test, login_required
 from .models import Skill, About, Project, SkillsImages, ProjectImages, BlogCategory, BlogFile, Contact
-from .forms import AboutForm, ProjectForm, ProjectImageForm, SkillsForm, SkillsImageForm, BlogCategoryForm, BlogFileForm
+from .forms import AboutForm, ProjectForm, ProjectImageForm, SkillsForm, SkillsImageForm, BlogCategoryForm, BlogFileForm, ContactForm
 from django.shortcuts import get_object_or_404
-
-
+from django.forms import modelformset_factory
 
 def index(request):
     about = About.objects.all()
@@ -474,8 +473,6 @@ def crudBlog(request):
         "blogFiles":blogFile,
     })
 
-from django.forms import modelformset_factory
-
 @login_required
 def crudBlogCreate(request):
     if request.method == "GET":
@@ -558,3 +555,56 @@ def crudBlogDelete(request, pk):
     blog.delete()
 
     return redirect("crudBlog")
+
+@login_required
+def crudContact(request):
+    contact = Contact.objects.all()
+    return render ( request, 'contactCrud.html', {
+        "contacts":contact,
+    })
+
+@login_required
+def crudContactCreate(request):
+    if(request.method == "GET"):
+        return render(request, 'contactCrudCreate.html', {
+            'formContacts': ContactForm,
+        })
+    else:
+        try:
+            formContact = ContactForm(request.POST, request.FILES)
+            new_product = formContact.save(commit=False)
+            new_product.save()
+            return redirect("crudContact")
+        except:
+            return render(request, 'contactCrudCreate.html',{
+            'formContacts': ContactForm,
+            'error': 'please provide valide data'
+        })
+
+@login_required
+def crudContactDelete(request, pk):
+    contact = Contact.objects.get(pk=pk)
+    contact.delete()
+
+    return redirect("crudContact")
+
+@login_required
+def crudContactUpdate(request, pk):
+    contact = Contact.objects.get(pk=pk)
+    if request.method == "GET":
+        formContact = ContactForm(instance=contact)
+
+    else:
+        try:
+            formContact = ContactForm(request.POST, request.FILES, instance=contact)
+            new_product = formContact.save(commit=False)
+            new_product.save()
+            return redirect("crudContact")
+        except:
+            return render(request, 'contactCrudUpdate.html',{
+                'formContacts': formContact,
+                'error': 'please provide valide data'
+            })
+    return render(request, 'contactCrudUpdate.html', {
+        'formContacts': formContact,
+    })

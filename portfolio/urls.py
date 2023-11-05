@@ -32,6 +32,11 @@ urlpatterns = [
     path("DaarcyDevAdmin/Crud/Blog/Update/<int:pk>",views.crudBlogUpdate, name="crudBlogUpdate"),
     path("DaarcyDevAdmin/Crud/Blog/Delete/<int:pk>",views.crudBlogDelete, name="crudBlogDelete"),
 
+    path("DaarcyDevAdmin/Crud/Contact",views.crudContact, name="crudContact"),
+    path("DaarcyDevAdmin/Crud/Contact/Create",views.crudContactCreate, name="crudContactCreate"),
+    path('DaarcyDevAdmin/Crud/Contact/Update/<int:pk>/', views.crudContactUpdate, name='crudContactUpdate'),
+    path("DaarcyDevAdmin/Crud/Contact/Delete/<int:pk>", views.crudContactDelete, name="crudContactDelete"),
+
 ]
 
 if settings.DEBUG:

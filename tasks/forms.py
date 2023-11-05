@@ -1,5 +1,5 @@
 from django import forms
-from .models import About,Project, ProjectImages, Skill, SkillsImages, BlogCategory, BlogFile
+from .models import About,Project, ProjectImages, Skill, SkillsImages, BlogCategory, BlogFile, Contact
 from django.forms import ClearableFileInput, FileField
 
 class AboutForm(forms.ModelForm):
@@ -59,3 +59,8 @@ class BlogFileForm(forms.ModelForm):
     class Meta:
         model = BlogFile
         fields = ['file', 'fileContent']
+
+class ContactForm(forms.ModelForm):
+    class Meta:
+        model = Contact
+        fields = ['contactResume', 'contactComplete', 'youtubeUrl', 'instagramUrl', 'githubUrl', 'linkedinUrl', 'githubImage', 'instagramImage', 'linkedinImage', 'youtubeImage']
