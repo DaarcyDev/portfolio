@@ -1,80 +1,81 @@
-{% extends 'base.html' %} {% load static %} {% block content %}
-<body class="bodyAdmin">
-      <div class="terminalContent projects">
-        <div class="comandLine">
-          <h3 class="user">
-            User@DaarcyWebsite:<span class="simbols">~$ </span
-            ><span class="comand animationComand">sudo cat crudProject.txt</span>
-          </h3>
-        </div>
-        <div class="text animationText">
-            <div class="options">
-                <h2>Crud</h2>
-                <div class="buttonsOption">
-                  <a href="{% url 'crudProjectCreate' %}">Create</a>
-              </div>
-              <div class="details">
-                <div class="websiteInfo">
-                  <table class="propiedades">
-                    <thead>
-                        <tr>
-                          <th>Image</th>
-                          <th>Name</th>
-                          <th>Resume</th>
-                          <th>Imagenes</th>
-                          <th>ResumeWebsite</th>
-                          <th>Url</th>
-                          <th>Tools</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-        
-                    <tbody> <!-- Mostrar los Resultados -->
-                        {% for project in projects %}
-                        <tr>
-                            <td><img src="{{ project.projectImage.url }}" alt="website" class="websiteImage" data-category="{{ project.projectName }}" /></td>
-                            <td>{{ project.projectName }}</td>
-                            <td>{{ project.projectResume|truncatewords:20}}</td>
-                            <td>
-                            {% for image in project.images.all %}
-                              {% if image.projectWebsiteImages %}
-                              <img src="{{ image.projectWebsiteImages.url }}" alt="website" />
-                              {% endif %}
-                            {% endfor %}
-                            </td>
-                            <td>{{ project.projectWebsiteResume|truncatewords:50 }}</td>
-                            <td>{{project.projectWebsiteUrl}}</td>
-                            <td class="tdImage">
-                            {% for image in project.images.all %}
-                              {% if image.projectWebsiteTools %}
-                              <img src="{{ image.projectWebsiteTools.url }}" alt="website" />
-                              {% endif %}
-                            {% endfor %}
-                            </td>
-                            <td>
-                                <form method="POST" action="{% url 'crudProjectDelete' project.id %}"  class="w-100">
-                                  {% csrf_token %}
-                                    <input type="hidden" name="id" value="{{ project.id }}">
-                                    <input type="hidden" name="tipo" value="propiedad">
-                                    <input type="submit" class="boton-rojo-block" value="Eliminar">
-                                </form>
-                                
-                                <a href="{% url 'crudProjectUpdate' project.id %}" class="boton-amarillo-block">Actualizar</a>
-                              </td>
-                        </tr>
-                        {% endfor %} 
-                    </tbody>
-                </table>
-                </div>
-              </div>
-
-              <div class="buttonsOption">
-                <a href="{% url 'crud' %}">volver</a>
-              </div>
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+  <body class="bodyAdmin">
+    <div class="terminalContent projects">
+      <div class="comandLine">
+        <h3 class="user">
+          User@DaarcyWebsite:<span class="simbols">~$</span><span class="comand animationComand">sudo cat crudProject.txt</span>
+        </h3>
+      </div>
+      <div class="text animationText">
+        <div class="options">
+          <h2>Crud</h2>
+          <div class="buttonsOption">
+            <a href="{% url 'crudProjectCreate' %}">Create</a>
+          </div>
+          <div class="details">
+            <div class="websiteInfo">
+              <table class="propiedades">
+                <thead>
+                  <tr>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Resume</th>
+                    <th>Imagenes</th>
+                    <th>ResumeWebsite</th>
+                    <th>Url</th>
+                    <th>Tools</th>
+                    <th>Acciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- Mostrar los Resultados -->
+                  {% for project in projects %}
+                    <tr>
+                      <td>
+                        <img src="{{ project.projectImage.url }}"
+                             alt="website"
+                             class="websiteImage"
+                             data-category="{{ project.projectName }}" />
+                      </td>
+                      <td>{{ project.projectName }}</td>
+                      <td>{{ project.projectResume|truncatewords:20 }}</td>
+                      <td>
+                        {% for image in project.images.all %}
+                          {% if image.projectWebsiteImages %}<img src="{{ image.projectWebsiteImages.url }}" alt="website" />{% endif %}
+                        {% endfor %}
+                      </td>
+                      <td>{{ project.projectWebsiteResume|truncatewords:50 }}</td>
+                      <td>{{ project.projectWebsiteUrl }}</td>
+                      <td class="tdImage">
+                        {% for image in project.images.all %}
+                          {% if image.projectWebsiteTools %}<img src="{{ image.projectWebsiteTools.url }}" alt="website" />{% endif %}
+                        {% endfor %}
+                      </td>
+                      <td>
+                        <form method="POST"
+                              action="{% url 'crudProjectDelete' project.id %}"
+                              class="w-100">
+                          {% csrf_token %}
+                          <input type="hidden" name="id" value="{{ project.id }}">
+                          <input type="hidden" name="tipo" value="propiedad">
+                          <input type="submit" class="boton-rojo-block" value="Eliminar">
+                        </form>
+                        <a href="{% url 'crudProjectUpdate' project.id %}"
+                           class="boton-amarillo-block">Actualizar</a>
+                      </td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
             </div>
+          </div>
+          <div class="buttonsOption">
+            <a href="{% url 'crud' %}">volver</a>
           </div>
         </div>
       </div>
-      
-</body>
+    </div>
+  </body>
 {% endblock content %}

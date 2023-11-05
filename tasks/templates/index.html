@@ -1,537 +1,447 @@
-{% extends 'base.html' %} {% load static %} {% block content %}
-<body class="bodyIndex">
-  <header class="header">
-    <div class="topbar home">
-      <a href="">
-        <p><i class="fa-brands fa-fedora"></i></p>
-      </a>
-    </div>
-    <div class="topbar place">
-      <a href="#first">
-        <p><i id="firstPosition" class="fa-solid fa-ghost"></i></p>
-      </a>
-      <a href="#second">
-        <p><i id="secondPosition" class="fa-solid fa-circle"></i></p>
-      </a>
-      <a href="#third">
-        <p><i id="thirdPosition" class="fa-solid fa-circle"></i></p>
-      </a>
-      <a href="#fourth">
-        <p><i id="fourthPosition" class="fa-solid fa-circle"></i></p>
-      </a>
-      <a href="#fifth">
-        <p><i id="fifthPosition" class="fa-solid fa-circle"></i></p>
-      </a>
-    </div>
-    <div class="menu">
-      <div id="about" class="topbar about">
-        <p>About</p>
-      </div>
-      <div id="projects" class="topbar projects">
-        <p>Projects</p>
-      </div>
-      <div id="skills" class="topbar skills">
-        <p>Skills</p>
-      </div>
-      <div class="topbar blog-contact">
-        <p id="blog">Blog</p>
-        <p id="contact">Contact</p>
-      </div>
-    </div>
-    <div class="background"></div>
-  </header>
-  <main>
-    <div id="draggable" class="terminal terminalAbout">
-      <div class="bar">
-        <p>About Me</p>
-        <div class="buttons">
-          <p id="minAbout" class="min">
-            <i class="fa-solid fa-window-minimize"></i>
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+  <body class="bodyIndex">
+    <header class="header">
+      <div class="topbar home">
+        <a href="">
+          <p>
+            <i class="fa-brands fa-fedora"></i>
           </p>
-          <p id="restoreAbout" class="restore">
-            <i class="fa-regular fa-window-restore"></i>
+        </a>
+      </div>
+      <div class="topbar place">
+        <a href="#first">
+          <p>
+            <i id="firstPosition" class="fa-solid fa-ghost"></i>
           </p>
-          <p id="maxAbout" class="max">
-            <i class="fa-regular fa-window-maximize"></i>
+        </a>
+        <a href="#second">
+          <p>
+            <i id="secondPosition" class="fa-solid fa-circle"></i>
           </p>
-          <p id="closeAbout" class="close" class="close">
-            <i class="fa-regular fa-rectangle-xmark"></i>
+        </a>
+        <a href="#third">
+          <p>
+            <i id="thirdPosition" class="fa-solid fa-circle"></i>
           </p>
+        </a>
+        <a href="#fourth">
+          <p>
+            <i id="fourthPosition" class="fa-solid fa-circle"></i>
+          </p>
+        </a>
+        <a href="#fifth">
+          <p>
+            <i id="fifthPosition" class="fa-solid fa-circle"></i>
+          </p>
+        </a>
+      </div>
+      <div class="menu">
+        <div id="about" class="topbar about">
+          <p>About</p>
+        </div>
+        <div id="projects" class="topbar projects">
+          <p>Projects</p>
+        </div>
+        <div id="skills" class="topbar skills">
+          <p>Skills</p>
+        </div>
+        <div class="topbar blog-contact">
+          <p id="blog">Blog</p>
+          <p id="contact">Contact</p>
         </div>
       </div>
-      <div class="terminalContent">
-        <div class="comandLine">
-          <h3 class="user">
-            User@DaarcyWebsite:<span class="simbols">~$ </span
-            ><span class="comand animationComand">sudo cat about-me.txt</span>
-          </h3>
-        </div>
-        <div class="text animationText">
-          {% for about in abouts %}
-            <p class="readMore">
-              {{about.aboutResume}}
+      <div class="background"></div>
+    </header>
+    <main>
+      <div id="draggable" class="terminal terminalAbout">
+        <div class="bar">
+          <p>About Me</p>
+          <div class="buttons">
+            <p id="minAbout" class="min">
+              <i class="fa-solid fa-window-minimize"></i>
             </p>
-          {% endfor %}
-          <br class="readMore" />
-          <p class="readMore">Amplíe la ventana para obtener más detalles...</p>
-
-          <div class="details">
-            {% for aboutCom in abouts %}
-            <p>
-              {{aboutCom.aboutComplete|linebreaks|safe}}
+            <p id="restoreAbout" class="restore">
+              <i class="fa-regular fa-window-restore"></i>
             </p>
-          {% endfor %}
+            <p id="maxAbout" class="max">
+              <i class="fa-regular fa-window-maximize"></i>
+            </p>
+            <p id="closeAbout" class="close" class="close">
+              <i class="fa-regular fa-rectangle-xmark"></i>
+            </p>
           </div>
         </div>
-      </div>
-    </div>
-    <div id="draggable2" class="terminal terminalProjects">
-      <div class="bar">
-        <p>Projects</p>
-        <div class="buttons">
-          <p id="minProject" class="min">
-            <i class="fa-solid fa-window-minimize"></i>
-          </p>
-          <p id="restoreProject" class="restore">
-            <i class="fa-regular fa-window-restore"></i>
-          </p>
-          <p id="maxProject" class="max">
-            <i class="fa-regular fa-window-maximize"></i>
-          </p>
-          <p id="closeProject" class="close" class="close">
-            <i class="fa-regular fa-rectangle-xmark"></i>
-          </p>
-        </div>
-      </div>
-      <div class="terminalContent">
-        <div class="comandLine">
-          <h3 class="user">
-            User@DaarcyWebsite:<span class="simbols">~$ </span
-            ><span class="comand animationComand">sudo cat Projects.txt</span>
-          </h3>
-        </div>
-        <div class="text animationText">
-          {% for project in projects %}
-            <p>
-              {{project.projectResume|linebreaks}}
-            </p>
-          {% endfor %}
-          <br class="readMore" />
-          <p class="readMore">Amplíe la ventana para obtener más detalles...</p>
-          <div class="readMore details detailsProjects">
-            <a>
-              <div id="websiteButton">
-                <h1>Desarrollo Web</h1>
-              </div>
-            </a>
-            <a>
-              <div id="datascienceButton">
-                <h1>Ciencia de Datos</h1>
-              </div>
-            </a>
-          </div>
-          <div class="details">
-            <div id="websites" class="readMore websites">
-               {% for project in projects %}
-                <img src="{{ project.projectImage.url }}" alt="website" class="websiteImage" data-category="{{ project.projectName }}" />
-              {% endfor %} 
-              
-            </div>
-            <div class="websiteInfo">
-              {% for project in projects %}
-              <div class="website" data-category="{{ project.projectName }}" >
-                <p>
-                  {{ project.projectName }}
-                </p>
-                <p>
-                  {{ project.projectWebsiteResume }}
-                </p>
-                <div class="websiteImageDescription">
-
-                  {% for image in project.images.all %}
-                    {% if image.projectWebsiteImages %}
-                      <img src="{{ image.projectWebsiteImages.url }}" alt="website" />
-                    {% endif %}
-                  {% endfor %}
-
-                </div>
-                <p>Codigo en github:</p>
-                <a href="{{project.projectWebsiteUrl}}"
-                  >{{project.projectWebsiteUrl}}</a
-                >
-                <p>Herramientas que se ocuparon para este proyecto</p>
-  
-                <div id="websites" class="tools">
-                  {% for image in project.images.all %}
-                    {% if image.projectWebsiteTools %}
-                      <img src="{{ image.projectWebsiteTools.url }}" alt="website" />
-                    {% endif %}
-                  {% endfor %}
-
-                </div>
-              </div>
-              {% endfor %} 
-            </div>
-            <div id="datascience" class="readMore datascience">
-              <p>pendiente</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div id="draggable3" class="terminal terminalSkills">
-      <div class="bar">
-        <p>Skills</p>
-        <div class="buttons">
-          <p id="minSkills" class="min">
-            <i class="fa-solid fa-window-minimize"></i>
-          </p>
-          <p id="restoreSkills" class="restore">
-            <i class="fa-regular fa-window-restore"></i>
-          </p>
-          <p id="maxSkills" class="max">
-            <i class="fa-regular fa-window-maximize"></i>
-          </p>
-          <p id="closeSkills" class="close" class="close">
-            <i class="fa-regular fa-rectangle-xmark"></i>
-          </p>
-        </div>
-      </div>
-      <div class="terminalContent">
-        <div class="comandLine">
-          <h3 class="user">
-            User@DaarcyWebsite:<span class="simbols">~$ </span
-            ><span class="comand animationComand">sudo cat Skills.txt</span>
-          </h3>
-        </div>
-        <div class="text animationText">
-          {% for skill in skills %}
-            <p class="readMore">
-              {{skill.skillsResume}}
-            </p>
-          {% endfor %}
-          <br class="readMore" />
-          <p class="readMore">Amplíe la ventana para obtener más detalles...</p>
-          <div class="details">
-            {% for skill in skills %}
-            <p>
-              {{skill.skillComplete|linebreaks}}
-            </p>
-          {% endfor %}
-            <p>Mis habilidades se dividen en categorías como:</p>
-            <div class="readMore details detailSkills">
-              <a>
-                <div id="programmingLanguagesButton">
-                  <h1>Lenguajes de Programación</h1>
-                </div>
-              </a>
-              <a>
-                <div id="userInterfaceButton">
-                  <h1>Interfaz de Usuario y Desarrollo de Aplicaciones</h1>
-                </div>
-              </a>
-              <a>
-                <div id="developmentToolsButton">
-                  <h1>Herramientas de Desarrollo</h1>
-                </div>
-              </a>
-              <a>
-                <div id="databasesButton">
-                  <h1>Bases de Datos</h1>
-                </div>
-              </a>
-              <a>
-                <div id="dataProcessingButton">
-                  <h1>Procesamiento de Datos y Análisis</h1>
-                </div>
-              </a>
-              <a>
-                <div id="operatingSystemsButton">
-                  <h1>Sistemas Operativos</h1>
-                </div>
-              </a>
-            </div>
-            <div id="programmingLanguages" class="contentSkills">
-              <div class="textSkills">
-                {% for skill in skills %}
-                  <p>
-                    {{skill.programingLanguageResume}}
-                  </p>
-                {% endfor %}
-              </div>
-              <div class="tools">
-                {% for skillsImage in skillsImages %}
-                {% if skillsImage.programingLanguageImages %}
-                  <img src="{{ skillsImage.programingLanguageImages.url }}" alt="website" />
-                  {% endif %}
-                {% endfor %}
-              </div>
-            </div>
-            <div id="userInterface" class="contentSkills">
-              <div class="textSkills">
-                {% for skill in skills %}
-                  <p>
-                    {{skill.userInterfaceResume}}
-                  </p>
-                {% endfor %}
-              </div>
-              <div class="tools">
-                {% for skillsImage in skillsImages %}
-                {% if skillsImage.userInterfaceImages %}
-                  <img src="{{ skillsImage.userInterfaceImages.url }}" alt="website" />
-                  {% endif %}
-                {% endfor %}
-              </div>
-            </div>
-            <div id="developmentTools" class="contentSkills">
-              <div class="textSkills">
-                {% for skill in skills %}
-                  <p>
-                    {{skill.developmentToolsResume}}
-                  </p>
-                {% endfor %}
-              </div>
-              <div class="tools">
-                {% for skillsImage in skillsImages %}
-                {% if skillsImage.developmentToolsImages %}
-                  <img src="{{ skillsImage.developmentToolsImages.url }}" alt="website" />
-                  {% endif %}
-                {% endfor %}
-              </div>
-            </div>
-            <div id="databases" class="contentSkills">
-              <div class="textSkills">
-                {% for skill in skills %}
-                  <p>
-                    {{skill.databasesResume}}
-                  </p>
-                {% endfor %}
-              </div>
-              <div class="tools">
-                {% for skillsImage in skillsImages %}
-                {% if skillsImage.databasesImages %}
-                  <img src="{{ skillsImage.databasesImages.url }}" alt="website" />
-                  {% endif %}
-                {% endfor %}
-              </div>
-            </div>
-            <div id="dataProcessing" class="contentSkills">
-              <div class="textSkills">
-                {% for skill in skills %}
-                  <p>
-                    {{skill.dataProcessingResume}}
-                  </p>
-                {% endfor %}
-              </div>
-              <div class="tools">
-                {% for skillsImage in skillsImages %}
-                {% if skillsImage.dataProcessingImages %}
-                  <img src="{{ skillsImage.dataProcessingImages.url }}" alt="website" />
-                  {% endif %}
-                {% endfor %}
-              </div>
-            </div>
-            <div id="operatingSystems" class="contentSkills">
-              <div class="textSkills">
-                {% for skill in skills %}
-                  <p>
-                    {{skill.operatingSystemsResume}}
-                  </p>
-                {% endfor %}
-              </div>
-              <div class="tools">
-                {% for skillsImage in skillsImages %}
-                {% if skillsImage.operatingSystemsImages %}
-                  <img src="{{ skillsImage.operatingSystemsImages.url }}" alt="website" />
-                  {% endif %}
-                {% endfor %}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div id="draggable4" class="terminal terminalBlog">
-      <div class="bar">
-        <p>Blog</p>
-        <div class="buttons">
-          <p id="minBlog" class="min">
-            <i class="fa-solid fa-window-minimize"></i>
-          </p>
-          <p id="restoreBlog" class="restore">
-            <i class="fa-regular fa-window-restore"></i>
-          </p>
-          <p id="maxBlog" class="max">
-            <i class="fa-regular fa-window-maximize"></i>
-          </p>
-          <p id="closeBlog" class="close" class="close">
-            <i class="fa-regular fa-rectangle-xmark"></i>
-          </p>
-        </div>
-      </div>
-      <div class="terminalContent">
-        <div class="comandLine">
-          <h3 class="readMore user">
-            User@DaarcyWebsite:<span class="simbols">~$ </span
-            ><span class="comand animationComand">sudo cat Blog.txt</span>
-          </h3>
-        </div>
-        <div class="text textBlog animationText">
-          {% for blogCategory in blogCategories %}
-            <p class="readMore">
-              {{blogCategory.blogResume}}
-            </p>
-          {% endfor %}
-          <br class="readMore" />
-          <p class="readMore">Amplíe la ventana para obtener más detalles...</p>
-
-          <div class="details">
-            <h3 class="userBlog">
-              User@DaarcyWebsite:<span class="simbols">~$ </span
-              ><span class="comandBlog animationComand"
-                >sudo ranger ~/.Blog/</span
-              >
+        <div class="terminalContent">
+          <div class="comandLine">
+            <h3 class="user">
+              User@DaarcyWebsite:<span class="simbols">~$</span><span class="comand animationComand">sudo cat about-me.txt</span>
             </h3>
-            <div class="contentBlog">
-              {% for blogCat in blogCategories %}
-              <div class="categoryBlog">
-                <p id="category" class="select category" data-category="{{blogCat.name}}">
-                  <i class="fa-solid fa-folder"></i> {{blogCat.name}}
-                </p>
-              </div>
-              <div class="fileBlog">
-                {% for blogFile in blogFiles %}
-                <p
-                  class="project select"
-                  data-category="{{blogCat.name}}"
-                  data-project-content="{{blogFile.file}}"
-                >
-                  <i class="fa-solid fa-file-lines"></i> {{blogFile.file}}
-                </p>
-                {% endfor %}
-              </div>
-              <div class="contentFile">
-                {% for blogFile in blogFiles %}
-                <p
-                  class="project-content"
-                  data-category="{{blogCat.name}}"
-                  data-project-content="{{blogFile.file}}"
-                >
-                {{ blogFile.fileContent|linebreaksbr|safe }}
-            
-              </p>
-                {% endfor %}
-              </div>
-              {% endfor %}
+          </div>
+          <div class="text animationText">
+            {% for about in abouts %}<p class="readMore">{{ about.aboutResume }}</p>{% endfor %}
+            <br class="readMore" />
+            <p class="readMore">Amplíe la ventana para obtener más detalles...</p>
+            <div class="details">
+              {% for aboutCom in abouts %}<p>{{ aboutCom.aboutComplete|linebreaks|safe }}</p>{% endfor %}
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <div id="draggable5" class="terminal terminalContact">
-      <div class="bar">
-        <p>Contact</p>
-        <div class="buttons">
-          <p id="minContact" class="min">
-            <i class="fa-solid fa-window-minimize"></i>
-          </p>
-          <p id="restoreContact" class="restore">
-            <i class="fa-regular fa-window-restore"></i>
-          </p>
-          <p id="maxContact" class="max">
-            <i class="fa-regular fa-window-maximize"></i>
-          </p>
-          <p id="closeContact" class="close" class="close">
-            <i class="fa-regular fa-rectangle-xmark"></i>
-          </p>
+      <div id="draggable2" class="terminal terminalProjects">
+        <div class="bar">
+          <p>Projects</p>
+          <div class="buttons">
+            <p id="minProject" class="min">
+              <i class="fa-solid fa-window-minimize"></i>
+            </p>
+            <p id="restoreProject" class="restore">
+              <i class="fa-regular fa-window-restore"></i>
+            </p>
+            <p id="maxProject" class="max">
+              <i class="fa-regular fa-window-maximize"></i>
+            </p>
+            <p id="closeProject" class="close" class="close">
+              <i class="fa-regular fa-rectangle-xmark"></i>
+            </p>
+          </div>
+        </div>
+        <div class="terminalContent">
+          <div class="comandLine">
+            <h3 class="user">
+              User@DaarcyWebsite:<span class="simbols">~$</span><span class="comand animationComand">sudo cat Projects.txt</span>
+            </h3>
+          </div>
+          <div class="text animationText">
+            {% for project in projects %}<p>{{ project.projectResume|linebreaks }}</p>{% endfor %}
+            <br class="readMore" />
+            <p class="readMore">Amplíe la ventana para obtener más detalles...</p>
+            <div class="readMore details detailsProjects">
+              <a>
+                <div id="websiteButton">
+                  <h1>Desarrollo Web</h1>
+                </div>
+              </a>
+              <a>
+                <div id="datascienceButton">
+                  <h1>Ciencia de Datos</h1>
+                </div>
+              </a>
+            </div>
+            <div class="details">
+              <div id="websites" class="readMore websites">
+                {% for project in projects %}
+                  <img src="{{ project.projectImage.url }}"
+                       alt="website"
+                       class="websiteImage"
+                       data-category="{{ project.projectName }}" />
+                {% endfor %}
+              </div>
+              <div class="websiteInfo">
+                {% for project in projects %}
+                  <div class="website" data-category="{{ project.projectName }}">
+                    <p>{{ project.projectName }}</p>
+                    <p>{{ project.projectWebsiteResume }}</p>
+                    <div class="websiteImageDescription">
+                      {% for image in project.images.all %}
+                        {% if image.projectWebsiteImages %}<img src="{{ image.projectWebsiteImages.url }}" alt="website" />{% endif %}
+                      {% endfor %}
+                    </div>
+                    <p>Codigo en github:</p>
+                    <a href="{{ project.projectWebsiteUrl }}">{{ project.projectWebsiteUrl }}</a>
+                    <p>Herramientas que se ocuparon para este proyecto</p>
+                    <div id="websites" class="tools">
+                      {% for image in project.images.all %}
+                        {% if image.projectWebsiteTools %}<img src="{{ image.projectWebsiteTools.url }}" alt="website" />{% endif %}
+                      {% endfor %}
+                    </div>
+                  </div>
+                {% endfor %}
+              </div>
+              <div id="datascience" class="readMore datascience">
+                <p>pendiente</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="terminalContent">
-        <div class="comandLine">
-          <h3 class="user">
-            User@DaarcyWebsite:<span class="simbols">~$ </span
-            ><span class="comand animationComand">sudo cat Contact.txt</span>
-          </h3>
+      <div id="draggable3" class="terminal terminalSkills">
+        <div class="bar">
+          <p>Skills</p>
+          <div class="buttons">
+            <p id="minSkills" class="min">
+              <i class="fa-solid fa-window-minimize"></i>
+            </p>
+            <p id="restoreSkills" class="restore">
+              <i class="fa-regular fa-window-restore"></i>
+            </p>
+            <p id="maxSkills" class="max">
+              <i class="fa-regular fa-window-maximize"></i>
+            </p>
+            <p id="closeSkills" class="close" class="close">
+              <i class="fa-regular fa-rectangle-xmark"></i>
+            </p>
+          </div>
         </div>
-        <div class="text animationText">
-          {% for contact in contacts %}
-            <p class="readMore">
-              {{contact.contactResume}}
-            </p>
-          {% endfor %}
-          <br class="readMore" />
-          <p class="readMore">Amplíe la ventana para obtener más detalles...</p>
-          <div class="details">
-            {% for contact in contacts %}
-            <p>
-              {{contact.contactComplete}}
-            </p>
-          {% endfor %}
-            <div class="form">
-              <h2>Contacto</h2>
-              <form action="procesar_formulario.php" method="post">
-                <label for="nombre">Nombre:</label>
-                <input
-                  class="name"
-                  type="text"
-                  id="nombre"
-                  name="nombre"
-                  required
-                />
-
-                <label for="telefono">Número de Teléfono:</label>
-                <input class="phone" type="tel" id="telefono" name="telefono" />
-
-                <label for="correo">Correo Electrónico:</label>
-                <input
-                  class="email"
-                  type="email"
-                  id="correo"
-                  name="correo"
-                  required
-                />
-
-                <label for="mensaje">Mensaje:</label>
-                <textarea
-                  class="message"
-                  id="mensaje"
-                  name="mensaje"
-                  rows="4"
-                  required
-                ></textarea>
-
-                <button class="button-24" role="button">Enviar</button>
-              </form>
-              <div class="tools">
-                {% for contact in contacts %}
-                <a href="{{contact.youtubeUrl}}">
-                  <img src="{{ contact.youtubeImage.url }}" alt="website" />
+        <div class="terminalContent">
+          <div class="comandLine">
+            <h3 class="user">
+              User@DaarcyWebsite:<span class="simbols">~$</span><span class="comand animationComand">sudo cat Skills.txt</span>
+            </h3>
+          </div>
+          <div class="text animationText">
+            {% for skill in skills %}<p class="readMore">{{ skill.skillsResume }}</p>{% endfor %}
+            <br class="readMore" />
+            <p class="readMore">Amplíe la ventana para obtener más detalles...</p>
+            <div class="details">
+              {% for skill in skills %}<p>{{ skill.skillComplete|linebreaks }}</p>{% endfor %}
+              <p>Mis habilidades se dividen en categorías como:</p>
+              <div class="readMore details detailSkills">
+                <a>
+                  <div id="programmingLanguagesButton">
+                    <h1>Lenguajes de Programación</h1>
+                  </div>
                 </a>
-                <a href="{{contact.InstagramUrl}}">
-                  <img src="{{ contact.instagramImage.url }}" alt="website" />
+                <a>
+                  <div id="userInterfaceButton">
+                    <h1>Interfaz de Usuario y Desarrollo de Aplicaciones</h1>
+                  </div>
                 </a>
-                <a href="{{contact.githubUrl}}">
-                  <img src="{{ contact.githubImage.url }}" alt="website" />
+                <a>
+                  <div id="developmentToolsButton">
+                    <h1>Herramientas de Desarrollo</h1>
+                  </div>
                 </a>
-                <a href="{{contact.linkedinUrl}}">
-                  <img src="{{ contact.linkedinImage.url }}" alt="website" />
+                <a>
+                  <div id="databasesButton">
+                    <h1>Bases de Datos</h1>
+                  </div>
                 </a>
-
+                <a>
+                  <div id="dataProcessingButton">
+                    <h1>Procesamiento de Datos y Análisis</h1>
+                  </div>
+                </a>
+                <a>
+                  <div id="operatingSystemsButton">
+                    <h1>Sistemas Operativos</h1>
+                  </div>
+                </a>
+              </div>
+              <div id="programmingLanguages" class="contentSkills">
+                <div class="textSkills">
+                  {% for skill in skills %}<p>{{ skill.programingLanguageResume }}</p>{% endfor %}
+                </div>
+                <div class="tools">
+                  {% for skillsImage in skillsImages %}
+                    {% if skillsImage.programingLanguageImages %}
+                      <img src="{{ skillsImage.programingLanguageImages.url }}" alt="website" />
+                    {% endif %}
                   {% endfor %}
+                </div>
+              </div>
+              <div id="userInterface" class="contentSkills">
+                <div class="textSkills">
+                  {% for skill in skills %}<p>{{ skill.userInterfaceResume }}</p>{% endfor %}
+                </div>
+                <div class="tools">
+                  {% for skillsImage in skillsImages %}
+                    {% if skillsImage.userInterfaceImages %}
+                      <img src="{{ skillsImage.userInterfaceImages.url }}" alt="website" />
+                    {% endif %}
+                  {% endfor %}
+                </div>
+              </div>
+              <div id="developmentTools" class="contentSkills">
+                <div class="textSkills">
+                  {% for skill in skills %}<p>{{ skill.developmentToolsResume }}</p>{% endfor %}
+                </div>
+                <div class="tools">
+                  {% for skillsImage in skillsImages %}
+                    {% if skillsImage.developmentToolsImages %}
+                      <img src="{{ skillsImage.developmentToolsImages.url }}" alt="website" />
+                    {% endif %}
+                  {% endfor %}
+                </div>
+              </div>
+              <div id="databases" class="contentSkills">
+                <div class="textSkills">
+                  {% for skill in skills %}<p>{{ skill.databasesResume }}</p>{% endfor %}
+                </div>
+                <div class="tools">
+                  {% for skillsImage in skillsImages %}
+                    {% if skillsImage.databasesImages %}<img src="{{ skillsImage.databasesImages.url }}" alt="website" />{% endif %}
+                  {% endfor %}
+                </div>
+              </div>
+              <div id="dataProcessing" class="contentSkills">
+                <div class="textSkills">
+                  {% for skill in skills %}<p>{{ skill.dataProcessingResume }}</p>{% endfor %}
+                </div>
+                <div class="tools">
+                  {% for skillsImage in skillsImages %}
+                    {% if skillsImage.dataProcessingImages %}
+                      <img src="{{ skillsImage.dataProcessingImages.url }}" alt="website" />
+                    {% endif %}
+                  {% endfor %}
+                </div>
+              </div>
+              <div id="operatingSystems" class="contentSkills">
+                <div class="textSkills">
+                  {% for skill in skills %}<p>{{ skill.operatingSystemsResume }}</p>{% endfor %}
+                </div>
+                <div class="tools">
+                  {% for skillsImage in skillsImages %}
+                    {% if skillsImage.operatingSystemsImages %}
+                      <img src="{{ skillsImage.operatingSystemsImages.url }}" alt="website" />
+                    {% endif %}
+                  {% endfor %}
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="display">
-      <section id="first" class="slide first"></section>
-      <section id="second" class="slide second"></section>
-      <section id="third" class="slide third"></section>
-      <section id="fourth" class="slide fourth"></section>
-      <section id="fifth" class="slide fifth"></section>
-    </div>
-  </main>
-</body>
-
+      <div id="draggable4" class="terminal terminalBlog">
+        <div class="bar">
+          <p>Blog</p>
+          <div class="buttons">
+            <p id="minBlog" class="min">
+              <i class="fa-solid fa-window-minimize"></i>
+            </p>
+            <p id="restoreBlog" class="restore">
+              <i class="fa-regular fa-window-restore"></i>
+            </p>
+            <p id="maxBlog" class="max">
+              <i class="fa-regular fa-window-maximize"></i>
+            </p>
+            <p id="closeBlog" class="close" class="close">
+              <i class="fa-regular fa-rectangle-xmark"></i>
+            </p>
+          </div>
+        </div>
+        <div class="terminalContent">
+          <div class="comandLine">
+            <h3 class="readMore user">
+              User@DaarcyWebsite:<span class="simbols">~$</span><span class="comand animationComand">sudo cat Blog.txt</span>
+            </h3>
+          </div>
+          <div class="text textBlog animationText">
+            {% for blogCategory in blogCategories %}<p class="readMore">{{ blogCategory.blogResume }}</p>{% endfor %}
+            <br class="readMore" />
+            <p class="readMore">Amplíe la ventana para obtener más detalles...</p>
+            <div class="details">
+              <h3 class="userBlog">
+                User@DaarcyWebsite:<span class="simbols">~$</span><span class="comandBlog animationComand">sudo ranger ~/.Blog/</span>
+              </h3>
+              <div class="contentBlog">
+                {% for blogCat in blogCategories %}
+                  <div class="categoryBlog">
+                    <p id="category"
+                       class="select category"
+                       data-category="{{ blogCat.name }}">
+                      <i class="fa-solid fa-folder"></i> {{ blogCat.name }}
+                    </p>
+                  </div>
+                  <div class="fileBlog">
+                    {% for blogFile in blogFiles %}
+                      <p class="project select"
+                         data-category="{{ blogCat.name }}"
+                         data-project-content="{{ blogFile.file }}">
+                        <i class="fa-solid fa-file-lines"></i> {{ blogFile.file }}
+                      </p>
+                    {% endfor %}
+                  </div>
+                  <div class="contentFile">
+                    {% for blogFile in blogFiles %}
+                      <p class="project-content"
+                         data-category="{{ blogCat.name }}"
+                         data-project-content="{{ blogFile.file }}">{{ blogFile.fileContent|linebreaksbr|safe }}</p>
+                    {% endfor %}
+                  </div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="draggable5" class="terminal terminalContact">
+        <div class="bar">
+          <p>Contact</p>
+          <div class="buttons">
+            <p id="minContact" class="min">
+              <i class="fa-solid fa-window-minimize"></i>
+            </p>
+            <p id="restoreContact" class="restore">
+              <i class="fa-regular fa-window-restore"></i>
+            </p>
+            <p id="maxContact" class="max">
+              <i class="fa-regular fa-window-maximize"></i>
+            </p>
+            <p id="closeContact" class="close" class="close">
+              <i class="fa-regular fa-rectangle-xmark"></i>
+            </p>
+          </div>
+        </div>
+        <div class="terminalContent">
+          <div class="comandLine">
+            <h3 class="user">
+              User@DaarcyWebsite:<span class="simbols">~$</span><span class="comand animationComand">sudo cat Contact.txt</span>
+            </h3>
+          </div>
+          <div class="text animationText">
+            {% for contact in contacts %}<p class="readMore">{{ contact.contactResume }}</p>{% endfor %}
+            <br class="readMore" />
+            <p class="readMore">Amplíe la ventana para obtener más detalles...</p>
+            <div class="details">
+              {% for contact in contacts %}<p>{{ contact.contactComplete }}</p>{% endfor %}
+              <div class="form">
+                <h2>Contacto</h2>
+                <form action="procesar_formulario.php" method="post">
+                  <label for="nombre">Nombre:</label>
+                  <input class="name" type="text" id="nombre" name="nombre" required />
+                  <label for="telefono">Número de Teléfono:</label>
+                  <input class="phone" type="tel" id="telefono" name="telefono" />
+                  <label for="correo">Correo Electrónico:</label>
+                  <input class="email" type="email" id="correo" name="correo" required />
+                  <label for="mensaje">Mensaje:</label>
+                  <textarea class="message" id="mensaje" name="mensaje" rows="4" required></textarea>
+                  <button class="button-24" role="button">Enviar</button>
+                </form>
+                <div class="tools">
+                  {% for contact in contacts %}
+                    <a href="{{ contact.youtubeUrl }}">
+                      <img src="{{ contact.youtubeImage.url }}" alt="website" />
+                    </a>
+                    <a href="{{ contact.InstagramUrl }}">
+                      <img src="{{ contact.instagramImage.url }}" alt="website" />
+                    </a>
+                    <a href="{{ contact.githubUrl }}">
+                      <img src="{{ contact.githubImage.url }}" alt="website" />
+                    </a>
+                    <a href="{{ contact.linkedinUrl }}">
+                      <img src="{{ contact.linkedinImage.url }}" alt="website" />
+                    </a>
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="display">
+        <section id="first" class="slide first">
+        </section>
+        <section id="second" class="slide second">
+        </section>
+        <section id="third" class="slide third">
+        </section>
+        <section id="fourth" class="slide fourth">
+        </section>
+        <section id="fifth" class="slide fifth">
+        </section>
+      </div>
+    </main>
+  </body>
 {% endblock content %}

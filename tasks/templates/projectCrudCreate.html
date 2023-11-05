@@ -1,47 +1,48 @@
-{% extends 'base.html' %} {% load static %} {% block content %}
-<body class="bodyAdmin">
-      <div class="terminalContent projects">
-        <div class="comandLine">
-          <h3 class="user">
-            User@DaarcyWebsite:<span class="simbols">~$ </span
-            ><span class="comand animationComand">sudo cat crudProject.txt</span>
-          </h3>
-        </div>
-        <div class="text animationText">
-            <div class="options">
-                <h2>Crud</h2>
-                <form method="post" enctype="multipart/form-data">
-                  {% csrf_token %}
-                  {% comment %} {{ formAbout.as_p }} {% endcomment %}
-                    {{ skillForm.skillsResume.label_tag }}
-                    {{ skillsResume.skillsResume }}
-                    {{ skillsResume.skillComplete.label_tag }}
-                    {{ skillsResume.skillComplete }}
-                    {{ skillsResume.programingLanguageResume.label_tag }}
-                    {{ skillsResume.programingLanguageResume }}
-                    {{ skillsResume.developmentToolsResume.label_tag }}
-                    {{ skillsResume.developmentToolsResume }}
-                    {{ skillsResume.databasesResume.label_tag }}
-                    {{ skillsResume.databasesResume }}
-                    {{ skillsResume.dataProcessingResume.label_tag }}
-                    {{ skillsResume.dataProcessingResume }}
-                    {{ projectImageForm.projectWebsiteImages.label_tag }}
-                    <input type="file"  multiple name="projectWebsiteImages" id="projectWebsiteImages"/>
-                    {{ projectImageForm.projectWebsiteTools.label_tag }}
-                    <input type="file"  multiple name="projectWebsiteTools" id="projectWebsiteTools"/>
-                  <button type="submit">Guardar</button>
-                </form>
-
-                {% for image in project.images.all %}
-                    {% if image.projectWebsiteImages %}
-                      <img src="{{ image.projectWebsiteImages.url }}" alt="website" />
-                    {% endif %}
-                {% endfor %}
-            </div>
-          </div>
-          <a href="{% url 'crud' %}">volver</a>
-        </div>
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+  <body class="bodyAdmin">
+    <div class="terminalContent projects">
+      <div class="comandLine">
+        <h3 class="user">
+          User@DaarcyWebsite:<span class="simbols">~$</span><span class="comand animationComand">sudo cat crudProject.txt</span>
+        </h3>
       </div>
-      
-</body>
-{% endblock content %}
+      <div class="text animationText">
+        <div class="options">
+          <h2>Crud</h2>
+          <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% comment %} {{ formAbout.as_p }} {% endcomment %}
+            {{ skillForm.skillsResume.label_tag }}
+            {{ skillsResume.skillsResume }}
+            {{ skillsResume.skillComplete.label_tag }}
+            {{ skillsResume.skillComplete }}
+            {{ skillsResume.programingLanguageResume.label_tag }}
+            {{ skillsResume.programingLanguageResume }}
+            {{ skillsResume.developmentToolsResume.label_tag }}
+            {{ skillsResume.developmentToolsResume }}
+            {{ skillsResume.databasesResume.label_tag }}
+            {{ skillsResume.databasesResume }}
+            {{ skillsResume.dataProcessingResume.label_tag }}
+            {{ skillsResume.dataProcessingResume }}
+            {{ projectImageForm.projectWebsiteImages.label_tag }}
+            <input type="file"
+                   multiple
+                   name="projectWebsiteImages"
+                   id="projectWebsiteImages" />
+            {{ projectImageForm.projectWebsiteTools.label_tag }}
+            <input type="file"
+                   multiple
+                   name="projectWebsiteTools"
+                   id="projectWebsiteTools" />
+            <button type="submit">Guardar</button>
+          </form>
+          {% for image in project.images.all %}
+            {% if image.projectWebsiteImages %}<img src="{{ image.projectWebsiteImages.url }}" alt="website" />{% endif %}
+          {% endfor %}
+        </div>
+        <a href="{% url 'crud' %}">volver</a>
+      </div>
+    </body>
+  {% endblock content %}

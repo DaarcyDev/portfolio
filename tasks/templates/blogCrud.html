@@ -1,85 +1,85 @@
-{% extends 'base.html' %} {% load static %} {% block content %}
-<body class="bodyAdmin">
-      <div class="terminalContent projects">
-        <div class="comandLine">
-          <h3 class="user">
-            User@DaarcyWebsite:<span class="simbols">~$ </span
-            ><span class="comand animationComand">sudo cat crudProject.txt</span>
-          </h3>
-        </div>
-        <div class="text animationText">
-            <div class="options">
-                <h2>Crud</h2>
-                <div class="buttonsOption">
-                  <a href="{% url 'crudProjectCreate' %}">Create</a>
-              </div>
-              <div class="details">
-                <div class="websiteInfo">
-                  <table class="propiedades">
-                    <thead>
-                        <tr>
-                          <th>BlogCategory</th>
-                          {% for blogFile in blogFiles %}
-                          {% if blogFile.file %}
-                          <th>BlogFile</th>
-                          {% endif %}
-                          {% endfor %}
-                          
-                          {% for blogFile in blogFiles %}
-                          {% if blogFile.fileContent %}
-                          <th>BlogFileContet</th>
-                          {% endif %}
-                          {% endfor %}
-                          <th>Acciones</th>
-                        </tr>
-                    </thead>
-        
-                    <tbody> <!-- Mostrar los Resultados -->
-                        {% for blogCategory in blogCategories %}
-                        <tr>
-                            <td>{{ blogCategory.name }}</td>
-                            
-                              {% for blogFile in blogFiles %}
-                              {% if blogFile.file %}
-                              <td>
-                              {{ blogFile.file }}
-                              </td>
-                              {% endif %}
-                              {% endfor %}
-                            
-                            
-                              {% for blogFile in blogFiles %}
-                              {% if blogFile.fileContent %}
-                              <td>
-                              {{ blogFile.fileContent }}
-                              </td>
-                              {% endif %}
-                              {% endfor %}
-                            
-                            <td>
-                                <form method="POST" action="{% url 'crudProjectDelete' blogCategory.id %}"  class="w-100">
-                                  {% csrf_token %}
-                                    <input type="hidden" name="id" value="{{ blogCategory.id }}">
-                                    <input type="hidden" name="tipo" value="propiedad">
-                                    <input type="submit" class="boton-rojo-block" value="Eliminar">
-                                </form>
-                                
-                                <a href="{% url 'crudProjectUpdate' blogCategory.id %}" class="boton-amarillo-block">Actualizar</a>
-                              </td>
-                        </tr>
-                        {% endfor %} 
-                    </tbody>
-                </table>
-                </div>
-              </div>
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+  <body class="bodyAdmin">
+    <div class="terminalContent projects">
+      <div class="comandLine">
+        <h3 class="user">
+          User@DaarcyWebsite:<span class="simbols">~$</span><span class="comand animationComand">sudo cat crudProject.txt</span>
+        </h3>
+      </div>
+      <div class="text animationText">
+        <div class="options">
+          <h2>Crud</h2>
+          <div class="buttonsOption">
+            <a href="{% url 'crudBlogCreate' %}">Create</a>
+          </div>
+          <div class="details">
+<!-- Resto de tu HTML ... -->
 
-              <div class="buttonsOption">
-                <a href="{% url 'crud' %}">volver</a>
-              </div>
-            </div>
+<div class="websiteInfo">
+  {% for blogCategory in blogCategories %}
+  <table class="propiedades">
+    <thead>
+      <tr>
+        <th>BlogResume</th>
+        <th>BlogCategory</th>
+        {% for blogFile in blogCategory.blog_files.all %}
+        {% if blogFile.file %}<th>BlogFile</th>{% endif %}
+        {% endfor %}
+        {% for blogFile in blogCategory.blog_files.all %}
+        {% if blogFile.fileContent %}<th>BlogContent</th>{% endif %}
+        {% endfor %}
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+        <tr>
+          <td>{{ blogCategory.blogResume|truncatewords:50 }}</td>
+          <td>{{ blogCategory.name }}</td>
+          
+            {% for blogFile in blogCategory.blog_files.all %}
+              {% if blogFile.file %}
+              <td>{{ blogFile.file }}</td>
+              {% endif %}
+            {% endfor %}
+          
+          
+            {% for blogFile in blogCategory.blog_files.all %}
+              {% if blogFile.fileContent %}
+              <td>{{ blogFile.fileContent|truncatewords:50 }}</td>
+              {% endif %}
+            {% endfor %}
+          
+          <td>
+            <form method="POST"
+                  action="{% url 'crudBlogDelete' blogCategory.id %}"
+                  class="w-100">
+              {% csrf_token %}
+              <input type="hidden" name="id" value="{{ blogCategory.id }}">
+              <input type="hidden" name="tipo" value="propiedad">
+              <input type="submit" class="boton-rojo-block" value="Eliminar">
+            </form>
+            <a href="{% url 'crudBlogUpdate' blogCategory.id %}" class="boton-amarillo-block">Actualizar</a>
+          </td>
+        </tr>
+      
+    </tbody>
+  </table>
+  <br>
+  {% endfor %}
+</div>
+
+<!-- Resto de tu HTML ... -->
+
+
+          </div>
+          <div class="buttonsOption">
+            <a href="{% url 'crud' %}">volver</a>
           </div>
         </div>
       </div>
-      
-</body>
+    </div>
+  </body>
 {% endblock content %}

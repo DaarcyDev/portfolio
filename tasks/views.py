@@ -4,7 +4,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import user_passes_test, login_required
 from .models import Skill, About, Project, SkillsImages, ProjectImages, BlogCategory, BlogFile, Contact
-from .forms import AboutForm, ProjectForm, ProjectImageForm, SkillsForm, SkillsImageForm
+from .forms import AboutForm, ProjectForm, ProjectImageForm, SkillsForm, SkillsImageForm, BlogCategoryForm, BlogFileForm
 from django.shortcuts import get_object_or_404
 
 
@@ -473,3 +473,88 @@ def crudBlog(request):
         "blogCategories":blogCategory,
         "blogFiles":blogFile,
     })
+
+from django.forms import modelformset_factory
+
+@login_required
+def crudBlogCreate(request):
+    if request.method == "GET":
+        blogCategoryForm = BlogCategoryForm()
+        BlogFileFormSet = modelformset_factory(BlogFile, form=BlogFileForm, extra=1)
+        blogFileFormSet = BlogFileFormSet(queryset=BlogFile.objects.none())
+    else:
+        try:
+            blogCategoryForm = BlogCategoryForm(request.POST)
+            if blogCategoryForm.is_valid():
+                new_category = blogCategoryForm.save(commit=False)
+                new_category.user = request.user
+                new_category.save()
+
+                BlogFileFormSet = modelformset_factory(BlogFile, form=BlogFileForm, extra=1)
+                blogFileFormSet = BlogFileFormSet(request.POST, request.FILES, queryset=BlogFile.objects.none())
+
+                if blogFileFormSet.is_valid():
+                    for blogFileForm in blogFileFormSet:
+                        if blogFileForm.cleaned_data:
+                            new_file = blogFileForm.save(commit=False)
+                            new_file.category = new_category
+                            new_file.user = request.user
+                            new_file.save()
+
+                    return redirect("crudBlog")
+
+        except:
+            return render(request, 'blogCrudCreate.html', {
+                'blogCategoryForm': BlogCategoryForm,
+                'blogFileFormSet': blogFileFormSet,
+                'error': 'Please provide valid data'
+            })
+
+    return render(request, 'blogCrudCreate.html', {
+        'blogCategoryForm': blogCategoryForm,
+        'blogFileFormSet': blogFileFormSet,
+    })
+    
+@login_required
+def crudBlogUpdate(request, pk):
+    try:
+        blog_category = BlogCategory.objects.get(pk=pk)
+
+        if request.method == "GET":
+            blog_category_form = BlogCategoryForm(instance=blog_category)
+            BlogFileFormSet = modelformset_factory(BlogFile, form=BlogFileForm, extra=2)
+            blog_file_formset = BlogFileFormSet(queryset=blog_category.blog_files.all())
+
+        else:
+            blog_category_form = BlogCategoryForm(request.POST, instance=blog_category)
+
+            if blog_category_form.is_valid():
+                updated_category = blog_category_form.save()
+
+                BlogFileFormSet = modelformset_factory(BlogFile, form=BlogFileForm, extra=1)
+                blog_file_formset = BlogFileFormSet(request.POST, request.FILES, queryset=updated_category.blog_files.all())
+
+                if blog_file_formset.is_valid():
+                    for blog_file_form in blog_file_formset:
+                        if blog_file_form.cleaned_data:
+                            updated_file = blog_file_form.save(commit=False)
+                            updated_file.category = updated_category
+                            updated_file.save()
+
+                    return redirect("crudBlog")
+
+    except BlogCategory.DoesNotExist:
+        return render(request, 'crud.html')
+
+    return render(request, 'blogCrudUpdate.html', {
+        'blogCategoryForm': blog_category_form,
+        'blogFileFormSet': blog_file_formset,
+        'blogCategory': blog_category,
+    })
+
+@login_required
+def crudBlogDelete(request, pk):
+    blog = BlogCategory.objects.get(pk=pk)
+    blog.delete()
+
+    return redirect("crudBlog")

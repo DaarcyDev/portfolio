@@ -1,5 +1,4 @@
-{%load static%}
-
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -7,20 +6,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{% static '/styles/app.css' %}">
-    {% comment %} <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css"> {% endcomment %}
-    <script src="https://kit.fontawesome.com/c945472186.js" crossorigin="anonymous"></script>
-    {% comment %} <link href="https://www.nerdfonts.com/assets/css/combo.css" rel="stylesheet" type="text/css"> {% endcomment %}
+    <script src="https://kit.fontawesome.com/c945472186.js"
+            crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;500;700&family=Pixelify+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;500;700&family=Pixelify+Sans:wght@400;600;700&display=swap"
+          rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
-  
-      {% block content %}
-
-      {% endblock content %}
-  
+  {% block content %}
+  {% endblock content %}
   <script src="{% static 'js/bundle.min.js' %}"></script>
   {% comment %} <script src="{% static 'js/bundle.min.js' %}"></script> {% endcomment %}
-
 </html>

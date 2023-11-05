@@ -1,126 +1,120 @@
-{% extends 'base.html' %} {% load static %} {% block content %}
-<body class="bodyAdmin">
-      <div class="terminalContent projects">
-        <div class="comandLine">
-          <h3 class="user">
-            User@DaarcyWebsite:<span class="simbols">~$ </span
-            ><span class="comand animationComand">sudo cat crudSkills.txt</span>
-          </h3>
-        </div>
-        <div class="text animationText">
-            <div class="options">
-                <h2>Crud</h2>
-                  {% if not skills %}
-
-                  <div class="buttonsOption">
-                    <a href="{% url 'crudSkillCreate' %}">Create</a>
-                  </div>
-                  {% endif %}
-              <div class="details">
-                <div class="websiteInfo">
-                  <table class="propiedades">
-                    <thead>
-                        <tr>
-                            <th>skillsResume</th>
-                            <th>skillComplete</th>
-                            <th>programingLanguageResume</th>
-                            <th>userInterfaceResume</th>
-                            <th>developmentToolsResume</th>
-                            <th>databasesResume</th>
-                            <th>dataProcessingResume</th>
-                            <th>operatingSystemsResume</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-        
-                    <tbody>
-                        {% for skill in skills %}
-                        <tr>
-                            <td>{{ skill.skillsResume|truncatewords:15 }}</td>
-                            <td>{{ skill.skillComplete|truncatewords:15 }}</td>
-                            <td>{{ skill.programingLanguageResume|truncatewords:15}}</td>
-                            <td>{{ skill.userInterfaceResume|truncatewords:15 }}</td>
-                            <td>{{skill.developmentToolsResume|truncatewords:15}}</td>
-                            <td>{{skill.databasesResume|truncatewords:15}}</td>
-                            <td>{{skill.dataProcessingResume|truncatewords:15}}</td>
-                            <td>{{skill.operatingSystemsResume|truncatewords:15}}</td>
-                            <td>
-                                <form method="POST" action="{% url 'crudSkillDelete' skill.id %}" class="w-100">
-                                  {% csrf_token %}
-                                    <input type="hidden" name="id" value="">
-                                    <input type="hidden" name="tipo" value="propiedad">
-                                    <input type="submit" class="boton-rojo-block" value="Eliminar">
-                                </form>
-                                
-                                <a href="{% url 'crudSkillUpdate' skill.id %}" class="boton-amarillo-block">Actualizar</a>
-                            </td>
-                        </tr>
-                        {% endfor %} 
-                    </tbody>
-                    <tfooter>
-                      {% for skill in skills %}
-                      <tr>
-                          <td></td>
-                          <td></td>
-                          <td class="tdImage">
-                            {% for skillsImage in skillsImages %}
-                            {% if skillsImage.programingLanguageImages %}
-                              <img src="{{ skillsImage.programingLanguageImages.url }}" alt="website" />
-                              {% endif %}
-                            {% endfor %}
-                          </td>
-                          <td class="tdImage">
-                            {% for skillsImage in skillsImages %}
-                            {% if skillsImage.userInterfaceImages %}
-                              <img src="{{ skillsImage.userInterfaceImages.url }}" alt="website" />
-                              {% endif %}
-                            {% endfor %}
-                          </td>
-                          <td class="tdImage">
-                            {% for skillsImage in skillsImages %}
-                            {% if skillsImage.developmentToolsImages %}
-                              <img src="{{ skillsImage.developmentToolsImages.url }}" alt="website" />
-                              {% endif %}
-                            {% endfor %}
-                          </td>
-                          <td class="tdImage">
-                            {% for skillsImage in skillsImages %}
-                            {% if skillsImage.databasesImages %}
-                              <img src="{{ skillsImage.databasesImages.url }}" alt="website" />
-                              {% endif %}
-                            {% endfor %}
-                          </td>
-                          <td class="tdImage">
-                            {% for skillsImage in skillsImages %}
-                            {% if skillsImage.dataProcessingImages %}
-                              <img src="{{ skillsImage.dataProcessingImages.url }}" alt="website" />
-                              {% endif %}
-                            {% endfor %}
-                          </td>
-                          <td class="tdImage">
-                            {% for skillsImage in skillsImages %}
-                            {% if skillsImage.operatingSystemsImages %}
-                              <img src="{{ skillsImage.operatingSystemsImages.url }}" alt="website" />
-                              {% endif %}
-                            {% endfor %}
-                          </td>
-                          <td>
-                              
-                          </td>
-                      </tr>
-                      {% endfor %} 
-                  </tfooter>
-                </table>
-                </div>
-              </div>
-
-              <div class="buttonsOption">
-                <a href="{% url 'crud' %}">volver</a>
-              </div>
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+  <body class="bodyAdmin">
+    <div class="terminalContent projects">
+      <div class="comandLine">
+        <h3 class="user">
+          User@DaarcyWebsite:<span class="simbols">~$</span><span class="comand animationComand">sudo cat crudSkills.txt</span>
+        </h3>
+      </div>
+      <div class="text animationText">
+        <div class="options">
+          <h2>Crud</h2>
+          {% if not skills %}
+            <div class="buttonsOption">
+              <a href="{% url 'crudSkillCreate' %}">Create</a>
             </div>
+          {% endif %}
+          <div class="details">
+            <div class="websiteInfo">
+              <table class="propiedades">
+                <thead>
+                  <tr>
+                    <th>skillsResume</th>
+                    <th>skillComplete</th>
+                    <th>programingLanguageResume</th>
+                    <th>userInterfaceResume</th>
+                    <th>developmentToolsResume</th>
+                    <th>databasesResume</th>
+                    <th>dataProcessingResume</th>
+                    <th>operatingSystemsResume</th>
+                    <th>Acciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for skill in skills %}
+                    <tr>
+                      <td>{{ skill.skillsResume|truncatewords:15 }}</td>
+                      <td>{{ skill.skillComplete|truncatewords:15 }}</td>
+                      <td>{{ skill.programingLanguageResume|truncatewords:15 }}</td>
+                      <td>{{ skill.userInterfaceResume|truncatewords:15 }}</td>
+                      <td>{{ skill.developmentToolsResume|truncatewords:15 }}</td>
+                      <td>{{ skill.databasesResume|truncatewords:15 }}</td>
+                      <td>{{ skill.dataProcessingResume|truncatewords:15 }}</td>
+                      <td>{{ skill.operatingSystemsResume|truncatewords:15 }}</td>
+                      <td>
+                        <form method="POST"
+                              action="{% url 'crudSkillDelete' skill.id %}"
+                              class="w-100">
+                          {% csrf_token %}
+                          <input type="hidden" name="id" value="">
+                          <input type="hidden" name="tipo" value="propiedad">
+                          <input type="submit" class="boton-rojo-block" value="Eliminar">
+                        </form>
+                        <a href="{% url 'crudSkillUpdate' skill.id %}"
+                           class="boton-amarillo-block">Actualizar</a>
+                      </td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+                <tfooter>
+                {% for skill in skills %}
+                  <tr>
+                    <td></td>
+                    <td></td>
+                    <td class="tdImage">
+                      {% for skillsImage in skillsImages %}
+                        {% if skillsImage.programingLanguageImages %}
+                          <img src="{{ skillsImage.programingLanguageImages.url }}" alt="website" />
+                        {% endif %}
+                      {% endfor %}
+                    </td>
+                    <td class="tdImage">
+                      {% for skillsImage in skillsImages %}
+                        {% if skillsImage.userInterfaceImages %}
+                          <img src="{{ skillsImage.userInterfaceImages.url }}" alt="website" />
+                        {% endif %}
+                      {% endfor %}
+                    </td>
+                    <td class="tdImage">
+                      {% for skillsImage in skillsImages %}
+                        {% if skillsImage.developmentToolsImages %}
+                          <img src="{{ skillsImage.developmentToolsImages.url }}" alt="website" />
+                        {% endif %}
+                      {% endfor %}
+                    </td>
+                    <td class="tdImage">
+                      {% for skillsImage in skillsImages %}
+                        {% if skillsImage.databasesImages %}<img src="{{ skillsImage.databasesImages.url }}" alt="website" />{% endif %}
+                      {% endfor %}
+                    </td>
+                    <td class="tdImage">
+                      {% for skillsImage in skillsImages %}
+                        {% if skillsImage.dataProcessingImages %}
+                          <img src="{{ skillsImage.dataProcessingImages.url }}" alt="website" />
+                        {% endif %}
+                      {% endfor %}
+                    </td>
+                    <td class="tdImage">
+                      {% for skillsImage in skillsImages %}
+                        {% if skillsImage.operatingSystemsImages %}
+                          <img src="{{ skillsImage.operatingSystemsImages.url }}" alt="website" />
+                        {% endif %}
+                      {% endfor %}
+                    </td>
+                    <td></td>
+                  </tr>
+                {% endfor %}
+                </tfooter>
+              </table>
+            </div>
+          </div>
+          <div class="buttonsOption">
+            <a href="{% url 'crud' %}">volver</a>
           </div>
         </div>
       </div>
-      
-</body>
+    </div>
+  </body>
 {% endblock content %}

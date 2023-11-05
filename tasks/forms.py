@@ -1,5 +1,5 @@
 from django import forms
-from .models import About,Project, ProjectImages, Skill, SkillsImages
+from .models import About,Project, ProjectImages, Skill, SkillsImages, BlogCategory, BlogFile
 from django.forms import ClearableFileInput, FileField
 
 class AboutForm(forms.ModelForm):
@@ -49,3 +49,13 @@ class SkillsImageForm(forms.ModelForm):
             'operatingSystemsImages': MultipleFileInput(attrs={'multiple': True}),
         }
 
+class BlogCategoryForm(forms.ModelForm):
+    class Meta:
+        model = BlogCategory
+        fields = ['name', 'blogResume']
+
+
+class BlogFileForm(forms.ModelForm):
+    class Meta:
+        model = BlogFile
+        fields = ['file', 'fileContent']

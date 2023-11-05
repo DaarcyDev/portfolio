@@ -28,9 +28,9 @@ urlpatterns = [
     path("DaarcyDevAdmin/Crud/Skill/Delete/<int:pk>",views.crudSkillDelete, name="crudSkillDelete"),
 
     path("DaarcyDevAdmin/Crud/Blog",views.crudBlog, name="crudBlog"),
-    # path("DaarcyDevAdmin/Crud/Blog/Create",views.crudBlogCreate, name="crudBlogCreate"),
-    # path("DaarcyDevAdmin/Crud/Blog/Update/<int:pk>",views.crudBlogUpdate, name="crudBlogUpdate"),
-    # path("DaarcyDevAdmin/Crud/Blog/Delete/<int:pk>",views.crudBlogDelete, name="crudBlogDelete"),
+    path("DaarcyDevAdmin/Crud/Blog/Create",views.crudBlogCreate, name="crudBlogCreate"),
+    path("DaarcyDevAdmin/Crud/Blog/Update/<int:pk>",views.crudBlogUpdate, name="crudBlogUpdate"),
+    path("DaarcyDevAdmin/Crud/Blog/Delete/<int:pk>",views.crudBlogDelete, name="crudBlogDelete"),
 
 ]
 

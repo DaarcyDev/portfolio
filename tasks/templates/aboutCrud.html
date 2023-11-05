@@ -1,61 +1,60 @@
-{% extends 'base.html' %} {% load static %} {% block content %}
-<body class="bodyAdmin">
-      <div class="terminalContent projects">
-        <div class="comandLine">
-          <h3 class="user">
-            User@DaarcyWebsite:<span class="simbols">~$ </span
-            ><span class="comand animationComand">sudo cat crudProject.txt</span>
-          </h3>
-        </div>
-        <div class="text animationText">
-            <div class="options">
-                <h2>Crud</h2>
-                  {% if not abouts %}
-                  <div class="buttonsOption">
-                    <a href="{% url 'crudAboutCreate' %}">Create</a>
-                  </div>
-                  {% endif %}                
-              <div class="details">
-                <div class="websiteInfo">
-                  <table class="propiedades">
-                    <thead>
-                        <tr>
-                            <th>AboutResume</th>
-                            <th>AboutComplete</th>
-                            <th>Acciones</th>
-                        </tr>
-                    </thead>
-        
-                    <tbody> <!-- Mostrar los Resultados -->
-                        {% for about in abouts %}
-                        <tr>
-                            <td>{{ about.aboutResume }}</td>
-                            <td>{{ about.aboutComplete }}</td>
-   
-                            <td>
-                                <form method="POST" action="{% url 'crudAboutDelete' about.id %}" class="w-100">
-                                    {% csrf_token %}
-                                    <input type="hidden" name="id" value="{{ project.id }}">
-                                    <input type="hidden" name="tipo" value="propiedad">
-                                    <input type="submit" class="boton-rojo-block" value="Eliminar">
-                                </form>
-                                
-                                <a href="{% url 'crudAboutUpdate' about.id %}" class="boton-amarillo-block">Actualizar</a>
-                            </td>
-                        </tr>
-                        {% endfor %} 
-                    </tbody>
-                </table>
-                </div>
-              </div>
-
-              <div class="buttonsOption">
-                <a href="{% url 'crud' %}">volver</a>
-              </div>
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+  <body class="bodyAdmin">
+    <div class="terminalContent projects">
+      <div class="comandLine">
+        <h3 class="user">
+          User@DaarcyWebsite:<span class="simbols">~$</span><span class="comand animationComand">sudo cat crudProject.txt</span>
+        </h3>
+      </div>
+      <div class="text animationText">
+        <div class="options">
+          <h2>Crud</h2>
+          {% if not abouts %}
+            <div class="buttonsOption">
+              <a href="{% url 'crudAboutCreate' %}">Create</a>
             </div>
+          {% endif %}
+          <div class="details">
+            <div class="websiteInfo">
+              <table class="propiedades">
+                <thead>
+                  <tr>
+                    <th>AboutResume</th>
+                    <th>AboutComplete</th>
+                    <th>Acciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- Mostrar los Resultados -->
+                  {% for about in abouts %}
+                    <tr>
+                      <td>{{ about.aboutResume }}</td>
+                      <td>{{ about.aboutComplete }}</td>
+                      <td>
+                        <form method="POST"
+                              action="{% url 'crudAboutDelete' about.id %}"
+                              class="w-100">
+                          {% csrf_token %}
+                          <input type="hidden" name="id" value="{{ project.id }}">
+                          <input type="hidden" name="tipo" value="propiedad">
+                          <input type="submit" class="boton-rojo-block" value="Eliminar">
+                        </form>
+                        <a href="{% url 'crudAboutUpdate' about.id %}"
+                           class="boton-amarillo-block">Actualizar</a>
+                      </td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="buttonsOption">
+            <a href="{% url 'crud' %}">volver</a>
           </div>
         </div>
       </div>
-      
-</body>
+    </div>
+  </body>
 {% endblock content %}
