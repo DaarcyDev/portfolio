@@ -336,31 +336,42 @@
                 User@DaarcyWebsite:<span class="simbols">~$</span><span class="comandBlog animationComand">sudo ranger ~/.Blog/</span>
               </h3>
               <div class="contentBlog">
-                {% for blogCat in blogCategories %}
                   <div class="categoryBlog">
+                    {% for blogCategory in blogCategories %}
+
                     <p id="category"
                        class="select category"
-                       data-category="{{ blogCat.name }}">
-                      <i class="fa-solid fa-folder"></i> {{ blogCat.name }}
+                       data-category="{{ blogCategory.name }}">
+                      <i class="fa-solid fa-folder"></i> {{ blogCategory.name }}
                     </p>
+                    {% endfor %}
+
                   </div>
                   <div class="fileBlog">
-                    {% for blogFile in blogFiles %}
-                      <p class="project select"
-                         data-category="{{ blogCat.name }}"
+                    {% for blogCategory in blogCategories %}
+
+                    {% for blogFile in blogCategory.blog_files.all %}
+                    <p class="project "
+                         data-category="{{ blogCategory.name }}"
                          data-project-content="{{ blogFile.file }}">
-                        <i class="fa-solid fa-file-lines"></i> {{ blogFile.file }}
-                      </p>
+                        <i class="fa-solid fa-file-lines"></i> 
+                        {{ blogFile.file }}
+                    </p>
                     {% endfor %}
+                    {% endfor %}
+
                   </div>
                   <div class="contentFile">
+                    {% for blogCategory in blogCategories %}
+
                     {% for blogFile in blogFiles %}
                       <p class="project-content"
-                         data-category="{{ blogCat.name }}"
+                         data-category="{{ blogCategory.name }}"
                          data-project-content="{{ blogFile.file }}">{{ blogFile.fileContent|linebreaksbr|safe }}</p>
                     {% endfor %}
+                    {% endfor %}
+
                   </div>
-                {% endfor %}
               </div>
             </div>
           </div>

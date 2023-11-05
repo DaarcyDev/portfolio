@@ -40,19 +40,27 @@ function ranger() {
       });
       category.classList.add("select");      
       const selectedCategory = category.getAttribute('data-category');
+      
       projects.forEach((project) => {
-        project.style.display = 'none';
+        
+        if (project.getAttribute('data-category') != selectedCategory) {
+          project.style.display = 'none';
+        }
       });
       projectContent.forEach((content) => {
-        content.style.display = 'none';
+        if (content.getAttribute('data-category') === selectedCategory) {
+          content.style.display = 'none';
+        }
       });
   
       projects.forEach((project) => {
+        
         if (project.getAttribute('data-category') === selectedCategory) {
           project.style.display = 'block';
         }
       });
       projectContent.forEach((content) => {
+        
         if (content.getAttribute('data-category') === selectedCategory) {
           content.style.display = 'block';
         }
@@ -76,8 +84,9 @@ function ranger() {
       projectContent.forEach((content) => {
         content.style.display = 'none';
       });
+      const selectedCategory = project.getAttribute('data-category');
       projectContent.forEach((content) => {
-        if (content.getAttribute('data-project-content') === projectCategory) {
+        if (content.getAttribute('data-project-content') === projectCategory && content.getAttribute('data-category') === selectedCategory) {
           content.style.display = 'block';
         }
       });
@@ -247,32 +256,6 @@ function initializeTerminal() {
       const databasesButton = document.getElementById("databasesButton")
       const dataProcessingButton = document.getElementById("dataProcessingButton")
       const operatingSystemsButton = document.getElementById("operatingSystemsButton")
-
-      // const website1 = document.getElementById("website1")
-      // const website1Info = document.getElementById("website1Info")
-      // const website2 = document.getElementById("website2")
-      // const website2Info = document.getElementById("website2Info")
-      // const website3 = document.getElementById("website3")
-      // const website3Info = document.getElementById("website3Info")
-
-      // website1.addEventListener("click",function(){
-      //   website1Info.style.display="flex"
-      //   website1Info.scrollIntoView({ behavior: "smooth", block: "end" });
-      //   website2Info.style.display="none"
-      //   website3Info.style.display="none"
-      // })
-      // website2.addEventListener("click",function(){
-      //   website1Info.style.display="none"
-      //   website2Info.style.display="flex"
-      //   website2Info.scrollIntoView({ behavior: "smooth", block: "end" });
-      //   website3Info.style.display="none"
-      // })
-      // website3.addEventListener("click",function(){
-      //   website1Info.style.display="none"
-      //   website2Info.style.display="none"
-      //   website3Info.style.display="flex"
-      //   website3Info.scrollIntoView({ behavior: "smooth", block: "end" });
-      // })
 
       programmingLanguagesButton.addEventListener("click",function(){
         programmingLanguages.classList.add("tools")
