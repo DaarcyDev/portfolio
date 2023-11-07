@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 {% load static %}
 {% block content %}
   <body class="bodyAdmin">
@@ -10,16 +10,24 @@
       </div>
       <div class="text animationText">
         <div class="options">
+          <a class="button-24" href="{% url 'crudBlog' %}">volver</a>
           <h2>Crud</h2>
-          <form method="post" enctype="multipart/form-data">
+          <form method="post" enctype="multipart/form-data" class="formBlog">
             {% csrf_token %}
-            {{ blogCategoryForm.as_p }}
-            {{ blogFileFormSet.as_p }}
-            <button type="submit">Guardar</button>
+            {{ blogCategoryForm.blogResume.label_tag }}
+            {{ blogCategoryForm.blogResume }}
+            {{ blogCategoryForm.name.label_tag }}
+            {{ blogCategoryForm.name }}
+            {% for form in blogFileFormSet %}
+              {{ form.file.label_tag }}
+              {{ form.file }}
+              {{ form.fileContent.label_tag }}
+              {{ form.fileContent }}
+            {% endfor %}
+            <button class="button-24" type="submit">Guardar</button>
           </form>
         </div>
       </div>
-      <a href="{% url 'crud' %}">volver</a>
     </div>
   </body>
 {% endblock content %}

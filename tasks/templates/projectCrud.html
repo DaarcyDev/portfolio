@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 {% load static %}
 {% block content %}
   <body class="bodyAdmin">
@@ -54,7 +54,7 @@
                         {% endfor %}
                       </td>
                       <td>
-                        <form method="POST"
+                        <form method="post"
                               action="{% url 'crudProjectDelete' project.id %}"
                               class="w-100">
                           {% csrf_token %}

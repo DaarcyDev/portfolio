@@ -1,7 +1,7 @@
 from django.db import models
 
 class About(models.Model):
-    aboutResume = models.CharField(max_length=500)
+    aboutResume = models.TextField()
     aboutComplete = models.TextField()
     aboutImages = models.ImageField(upload_to='about_images/', blank=True, null=True)
 
@@ -9,8 +9,8 @@ class About(models.Model):
         return self.aboutResume
     
 class Project(models.Model):
-    projectResume = models.CharField(max_length=500, blank=True)
-    projectComplete = models.TextField(blank=True)
+    projectResume = models.TextField()
+    projectComplete = models.TextField()
     projectName = models.CharField(max_length=500, blank=True)
     projectImage = models.ImageField(upload_to='project_images/')
     projectWebsiteResume = models.TextField()
@@ -30,8 +30,8 @@ class ProjectImages(models.Model):
 
 
 class Skill(models.Model):
-    skillsResume = models.CharField(max_length=500,blank=True)
-    skillComplete = models.TextField(blank=True)
+    skillsResume = models.TextField()
+    skillComplete = models.TextField()
     programingLanguageResume = models.TextField()
     userInterfaceResume = models.TextField()
     developmentToolsResume = models.TextField()
@@ -56,8 +56,9 @@ class SkillsImages(models.Model):
     
     
 class BlogCategory(models.Model):
+    blogResume = models.TextField()
     name = models.CharField(max_length=500)
-    blogResume = models.CharField(max_length=500, blank=True)
+    
     
     def __str__(self):
         return self.name
@@ -71,7 +72,7 @@ class BlogFile(models.Model):
         return self.file
 
 class Contact(models.Model):
-    contactResume = models.CharField(max_length=500)
+    contactResume = models.TextField()
     contactComplete = models.TextField()
     youtubeUrl = models.URLField()
     instagramUrl = models.URLField()

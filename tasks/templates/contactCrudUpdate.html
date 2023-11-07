@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 {% load static %}
 {% block content %}
   <body class="bodyAdmin">
@@ -10,15 +10,35 @@
       </div>
       <div class="text animationText">
         <div class="options">
+          <a class="button-24" href="{% url 'crudContact' %}">volver</a>
           <h2>Crud</h2>
-          <form method="post" enctype="multipart/form-data">
+          <form method="post" enctype="multipart/form-data" class="formContact">
             {% csrf_token %}
-            {{ formContacts.as_p}}
-            <button type="submit">Guardar</button>
+            {{ formContacts.contactResume.label_tag }}
+            {{ formContacts.contactResume }}
+            {{ formContacts.contactComplete.label_tag }}
+            {{ formContacts.contactComplete }}
+            {{ formContacts.youtubeUrl.label_tag }}
+            {{ formContacts.youtubeUrl }}
+            {{ formContacts.instagramUrl.label_tag }}
+            {{ formContacts.instagramUrl }}
+            {{ formContacts.githubUrl.label_tag }}
+            {{ formContacts.githubUrl }}
+            {{ formContacts.linkedinUrl.label_tag }}
+            {{ formContacts.linkedinUrl }}
+            {{ formContacts.youtubeImage.label_tag }}
+            {{ formContacts.youtubeImage }}
+            {{ formContacts.instagramImage.label_tag }}
+            {{ formContacts.instagramImage }}
+            {{ formContacts.githubImage.label_tag }}
+            {{ formContacts.githubImage }}
+            {{ formContacts.linkedinImage.label_tag }}
+            {{ formContacts.linkedinImage }}
+            <button class="button-24" type="submit">Guardar</button>
           </form>
         </div>
       </div>
-      <a href="{% url 'crud' %}">volver</a>
+      <a href="{% url 'crudContact' %}">volver</a>
     </div>
   </body>
 {% endblock content %}

@@ -16,6 +16,181 @@
             .form{
                 height: 70%;
                 justify-content: center;
+                
+            }
+            .formSkill{
+                gap: 3rem;
+                label{
+                    color: $blanco;
+                    font-size: 2rem;
+                  }
+                  input{
+                    border: 2px solid $verde;
+                    background: transparent;border: 2px solid $verde;
+                    background: transparent;
+                    font-size: 2rem;
+                    color: $blanco;
+                    width: auto;
+                    font-size: 2rem;
+                    color: $blanco;
+                  }
+                  textarea{
+                    border: 2px solid $verde;
+                    background: transparent;
+                    width: 100%;
+                    font-size: 2rem;
+                    color: $blanco;
+                    height: 10rem;
+                  
+                  }
+                  .formContent{
+                    display: flex;
+                    height: 70%;
+                    flex-direction: row;
+                    justify-content: space-around;
+                  }
+                  
+                  .textArea{
+                    display: flex;
+                    flex-direction: column;
+                    gap: 2rem;
+                    justify-content: space-between;
+                    align-items: center;
+                    width: 50%;
+                  }
+                  .imageField{
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-evenly;
+                    width: auto;
+                    align-items: center;
+                  }
+                  
+            }
+            .formProject{
+                gap: 3rem;
+                label{
+                    color: $blanco;
+                    font-size: 2rem;
+                  }
+                  input{
+                    border: 2px solid $verde;
+                    background: transparent;border: 2px solid $verde;
+                    background: transparent;
+                    font-size: 2rem;
+                    color: $blanco;
+                    width: auto;
+                    font-size: 2rem;
+                    color: $blanco;
+                  }
+                  textarea{
+                    border: 2px solid $verde;
+                    background: transparent;
+                    width: 100%;
+                    font-size: 2rem;
+                    color: $blanco;
+                    height: 10rem;
+                  }
+                  .formContent{
+                    display: flex;  
+                    flex-direction: column;
+                    height: 70%;
+                    align-items: flex-start;
+                    justify-content: space-around;
+                  }
+            }
+            .formAbout{
+                label{
+                    color: $blanco;
+                    font-size: 2rem;
+                  }
+                  input{
+                    border: 2px solid $verde;
+                    background: transparent;border: 2px solid $verde;
+                    background: transparent;
+                    font-size: 2rem;
+                    color: $blanco;
+                    width: auto;
+                    font-size: 2rem;
+                    color: $blanco;
+                  }
+                  textarea{
+                    border: 2px solid $verde;
+                    background: transparent;
+                    width: 100%;
+                    font-size: 2rem;
+                    color: $blanco;
+                    height: 10rem;
+                  }
+                  .formContent{
+                    display: flex;  
+                    flex-direction: column;
+                    height: 70%;
+                    align-items: flex-start;
+                    justify-content: space-around;
+                  }
+            }
+            .formBlog{
+                label{
+                    color: $blanco;
+                    font-size: 2rem;
+                  }
+                  input{
+                    border: 2px solid $verde;
+                    background: transparent;border: 2px solid $verde;
+                    background: transparent;
+                    font-size: 2rem;
+                    color: $blanco;
+                    width: auto;
+                    font-size: 2rem;
+                    color: $blanco;
+                  }
+                  textarea{
+                    border: 2px solid $verde;
+                    background: transparent;
+                    width: 100%;
+                    font-size: 2rem;
+                    color: $blanco;
+                    height: 10rem;
+                  }
+                  .formContent{
+                    display: flex;  
+                    flex-direction: column;
+                    height: 70%;
+                    align-items: flex-start;
+                    justify-content: space-around;
+                  }
+            }
+            .formContact{
+                label{
+                    color: $blanco;
+                    font-size: 2rem;
+                  }
+                  input{
+                    border: 2px solid $verde;
+                    background: transparent;border: 2px solid $verde;
+                    background: transparent;
+                    font-size: 2rem;
+                    color: $blanco;
+                    width: auto;
+                    font-size: 2rem;
+                    color: $blanco;
+                  }
+                  textarea{
+                    border: 2px solid $verde;
+                    background: transparent;
+                    width: 100%;
+                    font-size: 2rem;
+                    color: $blanco;
+                    height: 10rem;
+                  }
+                  .formContent{
+                    display: flex;  
+                    flex-direction: column;
+                    height: 70%;
+                    align-items: flex-start;
+                    justify-content: space-around;
+                  }
             }
             .options{
                 display: flex;
@@ -53,6 +228,32 @@
             }
         }
     }
+    .button-24 {
+        background: $verde;
+        border: 1px solid $verde;
+        border-radius: 6px;
+        box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+        box-sizing: border-box;
+        color: $blanco;
+        cursor: pointer;
+        font-size: 2rem;
+        font-weight: 800;
+        padding: 1rem;
+        margin: 3rem 0;
+        text-align: center;
+        width: 100%;
+      }
+  
+      .button-24:hover,
+      .button-24:active {
+        background-color: initial;
+        background-position: 0 0;
+        color: $verde;
+      }
+  
+      .button-24:active {
+        opacity: .5;
+      }
     .crud{
         display: block;
     }
@@ -80,8 +281,9 @@
                     margin: 3rem;
                 }
                 .websiteInfo{
-                    display: block;
+                    display: flex;
                     margin: 3rem 0;
+                    flex-direction: column;
                     thead{
                         tr{
                             th{

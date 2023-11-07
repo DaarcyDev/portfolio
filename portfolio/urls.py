@@ -15,12 +15,10 @@ urlpatterns = [
     path('DaarcyDevAdmin/Crud/About/Update/<int:pk>/', views.crudAboutUpdate, name='crudAboutUpdate'),
     path("DaarcyDevAdmin/Crud/About/Delete/<int:pk>", views.crudAboutDelete, name="crudAboutDelete"),
 
-
     path("DaarcyDevAdmin/Crud/Project",views.crudProject, name="crudProject"),
     path("DaarcyDevAdmin/Crud/Project/Create",views.crudProjectCreate, name="crudProjectCreate"),
     path("DaarcyDevAdmin/Crud/Project/Update/<int:pk>",views.crudProjectUpdate, name="crudProjectUpdate"),
     path("DaarcyDevAdmin/Crud/Project/Delete/<int:pk>", views.crudProjectDelete, name="crudProjectDelete"),
-
 
     path("DaarcyDevAdmin/Crud/Skill",views.crudSkill, name="crudSkill"),
     path("DaarcyDevAdmin/Crud/Skill/Create",views.crudSkillCreate, name="crudSkillCreate"),
@@ -41,3 +39,4 @@ urlpatterns = [
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+

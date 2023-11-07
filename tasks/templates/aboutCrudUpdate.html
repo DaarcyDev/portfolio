@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 {% load static %}
 {% block content %}
   <body class="bodyAdmin">
@@ -10,21 +10,20 @@
       </div>
       <div class="text animationText">
         <div class="options">
+          <a class="button-24" href="{% url 'crudAbout' %}">volver</a>
           <h2>Crud</h2>
-          <form method="post" enctype="multipart/form-data">
+          <form method="post" enctype="multipart/form-data" class="formAbout">
             {% csrf_token %}
-            {% comment %} {{ formAbout.as_p }} {% endcomment %}
             {{ formAbout.aboutResume.label_tag }}
             {{ formAbout.aboutResume }}
             {{ formAbout.aboutComplete.label_tag }}
             {{ formAbout.aboutComplete }}
             {{ formAbout.aboutImages.label_tag }}
             {{ formAbout.aboutImages }}
-            <button type="submit">Guardar</button>
+            <button class="button-24" type="submit">Guardar</button>
           </form>
         </div>
       </div>
-      <a href="{% url 'crud' %}">volver</a>
     </div>
   </body>
 {% endblock content %}

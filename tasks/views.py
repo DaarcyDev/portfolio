@@ -7,7 +7,10 @@ from .models import Skill, About, Project, SkillsImages, ProjectImages, BlogCate
 from .forms import AboutForm, ProjectForm, ProjectImageForm, SkillsForm, SkillsImageForm, BlogCategoryForm, BlogFileForm, ContactForm
 from django.shortcuts import get_object_or_404
 from django.forms import modelformset_factory
+from django.views.decorators.csrf import csrf_protect
+import resend
 
+@csrf_protect
 def index(request):
     about = About.objects.all()
     skills = Skill.objects.all()
@@ -17,6 +20,34 @@ def index(request):
     blogCategory = BlogCategory.objects.all()
     blogFile = BlogFile.objects.all()
     contact = Contact.objects.all()
+    
+    if request.method == 'POST':
+        # Procesar el formulario enviado
+        nombre = request.POST.get('nombre')
+        telefono = request.POST.get('telefono')
+        correo_emisor = request.POST.get('correo')  # Utilizar el correo proporcionado en el formulario
+        mensaje = request.POST.get('mensaje')
+
+        # Configurar tus credenciales de correo electrónico
+        # contraseña_emisor = 'tucontraseña'  # Cambiar esto
+        correo_receptor = 'liam_alvarez@hotmail.com'  # Cambiar esto
+
+        # Crear el mensaje de correo
+        asunto = 'Nuevo mensaje desde tu sitio web; Nombre: '+nombre+", Telefono: "+telefono
+        mensaje_correo = f'Nombre: {nombre}\nTeléfono: {telefono}\nCorreo: {correo_emisor}\nMensaje: {mensaje}'
+
+        # Utilizar la biblioteca 'resend' para enviar el correo
+        resend.api_key = "re_V3tUaG1T_6ms36RbTJh81pfEML3gSkRJ8"
+
+        r = resend.Emails.send({
+            "from": correo_emisor,  # Utilizar el correo proporcionado en el formulario
+            "to": correo_receptor,
+            "subject": asunto,
+            "html": mensaje_correo
+        })
+
+
+    
     return render ( request, 'index.html', {
         "abouts":about,
         "projects":projects,
@@ -292,7 +323,7 @@ def crudSkillCreate(request):
 @login_required
 def crudSkillUpdate(request, pk):
     skill = Skill.objects.get(pk=pk)
-    print(skill)
+    # print(skill)
     if request.method == "GET":
         skillForm = SkillsForm(instance=skill)
         skillImageForm = SkillsImageForm(instance=skill)
@@ -519,7 +550,7 @@ def crudBlogUpdate(request, pk):
 
         if request.method == "GET":
             blog_category_form = BlogCategoryForm(instance=blog_category)
-            BlogFileFormSet = modelformset_factory(BlogFile, form=BlogFileForm, extra=2)
+            BlogFileFormSet = modelformset_factory(BlogFile, form=BlogFileForm, extra=1)
             blog_file_formset = BlogFileFormSet(queryset=blog_category.blog_files.all())
 
         else:

@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 {% load static %}
 {% block content %}
   <body class="bodyAdmin">
@@ -10,16 +10,34 @@
       </div>
       <div class="text animationText">
         <div class="options">
-          <h2>Actualizar proyecto</h2>
-          <form method="post" enctype="multipart/form-data">
+          <a class="button-24" href="{% url 'crudProject' %}">volver</a>
+
+          <h2>Crud</h2>
+          <form method="post" enctype="multipart/form-data" class="formProject">
             {% csrf_token %}
-            {{ projectForm.as_p }}
-            {{ projectImageForm.as_p }}
-            <button type="submit">Guardar</button>
+            <div class="formContent">
+              {{ projectForm.projectResume.label_tag }}
+              {{ projectForm.projectResume }}
+              {{ projectForm.projectComplete.label_tag }}
+              {{ projectForm.projectComplete }}
+              {{ projectForm.projectName.label_tag }}
+              {{ projectForm.projectName }}
+              {{ projectForm.projectImage.label_tag }}
+              {{ projectForm.projectImage }}
+              {{ projectForm.projectWebsiteResume.label_tag }}
+              {{ projectForm.projectWebsiteResume }}
+              {{ projectForm.projectWebsiteUrl.label_tag }}
+              {{ projectForm.projectWebsiteUrl }}
+              {{ projectImageForm.projectWebsiteImages.label_tag }}
+              {{ projectImageForm.projectWebsiteImages }}
+              {{ projectImageForm.projectWebsiteTools.label_tag }}
+              {{ projectImageForm.projectWebsiteTools }}
+            </div>
+            <button class="button-24" type="submit">Guardar</button>
           </form>
         </div>
       </div>
-      <a href="{% url 'crud' %}">volver</a>
+      <a href="{% url 'crudProject' %}">volver</a>
     </div>
   </body>
 {% endblock content %}

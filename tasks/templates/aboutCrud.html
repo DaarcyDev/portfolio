@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 {% load static %}
 {% block content %}
   <body class="bodyAdmin">
@@ -33,7 +33,7 @@
                       <td>{{ about.aboutResume }}</td>
                       <td>{{ about.aboutComplete }}</td>
                       <td>
-                        <form method="POST"
+                        <form method="post"
                               action="{% url 'crudAboutDelete' about.id %}"
                               class="w-100">
                           {% csrf_token %}

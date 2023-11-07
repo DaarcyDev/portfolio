@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 {% load static %}
 {% block content %}
   <body class="bodyAdmin">
@@ -15,65 +15,50 @@
             <a href="{% url 'crudBlogCreate' %}">Create</a>
           </div>
           <div class="details">
-<!-- Resto de tu HTML ... -->
-
-<div class="websiteInfo">
-  {% for blogCategory in blogCategories %}
-  <table class="propiedades">
-    <thead>
-      <tr>
-        <th>BlogResume</th>
-        <th>BlogCategory</th>
-        {% for blogFile in blogCategory.blog_files.all %}
-        {% if blogFile.file %}<th>BlogFile</th>{% endif %}
-        {% endfor %}
-        {% for blogFile in blogCategory.blog_files.all %}
-        {% if blogFile.fileContent %}<th>BlogContent</th>{% endif %}
-        {% endfor %}
-        <th>Acciones</th>
-      </tr>
-    </thead>
-    <tbody>
-      
-        <tr>
-          <td>{{ blogCategory.blogResume|truncatewords:50 }}</td>
-          <td>{{ blogCategory.name }}</td>
-          
-            {% for blogFile in blogCategory.blog_files.all %}
-              {% if blogFile.file %}
-              <td>{{ blogFile.file }}</td>
-              {% endif %}
-            {% endfor %}
-          
-          
-            {% for blogFile in blogCategory.blog_files.all %}
-              {% if blogFile.fileContent %}
-              <td>{{ blogFile.fileContent|truncatewords:50 }}</td>
-              {% endif %}
-            {% endfor %}
-          
-          <td>
-            <form method="POST"
-                  action="{% url 'crudBlogDelete' blogCategory.id %}"
-                  class="w-100">
-              {% csrf_token %}
-              <input type="hidden" name="id" value="{{ blogCategory.id }}">
-              <input type="hidden" name="tipo" value="propiedad">
-              <input type="submit" class="boton-rojo-block" value="Eliminar">
-            </form>
-            <a href="{% url 'crudBlogUpdate' blogCategory.id %}" class="boton-amarillo-block">Actualizar</a>
-          </td>
-        </tr>
-      
-    </tbody>
-  </table>
-  <br>
-  {% endfor %}
-</div>
-
-<!-- Resto de tu HTML ... -->
-
-
+            <div class="websiteInfo">
+              {% for blogCategory in blogCategories %}
+                <table class="propiedades">
+                  <thead>
+                    <tr>
+                      <th>BlogResume</th>
+                      <th>BlogCategory</th>
+                      {% for blogFile in blogCategory.blog_files.all %}
+                        {% if blogFile.file %}<th>BlogFile</th>{% endif %}
+                      {% endfor %}
+                      {% for blogFile in blogCategory.blog_files.all %}
+                        {% if blogFile.fileContent %}<th>BlogContent</th>{% endif %}
+                      {% endfor %}
+                      <th>Acciones</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>{{ blogCategory.blogResume|truncatewords:50 }}</td>
+                      <td>{{ blogCategory.name }}</td>
+                      {% for blogFile in blogCategory.blog_files.all %}
+                        {% if blogFile.file %}<td>{{ blogFile.file }}</td>{% endif %}
+                      {% endfor %}
+                      {% for blogFile in blogCategory.blog_files.all %}
+                        {% if blogFile.fileContent %}<td>{{ blogFile.fileContent|truncatewords:50 }}</td>{% endif %}
+                      {% endfor %}
+                      <td>
+                        <form method="post"
+                              action="{% url 'crudBlogDelete' blogCategory.id %}"
+                              class="w-100">
+                          {% csrf_token %}
+                          <input type="hidden" name="id" value="{{ blogCategory.id }}">
+                          <input type="hidden" name="tipo" value="propiedad">
+                          <input type="submit" class="boton-rojo-block" value="Eliminar">
+                        </form>
+                        <a href="{% url 'crudBlogUpdate' blogCategory.id %}"
+                           class="boton-amarillo-block">Actualizar</a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+                <br>
+              {% endfor %}
+            </div>
           </div>
           <div class="buttonsOption">
             <a href="{% url 'crud' %}">volver</a>

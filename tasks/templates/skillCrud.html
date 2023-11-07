@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 {% load static %}
 {% block content %}
   <body class="bodyAdmin">
@@ -44,7 +44,7 @@
                       <td>{{ skill.dataProcessingResume|truncatewords:15 }}</td>
                       <td>{{ skill.operatingSystemsResume|truncatewords:15 }}</td>
                       <td>
-                        <form method="POST"
+                        <form method="post"
                               action="{% url 'crudSkillDelete' skill.id %}"
                               class="w-100">
                           {% csrf_token %}

@@ -9,17 +9,51 @@
         </h3>
       </div>
       <div class="text animationText">
+
         <div class="options">
+          <a class="button-24" href="{% url 'crudSkill' %}">volver</a>
+
           <h2>Crud</h2>
-          <form method="post" enctype="multipart/form-data">
+          <form method="post" enctype="multipart/form-data" class="formSkill">
             {% csrf_token %}
-            {{ skillForm.as_p }}
-            {{ skillImageForm.as_p }}
-            <button type="submit">Guardar</button>
+            <div class="formContent">
+              <div class="textArea">
+                {{ skillForm.skillResume.label_tag }}
+                {{ skillForm.skillResume }}
+                {{ skillForm.skillComplete.label_tag }}
+                {{ skillForm.skillComplete }}
+                {{ skillForm.programingLanguageResume.label_tag }}
+                {{ skillForm.programingLanguageResume }}
+                {{ skillForm.userInterfaceResume.label_tag }}
+                {{ skillForm.userInterfaceResume }}
+                {{ skillForm.developmentToolsResume.label_tag }}
+                {{ skillForm.developmentToolsResume }}
+                {{ skillForm.databasesResume.label_tag }}
+                {{ skillForm.databasesResume }}
+                {{ skillForm.dataProcessingResume.label_tag }}
+                {{ skillForm.dataProcessingResume }}
+                {{ skillForm.operatingSystemsResume.label_tag }}
+                {{ skillForm.operatingSystemsResume }}
+              </div>
+              <div class="imageField">
+                {{ skillImageForm.programingLanguageImages.label_tag }}
+                {{ skillImageForm.programingLanguageImages }}
+                {{ skillImageForm.userInterfaceImages.label_tag }}
+                {{ skillImageForm.userInterfaceImages }}
+                {{ skillImageForm.developmentToolsImages.label_tag }}
+                {{ skillImageForm.developmentToolsImages }}
+                {{ skillImageForm.databasesImages.label_tag }}
+                {{ skillImageForm.databasesImages }}
+                {{ skillImageForm.dataProcessingImages.label_tag }}
+                {{ skillImageForm.dataProcessingImages }}
+                {{ skillImageForm.operatingSystemsImages.label_tag }}
+                {{ skillImageForm.operatingSystemsImages }}
+              </div>
+            </div>
+            <button class="button-24" type="submit">Guardar</button>
           </form>
         </div>
       </div>
-      <a href="{% url 'crud' %}">volver</a>
     </div>
   </body>
 {% endblock content %}

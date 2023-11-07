@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 {% load static %}
 {% block content %}
   <body class="bodyAdmin">
@@ -40,7 +40,7 @@
                       <td>{{ contact.githubUrl|truncatewords:30 }}</td>
                       <td>{{ contact.linkedinUrl|truncatewords:30 }}</td>
                       <td>
-                      <form method="POST" action="{% url 'crudContactDelete' contact.id %}" class="w-100">
+                      <form method="post" action="{% url 'crudContactDelete' contact.id %}" class="w-100">
                           {% csrf_token %}
                           <input type="hidden" name="id" value="{{ project.id }}">
                           <input type="hidden" name="tipo" value="propiedad">
