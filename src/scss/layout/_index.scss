@@ -703,4 +703,10 @@ html {
       }
     }
   }
+  .alertSuccess{
+    color: $blanco;
+    border: 1px solid $blanco;
+    padding: 1rem;
+    font-size: 2rem;
+  }
 }

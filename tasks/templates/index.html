@@ -409,12 +409,12 @@
               {% for contact in contacts %}<p>{{ contact.contactComplete }}</p>{% endfor %}
               <div class="form">
                 <h2>Contacto</h2>
-                {% if messages %}
-                    <div class="alert alert-success">
-                        {{ messages }}
+                {% if message %}
+                    <div class="alertSuccess">
+                        {{ message }}
                     </div>
                 {% endif %}
-                <form action="" method="post">
+                <form enctype="multipart/form-data" method="post">
                   {% csrf_token %}
                   <label for="nombre">Nombre:</label>
                   <input class="name" type="text" id="nombre" name="nombre" required />
@@ -424,7 +424,7 @@
                   <input class="email" type="email" id="correo" name="correo" required />
                   <label for="mensaje">Mensaje:</label>
                   <textarea class="message" id="mensaje" name="mensaje" rows="4" required></textarea>
-                  <button class="button-24" role="button">Enviar</button>
+                  <button class="button-24" type="submit" role="button">Enviar</button>
                 </form>
                 <div class="tools">
                   {% for contact in contacts %}

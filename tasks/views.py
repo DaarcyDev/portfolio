@@ -1,4 +1,3 @@
-from django.http import HttpResponse
 from django.contrib.auth import login
 from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import render, redirect
@@ -10,7 +9,7 @@ from django.forms import modelformset_factory
 from django.views.decorators.csrf import csrf_protect
 import resend
 
-@csrf_protect
+# @csrf_protect
 def index(request):
     about = About.objects.all()
     skills = Skill.objects.all()
@@ -20,44 +19,48 @@ def index(request):
     blogCategory = BlogCategory.objects.all()
     blogFile = BlogFile.objects.all()
     contact = Contact.objects.all()
+    mensaje = ""
+    
     
     if request.method == 'POST':
-        # Procesar el formulario enviado
-        nombre = request.POST.get('nombre')
-        telefono = request.POST.get('telefono')
-        correo_emisor = request.POST.get('correo')  # Utilizar el correo proporcionado en el formulario
-        mensaje = request.POST.get('mensaje')
+        print(request.method)
+        # nombre = request.POST.get('nombre')
+        # telefono = request.POST.get('telefono')
+        # correo = request.POST.get('correo')
+        # mensaje = request.POST.get('mensaje')
 
-        # Configurar tus credenciales de correo electrónico
-        # contraseña_emisor = 'tucontraseña'  # Cambiar esto
-        correo_receptor = 'liam_alvarez@hotmail.com'  # Cambiar esto
+        # correo_receptor = 'liam_alvarez@hotmail.com'
+        # correo_emisor = 'delivered@resend.dev'
+        # asunto = 'Nuevo mensaje desde tu sitio web; Nombre: ' + nombre + ", Telefono: " + telefono
+        # mensaje_correo = f'Nombre: {nombre}\nTeléfono: {telefono}\nCorreo: {correo}\nMensaje: {mensaje}'
 
-        # Crear el mensaje de correo
-        asunto = 'Nuevo mensaje desde tu sitio web; Nombre: '+nombre+", Telefono: "+telefono
-        mensaje_correo = f'Nombre: {nombre}\nTeléfono: {telefono}\nCorreo: {correo_emisor}\nMensaje: {mensaje}'
+        # resend.api_key = "re_V3tUaG1T_6ms36RbTJh81pfEML3gSkRJ8"
 
-        # Utilizar la biblioteca 'resend' para enviar el correo
-        resend.api_key = "re_V3tUaG1T_6ms36RbTJh81pfEML3gSkRJ8"
+        # r = resend.Emails.send({
+        #     "from": correo_emisor,
+        #     "to": correo_receptor,
+        #     "subject": asunto,
+        #     "html": mensaje_correo
+        # })
+        # if r:
+        mensaje = '¡El correo se envió con éxito!'
+        # else:
+        #     mensaje = ""
 
-        r = resend.Emails.send({
-            "from": correo_emisor,  # Utilizar el correo proporcionado en el formulario
-            "to": correo_receptor,
-            "subject": asunto,
-            "html": mensaje_correo
+    return render(request, 'index.html', {
+            "abouts": about,
+            "projects": projects,
+            "skills": skills,
+            "skillsImages": skillsImage,
+            "projectImages": projectImages,
+            "blogCategories": blogCategory,
+            "blogFiles": blogFile,
+            "contacts": contact,
+            "message": mensaje
         })
 
-
     
-    return render ( request, 'index.html', {
-        "abouts":about,
-        "projects":projects,
-        "skills":skills,
-        "skillsImages":skillsImage,
-        "projectImages": projectImages,
-        "blogCategories": blogCategory,
-        "blogFiles": blogFile,
-        "contacts": contact
-    })
+    
 
 def DaarcyDevAdmin(request):
     
