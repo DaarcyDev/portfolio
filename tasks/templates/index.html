@@ -4,11 +4,11 @@
   <body class="bodyIndex">
     <header class="header">
       <div class="topbar home">
-        <a href="">
+        <div id="Arch">
           <p>
             <i class="fa-brands fa-fedora"></i>
           </p>
-        </a>
+        </div>
       </div>
       <div class="topbar place">
         <a href="#first">
@@ -138,10 +138,12 @@
                        data-category="{{ project.projectName }}" />
                 {% endfor %}
               </div>
-              <div class="websiteInfo">
+              <div id="websiteInfo" class="websiteInfo">
                 {% for project in projects %}
                   <div class="website" data-category="{{ project.projectName }}">
-                    <p>{{ project.projectName }}</p>
+                    <p class="websiteInfoTitle">{{ project.projectName }}</p>
+                    {% if project.projectImage %}<img class="websiteInfoImage" src="{{ project.projectImage.url }}" alt="website" />{% endif %}
+
                     <p>{{ project.projectWebsiteResume }}</p>
                     <div class="websiteImageDescription">
                       {% for image in project.images.all %}
@@ -444,6 +446,57 @@
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+      <div id="draggable6" class="terminal terminalArch">
+        <div class="bar">
+          <p>I use Arch BTW</p>
+          <div class="buttons">
+            <p id="minArch" class="min">
+              <i class="fa-solid fa-window-minimize"></i>
+            </p>
+            <p id="restoreArch" class="restore">
+              <i class="fa-regular fa-window-restore"></i>
+            </p>
+            <p id="maxArch" class="max">
+              <i class="fa-regular fa-window-maximize"></i>
+            </p>
+            <p id="closeArch" class="close" class="close">
+              <i class="fa-regular fa-rectangle-xmark"></i>
+            </p>
+          </div>
+        </div>
+        <div class="terminalContent">
+          <div class="comandLine">
+            <h3 class="user">
+              User@DaarcyWebsite:<span class="simbols">~$</span><span class="comand animationComand">sudo sysfetch</span>
+            </h3>
+          </div>
+          <div class="text animationText textArch">
+            <p>
+            <pre>                        
+/ \
+/   \
+/^.   \
+/  .-.  \
+/  (   ) _\
+/ _.~   ~._^\
+/.^         ^.\
+              
+▓▒░ ▓▒░ ▓▒░ ▓▒░ ▓▒░ ▓▒░ ▓▒░ ▓▒░
+              
+Hi User
+Welcome to DaarcyDev
+              
+distro ⏹ Arch Linux
+kernel ⏹ 6.5.9-arch2-1
+packages ⏹ 958
+shell ⏹ zsh
+term ⏹ alacritty
+wm ⏹ bspwm
+            </pre>
+          </p>
           </div>
         </div>
       </div>

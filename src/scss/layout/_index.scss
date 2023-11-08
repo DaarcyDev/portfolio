@@ -24,6 +24,7 @@ html {
 .background {
   background: url("/static/images/wall-08.webp") 50% 0 no-repeat;
   background-position: top;
+  background-size: cover;
   position: fixed;
   width: 100vw;
   height: 100vh;
@@ -189,8 +190,18 @@ html {
       }
     }
   }
+  .terminalContent{
+    backdrop-filter: blur(10px);
+  }
 }
+.terminalArch {
+  max-width: 50rem;
 
+  @include tablet {
+    width: auto;
+
+  }
+}
 .maximize {
   width: 97vw;
   height: 90vh;
@@ -309,6 +320,18 @@ html {
           border: 1px solid $azul;
         }
       }
+    }
+  }
+  .websiteInfo{
+    border: 1px solid $verde;
+    margin: 5rem 2rem;
+    .websiteInfoImage{
+      width: 50%;
+    }
+    .websiteInfoTitle{
+      font-size: 5rem;
+      font-weight: 700;
+      text-transform: uppercase;
     }
   }
 }
@@ -453,12 +476,26 @@ html {
       font-size: 1.6rem;
     }
   }
+  
   @keyframes showDiv {
     from {
       opacity: 0;
     }
     to {
       opacity: 1;
+    }
+  }
+}
+.textArch{
+  text-align: center;
+  padding: 0;
+  pre{
+    color: $blanco;
+    margin: 0;
+    font-size: 1.4rem;
+
+    @include tablet {
+      font-size: 1.4rem;
     }
   }
 }

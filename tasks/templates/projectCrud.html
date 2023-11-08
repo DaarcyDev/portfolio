@@ -55,15 +55,14 @@
                       </td>
                       <td>
                         <form method="post"
-                              action="{% url 'crudProjectDelete' project.id %}"
-                              class="w-100">
+                              action="{% url 'crudProjectDelete' project.id %}">
                           {% csrf_token %}
                           <input type="hidden" name="id" value="{{ project.id }}">
                           <input type="hidden" name="tipo" value="propiedad">
-                          <input type="submit" class="boton-rojo-block" value="Eliminar">
+                          <input type="submit" class="buttonDelete" value="Eliminar">
                         </form>
                         <a href="{% url 'crudProjectUpdate' project.id %}"
-                           class="boton-amarillo-block">Actualizar</a>
+                           class="buttonUpdate">Actualizar</a>
                       </td>
                     </tr>
                   {% endfor %}

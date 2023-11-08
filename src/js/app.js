@@ -3,11 +3,30 @@ const globTerminal2 = document.getElementById("draggable2");
 const globTerminal3 = document.getElementById("draggable3");
 const globTerminal4 = document.getElementById("draggable4");
 const globTerminal5 = document.getElementById("draggable5");
+const globTerminal6 = document.getElementById("draggable6");
 var konsole1 = ""
 var konsole2 = ""
 var konsole3 = ""
 var konsole4 = ""
 var konsole5 = ""
+const backgroundURLs = [
+  "/static/images/wall-01.webp",
+  "/static/images/wall-02.webp",
+  "/static/images/wall-03.webp",
+  "/static/images/wall-04.webp",
+  "/static/images/wall-05.webp",
+  "/static/images/wall-06.webp",
+  "/static/images/wall-07.webp",
+  "/static/images/wall-08.webp",
+];
+
+function changeBackground() {
+  const randomURL = backgroundURLs[Math.floor(Math.random() * backgroundURLs.length)];
+
+  document.querySelector('.background').style.backgroundImage = `url(${randomURL})`;
+}
+
+
 
 function projects() {
   const websiteButtons = document.querySelectorAll('.websiteImage');
@@ -228,11 +247,16 @@ function initializeTerminal() {
   const minContact = document.getElementById("minContact");
   const maxContact = document.getElementById("maxContact");
   const restoreContact = document.getElementById("restoreContact");
+  const closeArch = document.getElementById("closeArch");
+  const minArch = document.getElementById("minArch");
+  const maxArch = document.getElementById("maxArch");
+  const restoreArch = document.getElementById("restoreArch");
   const about = document.getElementById("about");
   const projects = document.getElementById("projects");
   const skills = document.getElementById("skills");
   const blog = document.getElementById("blog");
   const contact = document.getElementById("contact");
+  const arch = document.getElementById("Arch");
 
   const time = 1500;
   
@@ -243,6 +267,7 @@ function initializeTerminal() {
       const datascienceButton = document.getElementById("datascienceButton");
       const websiteButton = document.getElementById("websiteButton");
       const website = document.getElementById("websites")
+      const websiteInfo = document.getElementById("websiteInfo")
       const datascience = document.getElementById("datascience")
       const programmingLanguages = document.getElementById("programmingLanguages")
       const userInterface = document.getElementById("userInterface")
@@ -256,7 +281,7 @@ function initializeTerminal() {
       const databasesButton = document.getElementById("databasesButton")
       const dataProcessingButton = document.getElementById("dataProcessingButton")
       const operatingSystemsButton = document.getElementById("operatingSystemsButton")
-
+      
       programmingLanguagesButton.addEventListener("click",function(){
         programmingLanguages.classList.add("tools")
         programmingLanguages.scrollIntoView({ behavior: "smooth", block: "end" });
@@ -311,9 +336,10 @@ function initializeTerminal() {
         operatingSystems.classList.add("tools")
         operatingSystems.scrollIntoView({ behavior: "smooth", block: "end" });
       })
-
+      
       websiteButton.addEventListener("click", function () {
         website.style.display ="flex"
+        websiteInfo.style.display="block"
         website.scrollIntoView({ behavior: "smooth", block: "end" });
         datascience.style.display ="none"
       })
@@ -321,14 +347,17 @@ function initializeTerminal() {
         datascience.style.display ="flex"
         datascience.scrollIntoView({ behavior: "smooth", block: "end" });
         website.style.display ="none"
+        websiteInfo.style.display="none"
       })
       restoreButton.addEventListener("click", function () {
         datascience.style.display ="none"
         website.style.display ="none"
+        websiteInfo.style.display="none"
       })
       closeButton.addEventListener("click", function () {
         datascience.style.display ="none"
         website.style.display ="none"
+        websiteInfo.style.display="none"
       })
     }
     option.addEventListener("click", function () {
@@ -505,9 +534,7 @@ function initializeTerminal() {
           }else{
             konsole.style.top = "8%";
             konsole.style.left = "80.3%";
-          }
-          
-          // console.log(`max position: ${konsole.id} position ${konsole.style.left}`)
+          }          
         }
       }
     
@@ -538,6 +565,7 @@ function initializeTerminal() {
   skills.addEventListener("click", displayTerminal(skills, globTerminal3, minSkills, restoreSkills, maxSkills, closeSkills))
   blog.addEventListener("click", displayTerminal(blog, globTerminal4, minBlog, restoreBlog, maxBlog, closeBlog))
   contact.addEventListener("click", displayTerminal(contact, globTerminal5, minContact, restoreContact, maxContact, closeContact))
+  arch.addEventListener("click", displayTerminal(arch, globTerminal6, minArch, restoreArch, maxArch, closeArch))
 
   // close.addEventListener("click", displayTerminal (null, null ) )
 
@@ -627,3 +655,4 @@ window.addEventListener('scroll', changeIcons);
 changeIcons();
 ranger()
 projects()
+document.querySelector('#Arch').addEventListener('click', changeBackground);

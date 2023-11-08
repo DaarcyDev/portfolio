@@ -21,31 +21,31 @@ def index(request):
     contact = Contact.objects.all()
     mensaje = ""
     
-    
+    print(request.method)
     if request.method == 'POST':
-        print(request.method)
-        # nombre = request.POST.get('nombre')
-        # telefono = request.POST.get('telefono')
-        # correo = request.POST.get('correo')
-        # mensaje = request.POST.get('mensaje')
+        
+        nombre = request.POST.get('nombre')
+        telefono = request.POST.get('telefono')
+        correo = request.POST.get('correo')
+        mensaje = request.POST.get('mensaje')
 
-        # correo_receptor = 'liam_alvarez@hotmail.com'
-        # correo_emisor = 'delivered@resend.dev'
-        # asunto = 'Nuevo mensaje desde tu sitio web; Nombre: ' + nombre + ", Telefono: " + telefono
-        # mensaje_correo = f'Nombre: {nombre}\nTeléfono: {telefono}\nCorreo: {correo}\nMensaje: {mensaje}'
+        correo_receptor = 'liam_alvarez@hotmail.com'
+        correo_emisor = 'delivered@resend.dev'
+        asunto = 'Nuevo mensaje desde tu sitio web; Nombre: ' + nombre + ", Telefono: " + telefono
+        mensaje_correo = f'Nombre: {nombre}\nTeléfono: {telefono}\nCorreo: {correo}\nMensaje: {mensaje}'
 
-        # resend.api_key = "re_V3tUaG1T_6ms36RbTJh81pfEML3gSkRJ8"
+        resend.api_key = "re_V3tUaG1T_6ms36RbTJh81pfEML3gSkRJ8"
 
-        # r = resend.Emails.send({
-        #     "from": correo_emisor,
-        #     "to": correo_receptor,
-        #     "subject": asunto,
-        #     "html": mensaje_correo
-        # })
-        # if r:
-        mensaje = '¡El correo se envió con éxito!'
-        # else:
-        #     mensaje = ""
+        r = resend.Emails.send({
+            "from": correo_emisor,
+            "to": correo_receptor,
+            "subject": asunto,
+            "html": mensaje_correo
+        })
+        if r:
+            mensaje = '¡El correo se envió con éxito!'
+        else:
+            mensaje = ""
 
     return render(request, 'index.html', {
             "abouts": about,

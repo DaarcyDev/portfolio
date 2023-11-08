@@ -43,15 +43,14 @@
                       {% endfor %}
                       <td>
                         <form method="post"
-                              action="{% url 'crudBlogDelete' blogCategory.id %}"
-                              class="w-100">
+                              action="{% url 'crudBlogDelete' blogCategory.id %}">
                           {% csrf_token %}
                           <input type="hidden" name="id" value="{{ blogCategory.id }}">
                           <input type="hidden" name="tipo" value="propiedad">
-                          <input type="submit" class="boton-rojo-block" value="Eliminar">
+                          <input type="submit" class="buttonDelete" value="Eliminar">
                         </form>
                         <a href="{% url 'crudBlogUpdate' blogCategory.id %}"
-                           class="boton-amarillo-block">Actualizar</a>
+                           class="buttonUpdate">Actualizar</a>
                       </td>
                     </tr>
                   </tbody>

@@ -50,10 +50,10 @@
                           {% csrf_token %}
                           <input type="hidden" name="id" value="">
                           <input type="hidden" name="tipo" value="propiedad">
-                          <input type="submit" class="boton-rojo-block" value="Eliminar">
+                          <input type="submit" class="buttonDelete" value="Eliminar">
                         </form>
                         <a href="{% url 'crudSkillUpdate' skill.id %}"
-                           class="boton-amarillo-block">Actualizar</a>
+                           class="buttonUpdate">Actualizar</a>
                       </td>
                     </tr>
                   {% endfor %}
