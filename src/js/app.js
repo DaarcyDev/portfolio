@@ -4,11 +4,22 @@ const globTerminal3 = document.getElementById("draggable3");
 const globTerminal4 = document.getElementById("draggable4");
 const globTerminal5 = document.getElementById("draggable5");
 const globTerminal6 = document.getElementById("draggable6");
+// let ghost = document.querySelectorAll(".fa-ghost")
 var konsole1 = ""
 var konsole2 = ""
 var konsole3 = ""
 var konsole4 = ""
 var konsole5 = ""
+
+let count = 0;
+let ghostClicked = false;
+let circleClicked = false;
+let minButtonClicked = false;
+let restoreButtonClicked = false;
+let maxButtonClicked = false;
+let closeButtonClicked = false;
+let draggableClicked = false;
+let terminalClicked = false;
 const backgroundURLs = [
   "/static/images/wall-01.webp",
   "/static/images/wall-02.webp",
@@ -19,11 +30,45 @@ const backgroundURLs = [
   "/static/images/wall-07.webp",
   "/static/images/wall-08.webp",
 ];
+function changeCount() {
+
+
+  circle = document.querySelectorAll('.fa-circle')
+  circle.forEach(function (element) {
+    // console.log(element)
+    element.addEventListener('click', function () {
+      if (!circleClicked) {
+        count++;
+        circleClicked = true;
+        notification("cambiar de escritorio");
+      }
+    })
+  })
+}
+
+let notificationTimer; 
+
+function notification(mensaje) {
+  const notification = document.querySelector('.notification');
+  notification.style.display = "block";
+  notification.innerHTML = count + "/7  " + mensaje + " ✔";
+
+  clearTimeout(notificationTimer);
+
+  notificationTimer = setTimeout(function () {
+    notification.style.display = "none";
+  }, 3000); 
+}
 
 function changeBackground() {
   const randomURL = backgroundURLs[Math.floor(Math.random() * backgroundURLs.length)];
 
   document.querySelector('.background').style.backgroundImage = `url(${randomURL})`;
+  if (!ghostClicked) {
+    count++;
+    ghostClicked = true;
+    notification("cambiar wallpaper");
+  }
 }
 
 
@@ -57,11 +102,11 @@ function ranger() {
       categories.forEach((cat) => {
         cat.classList.remove("select");
       });
-      category.classList.add("select");      
+      category.classList.add("select");
       const selectedCategory = category.getAttribute('data-category');
-      
+
       projects.forEach((project) => {
-        
+
         if (project.getAttribute('data-category') != selectedCategory) {
           project.style.display = 'none';
         }
@@ -71,20 +116,20 @@ function ranger() {
           content.style.display = 'none';
         }
       });
-  
+
       projects.forEach((project) => {
-        
+
         if (project.getAttribute('data-category') === selectedCategory) {
           project.style.display = 'block';
         }
       });
       projectContent.forEach((content) => {
-        
+
         if (content.getAttribute('data-category') === selectedCategory) {
           content.style.display = 'block';
         }
       });
-      
+
       const firstProject = document.querySelector('.project[data-category="' + selectedCategory + '"]');
 
       if (firstProject) {
@@ -132,7 +177,6 @@ function position() {
       scrollTop < sectionEndY
     ) {
       currentPosition = index + 1;
-      // // console.log(currentPosition);
     }
   });
 
@@ -147,46 +191,28 @@ function changeIcons() {
   const fifthPosition = document.getElementById("fifthPosition");
 
   function changeIcon(currentPosition, position, number) {
-    if (currentPosition == number) {
+    if (currentPosition === number) {
       position.classList.add('current');
       position.classList.add('fa-ghost');
       position.classList.remove('fa-circle');
-      
+      position.addEventListener('click', changeBackground);
     } else {
       position.classList.add('fa-circle');
       position.classList.remove('fa-ghost');
       position.classList.remove('current');
+      position.removeEventListener('click', changeBackground);
     }
   }
-  number = position()
 
-  if (position() == 1) {
-    changeIcon(number, firstPosition, 1)
-  } else {
-    changeIcon(number, firstPosition, 1)
-  }
-  if (position() == 2) {
-    changeIcon(number, secondPosition, 2)
-  } else {
-    changeIcon(number, secondPosition, 2)
-  }
-  if (position() == 3) {
-    changeIcon(number, thirdPosition, 3)
-  } else {
-    changeIcon(number, thirdPosition, 3)
-  }
-  if (position() == 4) {
-    changeIcon(number, fourthPosition, 4)
-  } else {
-    changeIcon(number, fourthPosition, 4)
-  }
-  if (position() == 5) {
-    changeIcon(number, fifthPosition, 5)
-  } else {
-    changeIcon(number, fifthPosition, 5)
-  }
+  const number = position();
 
+  changeIcon(number, firstPosition, 1);
+  changeIcon(number, secondPosition, 2);
+  changeIcon(number, thirdPosition, 3);
+  changeIcon(number, fourthPosition, 4);
+  changeIcon(number, fifthPosition, 5);
 }
+
 
 function setNextElementPosition(konsole, restoreButton, maxButton) {
   maxButton.addEventListener("click", function () {
@@ -259,11 +285,11 @@ function initializeTerminal() {
   const arch = document.getElementById("Arch");
 
   const time = 1500;
-  
-  
+
+
   function displayTerminal(option, konsole, minButton, restoreButton, maxButton, closeButton) {
 
-    function projects(){
+    function projects() {
       const datascienceButton = document.getElementById("datascienceButton");
       const websiteButton = document.getElementById("websiteButton");
       const website = document.getElementById("websites")
@@ -281,8 +307,8 @@ function initializeTerminal() {
       const databasesButton = document.getElementById("databasesButton")
       const dataProcessingButton = document.getElementById("dataProcessingButton")
       const operatingSystemsButton = document.getElementById("operatingSystemsButton")
-      
-      programmingLanguagesButton.addEventListener("click",function(){
+
+      programmingLanguagesButton.addEventListener("click", function () {
         programmingLanguages.classList.add("tools")
         programmingLanguages.scrollIntoView({ behavior: "smooth", block: "end" });
         userInterface.classList.remove("tools")
@@ -291,7 +317,7 @@ function initializeTerminal() {
         dataProcessing.classList.remove("tools")
         operatingSystems.classList.remove("tools")
       })
-      userInterfaceButton.addEventListener("click",function(){
+      userInterfaceButton.addEventListener("click", function () {
         programmingLanguages.classList.remove("tools")
         userInterface.classList.add("tools")
         userInterface.scrollIntoView({ behavior: "smooth", block: "end" });
@@ -300,7 +326,7 @@ function initializeTerminal() {
         dataProcessing.classList.remove("tools")
         operatingSystems.classList.remove("tools")
       })
-      developmentToolsButton.addEventListener("click",function(){
+      developmentToolsButton.addEventListener("click", function () {
         programmingLanguages.classList.remove("tools")
         userInterface.classList.remove("tools")
         developmentTools.classList.add("tools")
@@ -309,7 +335,7 @@ function initializeTerminal() {
         dataProcessing.classList.remove("tools")
         operatingSystems.classList.remove("tools")
       })
-      databasesButton.addEventListener("click",function(){
+      databasesButton.addEventListener("click", function () {
         programmingLanguages.classList.remove("tools")
         userInterface.classList.remove("tools")
         developmentTools.classList.remove("tools")
@@ -318,7 +344,7 @@ function initializeTerminal() {
         dataProcessing.classList.remove("tools")
         operatingSystems.classList.remove("tools")
       })
-      dataProcessingButton.addEventListener("click",function(){
+      dataProcessingButton.addEventListener("click", function () {
         programmingLanguages.classList.remove("tools")
         userInterface.classList.remove("tools")
         developmentTools.classList.remove("tools")
@@ -327,7 +353,7 @@ function initializeTerminal() {
         dataProcessing.scrollIntoView({ behavior: "smooth", block: "end" });
         operatingSystems.classList.remove("tools")
       })
-      operatingSystemsButton.addEventListener("click",function(){
+      operatingSystemsButton.addEventListener("click", function () {
         programmingLanguages.classList.remove("tools")
         userInterface.classList.remove("tools")
         developmentTools.classList.remove("tools")
@@ -336,34 +362,34 @@ function initializeTerminal() {
         operatingSystems.classList.add("tools")
         operatingSystems.scrollIntoView({ behavior: "smooth", block: "end" });
       })
-      
+
       websiteButton.addEventListener("click", function () {
-        website.style.display ="flex"
-        websiteInfo.style.display="block"
+        website.style.display = "flex"
+        websiteInfo.style.display = "block"
         website.scrollIntoView({ behavior: "smooth", block: "end" });
-        datascience.style.display ="none"
+        datascience.style.display = "none"
       })
       datascienceButton.addEventListener("click", function () {
-        datascience.style.display ="flex"
+        datascience.style.display = "flex"
         datascience.scrollIntoView({ behavior: "smooth", block: "end" });
-        website.style.display ="none"
-        websiteInfo.style.display="none"
+        website.style.display = "none"
+        websiteInfo.style.display = "none"
       })
       restoreButton.addEventListener("click", function () {
-        datascience.style.display ="none"
-        website.style.display ="none"
-        websiteInfo.style.display="none"
+        datascience.style.display = "none"
+        website.style.display = "none"
+        websiteInfo.style.display = "none"
       })
       closeButton.addEventListener("click", function () {
-        datascience.style.display ="none"
-        website.style.display ="none"
-        websiteInfo.style.display="none"
+        datascience.style.display = "none"
+        website.style.display = "none"
+        websiteInfo.style.display = "none"
       })
     }
     option.addEventListener("click", function () {
-      
+
       if (konsole.style.display === "none" || konsole.style.display === "") {
-        
+
         var screenDiv = document.querySelector('.display');
         if (position() == 1) {
           screenDiv = document.querySelector('.first');
@@ -382,15 +408,15 @@ function initializeTerminal() {
         }
         const elements = konsole.querySelectorAll(".comand");
         const texts = konsole.querySelectorAll(".text");
-        texts.forEach(function(text) {
+        texts.forEach(function (text) {
           text.classList.add("animationText");
-            setTimeout(function() {
+          setTimeout(function () {
             text.classList.remove("animationText");
           }, time);
         });
-        elements.forEach(function(element) {
+        elements.forEach(function (element) {
           element.classList.add("animationComand");
-            setTimeout(function() {
+          setTimeout(function () {
             element.classList.remove("animationComand");
           }, time);
         });
@@ -406,9 +432,9 @@ function initializeTerminal() {
         }
         konsole.onmousedown = null;
         setTimeout(function () {
-          draggable(konsole, minButton, restoreButton, maxButton, closeButton)  
+          draggable(konsole, minButton, restoreButton, maxButton, closeButton)
         }, 1000);
-        
+
       } else {
         konsole.style.display = "none";
       }
@@ -418,55 +444,60 @@ function initializeTerminal() {
         if (window.innerWidth <= 900) {
           konsole.style.left = "10%";
           konsole.style.top = "5%";
-        }else{
+        } else {
           konsole.style.left = "5%";
         }
-        
+
         // konsole.style.top = "17rem";
       }
       if (position() == 2) {
         if (window.innerWidth <= 900) {
           konsole.style.left = "10%";
           konsole.style.top = "25%";
-        }else{
+        } else {
           konsole.style.left = "25%";
         }
-        
+
         // konsole.style.top = "17rem";
       }
       if (position() == 3) {
         if (window.innerWidth <= 900) {
           konsole.style.left = "10%";
           konsole.style.top = "45%";
-        }else{
+        } else {
           konsole.style.left = "45%";
         }
-        
+
         // konsole.style.top = "17rem";
       }
       if (position() == 4) {
         if (window.innerWidth <= 900) {
           konsole.style.left = "10%";
           konsole.style.top = "65%";
-        }else{
+        } else {
           konsole.style.left = "65%";
         }
-        
+
         // konsole.style.top = "17rem";
       }
       if (position() == 5) {
         if (window.innerWidth <= 900) {
           konsole.style.left = "10%";
           konsole.style.top = "85%";
-        }else{
+        } else {
           konsole.style.left = "85%";
         }
-        
+
         // konsole.style.top = "17rem";
       }
     })
 
     closeButton.addEventListener("click", function () {
+      if (!closeButtonClicked) {
+        count++
+        closeButtonClicked = true
+        notification("Cerrar Terminal");
+      }
       if (konsole.style.display === "none" || konsole.style.display === "") {
         konsole.style.display = "block";
         konsole.classList.remove("maximize")
@@ -477,70 +508,81 @@ function initializeTerminal() {
 
     });
     maxButton.addEventListener("click", function () {
+      if (!maxButtonClicked) {
+        count++
+        maxButtonClicked = true
+        notification("Maximizar Terminal");
+      }
+
       if (!konsole.classList.contains("maximize")) {
         konsole.classList.add("maximize");
         konsole.classList.remove("minimize")
         // console.log("prueba")
-        konsole.onmousedown = null;
+        // konsole.onmousedown = null;
         if (position() == 1) {
           if (window.innerWidth <= 900) {
             konsole.style.left = "1.5%";
             konsole.style.top = "3.5%";
-          }else{
+          } else {
             konsole.style.top = "8%";
             konsole.style.top = "8%";
             konsole.style.left = ".3%";
           }
-          
+
           // console.log(`max position: ${konsole.id} position ${konsole.style.left}`)
         }
         if (position() == 2) {
           if (window.innerWidth <= 900) {
             konsole.style.left = "1.5%";
             konsole.style.top = "23.5%";
-          }else{
+          } else {
             konsole.style.top = "8%";
             konsole.style.left = "20.3%";
           }
-          
+
           // console.log(`max position: ${konsole.id} position ${konsole.style.left}`)
         }
         if (position() == 3) {
           if (window.innerWidth <= 900) {
             konsole.style.left = "1.5%";
             konsole.style.top = "43.5%";
-          }else{
+          } else {
             konsole.style.top = "8%";
             konsole.style.left = "40.3%";
           }
-          
+
           // console.log(`max position: ${konsole.id} position ${konsole.style.left}`)
         }
         if (position() == 4) {
           if (window.innerWidth <= 900) {
-          konsole.style.left = "1.5%";
-          konsole.style.top = "63.5%";
-          }else{
+            konsole.style.left = "1.5%";
+            konsole.style.top = "63.5%";
+          } else {
             konsole.style.top = "8%";
             konsole.style.left = "60.3%";
           }
-          
+
           // console.log(`max position: ${konsole.id} position ${konsole.style.left}`)
         }
         if (position() == 5) {
           if (window.innerWidth <= 900) {
-          konsole.style.left = "1.5%";
-          konsole.style.top = "83.5%";
-          }else{
+            konsole.style.left = "1.5%";
+            konsole.style.top = "83.5%";
+          } else {
             konsole.style.top = "8%";
             konsole.style.left = "80.3%";
-          }          
+          }
         }
       }
-    
+
 
     });
     restoreButton.addEventListener("click", function () {
+      if (!restoreButtonClicked) {
+        count++
+        restoreButtonClicked = true
+        notification("Redimensionar Terminal");
+      }
       if (!konsole.classList.contains("restore")) {
         konsole.classList.remove("maximize")
         konsole.classList.remove("minimize")
@@ -549,6 +591,11 @@ function initializeTerminal() {
 
     });
     minButton.addEventListener("click", function () {
+      if (!minButtonClicked) {
+        count++
+        minButtonClicked = true
+        notification("Minimizar Terminal");
+      }
       if (!konsole.classList.contains("minimize")) {
         konsole.classList.add("minimize");
         konsole.classList.remove("maximize")
@@ -567,17 +614,17 @@ function initializeTerminal() {
   contact.addEventListener("click", displayTerminal(contact, globTerminal5, minContact, restoreContact, maxContact, closeContact))
   arch.addEventListener("click", displayTerminal(arch, globTerminal6, minArch, restoreArch, maxArch, closeArch))
 
-  // close.addEventListener("click", displayTerminal (null, null ) )
-
-
 }
 
 function draggable(terminal, minButton, restoreButton, maxButton, closeButton) {
+  let shiftX, shiftY;
+  let draggableClicked = false;
   
-  terminal.onmousedown = function (event) {
-    let shiftX = event.clientX - terminal.getBoundingClientRect().left;
-    let shiftY = event.clientY - terminal.getBoundingClientRect().top;
-    var screenDiv = document.querySelector('.display');
+  function startDrag(pageX, pageY) {
+    if (terminal.classList.contains("maximize")) {
+      return;
+    }
+    let screenDiv = document.querySelector('.display');
     if (position() == 1) {
       screenDiv = document.querySelector('.first');
     }
@@ -593,24 +640,24 @@ function draggable(terminal, minButton, restoreButton, maxButton, closeButton) {
     if (position() == 5) {
       screenDiv = document.querySelector('.fifth');
     }
-    
-    screenDiv.appendChild(terminal); 
+
+    screenDiv.appendChild(terminal);
 
     terminal.style.position = 'absolute';
-    terminal.style.zIndex = 100;
-    
-    moveAt(event.pageX, event.pageY);
+    terminal.style.zIndex = 50;
 
+    moveAt(pageX, pageY);
 
     function moveAt(pageX, pageY) {
+      
       const minX = screenDiv.offsetLeft;
       const maxX = minX + screenDiv.offsetWidth - terminal.offsetWidth;
       const minY = screenDiv.offsetTop;
       const maxY = minY + screenDiv.offsetHeight - terminal.offsetHeight;
-      
+
       let adjustedX = pageX - shiftX;
       let adjustedY = pageY - shiftY;
-      
+
       adjustedX = Math.max(minX, Math.min(maxX, adjustedX));
       adjustedY = Math.max(minY, Math.min(maxY, adjustedY));
 
@@ -618,17 +665,49 @@ function draggable(terminal, minButton, restoreButton, maxButton, closeButton) {
       terminal.style.top = adjustedY + 'px';
     }
 
-    function onMouseMove(event) {
-      moveAt(event.pageX, event.pageY);
+    function onMove(event) {
+      moveAt(event.pageX || event.touches[0].pageX, event.pageY || event.touches[0].pageY);
+      if (!draggableClicked) {
+        count++;
+        draggableClicked = true;
+        notification("Mover Terminal");
+      }
     }
-    
-    document.addEventListener('mousemove', onMouseMove);
-    
-    terminal.onmouseup = function () {
-      document.removeEventListener('mousemove', onMouseMove);
+
+    function onEnd() {
+      document.removeEventListener('mousemove', onMove);
+      document.removeEventListener('touchmove', onMove);
+      document.removeEventListener('mouseup', onEnd);
+      document.removeEventListener('touchend', onEnd);
+
       terminal.onmouseup = null;
-    };
-  };
+      terminal.ontouchend = null;
+    }
+
+    document.addEventListener('mousemove', onMove);
+    document.addEventListener('touchmove', onMove, { passive: false });
+    document.addEventListener('mouseup', onEnd);
+    document.addEventListener('touchend', onEnd);
+  }
+
+  terminal.addEventListener('mousedown', function (event) {
+    event.preventDefault();
+
+    shiftX = event.clientX - terminal.getBoundingClientRect().left;
+    shiftY = event.clientY - terminal.getBoundingClientRect().top;
+
+    startDrag(event.pageX, event.pageY);
+  });
+
+  terminal.addEventListener('touchstart', function (event) {
+    event.preventDefault();
+
+    const touch = event.touches[0];
+    shiftX = touch.clientX - terminal.getBoundingClientRect().left;
+    shiftY = touch.clientY - terminal.getBoundingClientRect().top;
+
+    startDrag(touch.pageX, touch.pageY);
+  });
 
   terminal.ondragstart = function () {
     return false;
@@ -647,12 +726,27 @@ function draggable(terminal, minButton, restoreButton, maxButton, closeButton) {
     minButton.addEventListener("mousedown", function (event) {
       event.stopPropagation();
     });
+    closeButton.addEventListener("touchstart", function (event) {
+      event.stopPropagation();
+    });
+    maxButton.addEventListener("touchstart", function (event) {
+      event.stopPropagation();
+    });
+    restoreButton.addEventListener("touchstart", function (event) {
+      event.stopPropagation();
+    });
+    minButton.addEventListener("touchstart", function (event) {
+      event.stopPropagation();
+    });
   }
-  stopDraggable(minButton, restoreButton, maxButton, closeButton)
+
+  stopDraggable(minButton, restoreButton, maxButton, closeButton);
 }
+
 initializeTerminal();
 window.addEventListener('scroll', changeIcons);
 changeIcons();
 ranger()
 projects()
-document.querySelector('#Arch').addEventListener('click', changeBackground);
+changeCount()
+

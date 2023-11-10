@@ -22,7 +22,7 @@ html {
   }
 }
 .background {
-  background: url("/static/images/wall-08.webp") 50% 0 no-repeat;
+  background: url("/static/images/wall-00.webp") 50% 0 no-repeat;
   background-position: top;
   background-size: cover;
   position: fixed;
@@ -30,12 +30,28 @@ html {
   height: 100vh;
   z-index: -1;
   top: 0;
+  
+}
+.notification{
+  background-color: rgb(255 0 0 / 50%);
+  border: 1px solid $negro;
+  border-radius: 1rem;
+  color: #fff;
+  position: fixed;
+  right: 3rem;
+  top: 7rem;
+  font-size: 2rem;
+  padding: 1.5rem;
+  font-weight: $bold;
+  display: none;
+  z-index: 51;
+  @include tablet {
+    top: 17rem;
+  }
 }
 
 .header {
   z-index: 1;
-  // display: none;
-  // margin-top: 1rem;
   position: fixed;
   display: flex;
   justify-content: center;
@@ -48,16 +64,14 @@ html {
   }
 
   .topbar {
-    // margin-top: 1rem;
+    align-items: center;
+    background-color: rgba(0,0,0,.5);
     border: 1px solid #555;
     border-radius: 1rem;
-    // width: 100%;
-    margin: 1rem 0.5rem;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    // padding: 0 10rem;
-    background-color: rgba($color: #000000, $alpha: 0.3);
+    justify-content: space-evenly;
+    margin: 1rem 0.5rem;
+    backdrop-filter: blur(10px);
     z-index: 0;
     @include tablet {
       width: 100%;
@@ -67,15 +81,20 @@ html {
       margin: 0 0.3rem;
       color: $blanco;
       font-family: "Chakra Petch", sans-serif;
-
       z-index: 1;
+      i{
+        padding:1rem;
+        @include tablet {
+          padding: 0 1rem;
+        }
+      }
     }
   }
 
   .place {
     width: 30%;
     p {
-      margin: 0 2rem;
+      margin: 0 ;
       font-size: 1rem;
       color: $amarillo;
     }
