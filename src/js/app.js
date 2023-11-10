@@ -4,7 +4,6 @@ const globTerminal3 = document.getElementById("draggable3");
 const globTerminal4 = document.getElementById("draggable4");
 const globTerminal5 = document.getElementById("draggable5");
 const globTerminal6 = document.getElementById("draggable6");
-// let ghost = document.querySelectorAll(".fa-ghost")
 var konsole1 = ""
 var konsole2 = ""
 var konsole3 = ""
@@ -21,6 +20,7 @@ let closeButtonClicked = false;
 let draggableClicked = false;
 let terminalClicked = false;
 const backgroundURLs = [
+  "/static/images/wall-00.webp",
   "/static/images/wall-01.webp",
   "/static/images/wall-02.webp",
   "/static/images/wall-03.webp",
@@ -742,11 +742,9 @@ function draggable(terminal, minButton, restoreButton, maxButton, closeButton) {
 
   stopDraggable(minButton, restoreButton, maxButton, closeButton);
 }
-
 initializeTerminal();
 window.addEventListener('scroll', changeIcons);
 changeIcons();
 ranger()
 projects()
 changeCount()
-

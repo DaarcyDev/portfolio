@@ -23,13 +23,18 @@ html {
 }
 .background {
   background: url("/static/images/wall-00.webp") 50% 0 no-repeat;
-  background-position: top;
+  background-position: center;
   background-size: cover;
   position: fixed;
   width: 100vw;
   height: 100vh;
   z-index: -1;
   top: 0;
+  @include tablet{
+    background: url("/static/images/wall-000.webp") 50% 0 no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
   
 }
 .notification{
