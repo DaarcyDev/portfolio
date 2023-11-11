@@ -58,7 +58,17 @@
     
     <main>
       <div class="notification">
+
       </div> 
+      
+        {% if message %}
+        <div class="notifications">
+          <div class="alertSuccess">
+            {{ message }}
+          </div>
+        </div> 
+        {% endif %}
+      
       <div class="background">
       </div>
       <div id="draggable" class="terminal terminalAbout">
@@ -421,11 +431,7 @@
               {% for contact in contacts %}<p>{{ contact.contactComplete }}</p>{% endfor %}
               <div class="form">
                 <h2>Contacto</h2>
-                {% if message %}
-                    <div class="alertSuccess">
-                        {{ message }}
-                    </div>
-                {% endif %}
+                
                 <form enctype="multipart/form-data" method="post" id="formIndex">
                   {% csrf_token %}
                   <label for="nombre">Nombre:</label>

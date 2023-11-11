@@ -37,6 +37,7 @@ html {
   }
   
 }
+.notifications,
 .notification{
   background-color: rgb(255 0 0 / 50%);
   border: 1px solid $negro;
@@ -53,6 +54,10 @@ html {
   @include tablet {
     top: 17rem;
   }
+}
+.notifications{
+  display: block;
+  background-color: rgb(0 255 0 / 50%);
 }
 
 .header {

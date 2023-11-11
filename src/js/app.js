@@ -30,6 +30,25 @@ const backgroundURLs = [
   "/static/images/wall-07.webp",
   "/static/images/wall-08.webp",
 ];
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  // Espera a que el DOM esté completamente cargado
+
+  // Busca el elemento con la clase 'alertSuccess'
+  var alertSuccess = document.querySelector('.notifications');
+
+  // Verifica si el elemento existe
+  if (alertSuccess) {
+    // Si existe, muestra el elemento
+    alertSuccess.style.display = 'block';
+
+    // Configura un temporizador para ocultar el elemento después de 5 segundos
+    setTimeout(function() {
+      alertSuccess.style.display = 'none';
+    }, 5000);
+  }
+});
 function changeCount() {
 
 
@@ -49,6 +68,7 @@ function changeCount() {
 let notificationTimer; 
 
 function notification(mensaje) {
+  
   const notification = document.querySelector('.notification');
   notification.style.display = "block";
   notification.innerHTML = count + "/7  " + mensaje + " ✔";

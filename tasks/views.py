@@ -10,7 +10,7 @@ from django.views.decorators.csrf import csrf_protect
 
 import resend
 
-# @csrf_protect
+@csrf_protect
 def index(request):
     about = About.objects.all()
     skills = Skill.objects.all()
