@@ -517,8 +517,8 @@ function initializeTerminal() {
       if (!konsole.classList.contains("maximize")) {
         konsole.classList.add("maximize");
         konsole.classList.remove("minimize")
-        // console.log("prueba")
-        // konsole.onmousedown = null;
+
+
         if (position() == 1) {
           if (window.innerWidth <= 900) {
             konsole.style.left = "1.5%";
@@ -613,13 +613,13 @@ function initializeTerminal() {
   blog.addEventListener("click", displayTerminal(blog, globTerminal4, minBlog, restoreBlog, maxBlog, closeBlog))
   contact.addEventListener("click", displayTerminal(contact, globTerminal5, minContact, restoreContact, maxContact, closeContact))
   arch.addEventListener("click", displayTerminal(arch, globTerminal6, minArch, restoreArch, maxArch, closeArch))
-
 }
 
 function draggable(terminal, minButton, restoreButton, maxButton, closeButton) {
   let shiftX, shiftY;
   let draggableClicked = false;
-  
+  console.log("draggable");
+
   function startDrag(pageX, pageY) {
     if (terminal.classList.contains("maximize")) {
       return;
@@ -649,7 +649,6 @@ function draggable(terminal, minButton, restoreButton, maxButton, closeButton) {
     moveAt(pageX, pageY);
 
     function moveAt(pageX, pageY) {
-      
       const minX = screenDiv.offsetLeft;
       const maxX = minX + screenDiv.offsetWidth - terminal.offsetWidth;
       const minY = screenDiv.offsetTop;
@@ -690,42 +689,35 @@ function draggable(terminal, minButton, restoreButton, maxButton, closeButton) {
     document.addEventListener('touchend', onEnd);
   }
 
-  terminal.addEventListener('mousedown', function (event) {
+  function onTouchStart(event) {
+    if (terminal.classList.contains("maximize")) {
+      return;
+    }
+
+    shiftX = event.touches[0].clientX - terminal.getBoundingClientRect().left;
+    shiftY = event.touches[0].clientY - terminal.getBoundingClientRect().top;
+
+    startDrag(event.touches[0].pageX, event.touches[0].pageY);
+  }
+
+  function onTouchEnd() {
+    draggableClicked = false;
+  }
+
+  function onMouseDown(event) {
     event.preventDefault();
 
     shiftX = event.clientX - terminal.getBoundingClientRect().left;
     shiftY = event.clientY - terminal.getBoundingClientRect().top;
 
     startDrag(event.pageX, event.pageY);
-  });
+  }
 
-  terminal.addEventListener('touchstart', function (event) {
-    event.preventDefault();
-
-    const touch = event.touches[0];
-    shiftX = touch.clientX - terminal.getBoundingClientRect().left;
-    shiftY = touch.clientY - terminal.getBoundingClientRect().top;
-
-    startDrag(touch.pageX, touch.pageY);
-  });
-
-  terminal.ondragstart = function () {
-    return false;
-  };
+  terminal.addEventListener('touchstart', onTouchStart, { passive: false });
+  terminal.addEventListener('touchend', onTouchEnd);
+  terminal.addEventListener('mousedown', onMouseDown);
 
   function stopDraggable(minButton, restoreButton, maxButton, closeButton) {
-    closeButton.addEventListener("mousedown", function (event) {
-      event.stopPropagation();
-    });
-    maxButton.addEventListener("mousedown", function (event) {
-      event.stopPropagation();
-    });
-    restoreButton.addEventListener("mousedown", function (event) {
-      event.stopPropagation();
-    });
-    minButton.addEventListener("mousedown", function (event) {
-      event.stopPropagation();
-    });
     closeButton.addEventListener("touchstart", function (event) {
       event.stopPropagation();
     });
@@ -738,10 +730,26 @@ function draggable(terminal, minButton, restoreButton, maxButton, closeButton) {
     minButton.addEventListener("touchstart", function (event) {
       event.stopPropagation();
     });
+    closeButton.addEventListener("mousedown", function (event) {
+      event.stopPropagation();
+    });
+    maxButton.addEventListener("mousedown", function (event) {
+      event.stopPropagation();
+    });
+    restoreButton.addEventListener("mousedown", function (event) {
+      event.stopPropagation();
+    });
+    minButton.addEventListener("mousedown", function (event) {
+      event.stopPropagation();
+    });
   }
 
   stopDraggable(minButton, restoreButton, maxButton, closeButton);
 }
+
+
+
+
 initializeTerminal();
 window.addEventListener('scroll', changeIcons);
 changeIcons();
