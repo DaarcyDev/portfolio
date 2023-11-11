@@ -1,4 +1,4 @@
-from django.contrib.auth import login
+from django.contrib.auth import login,logout
 from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import user_passes_test, login_required
@@ -7,6 +7,7 @@ from .forms import AboutForm, ProjectForm, ProjectImageForm, SkillsForm, SkillsI
 from django.shortcuts import get_object_or_404
 from django.forms import modelformset_factory
 from django.views.decorators.csrf import csrf_protect
+
 import resend
 
 # @csrf_protect
@@ -642,3 +643,8 @@ def crudContactUpdate(request, pk):
     return render(request, 'contactCrudUpdate.html', {
         'formContacts': formContact,
     })
+    
+@login_required
+def signout (request):
+    logout(request)
+    return redirect("index")

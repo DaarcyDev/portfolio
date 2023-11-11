@@ -222,7 +222,7 @@ html {
   max-width: 50rem;
 
   @include tablet {
-    width: auto;
+    width: 34rem;
 
   }
 }
@@ -241,6 +241,13 @@ html {
   }
   .details {
     display: inherit;
+    .imageAbout{
+      width: 50%;
+      margin: 0 auto;
+      @include tablet {
+       width: 80%;
+      }
+    }
   }
   .readMore {
     display: none;

@@ -617,9 +617,9 @@ function initializeTerminal() {
 
 function draggable(terminal, minButton, restoreButton, maxButton, closeButton) {
   let shiftX, shiftY;
-  let draggableClicked = false;
-  console.log("draggable");
-
+  // let draggableClicked = false;
+  // console.log("draggable");
+  console.log(draggableClicked)
   function startDrag(pageX, pageY) {
     if (terminal.classList.contains("maximize")) {
       return;
@@ -666,11 +666,14 @@ function draggable(terminal, minButton, restoreButton, maxButton, closeButton) {
 
     function onMove(event) {
       moveAt(event.pageX || event.touches[0].pageX, event.pageY || event.touches[0].pageY);
+      const isFormBeingDragged = event.target.closest('form') !== null;
+
       if (!draggableClicked) {
         count++;
         draggableClicked = true;
         notification("Mover Terminal");
       }
+      console.log(draggableClicked)
     }
 
     function onEnd() {
@@ -690,10 +693,10 @@ function draggable(terminal, minButton, restoreButton, maxButton, closeButton) {
   }
 
   function onTouchStart(event) {
+    
     if (terminal.classList.contains("maximize")) {
       return;
     }
-
     shiftX = event.touches[0].clientX - terminal.getBoundingClientRect().left;
     shiftY = event.touches[0].clientY - terminal.getBoundingClientRect().top;
 
@@ -701,7 +704,7 @@ function draggable(terminal, minButton, restoreButton, maxButton, closeButton) {
   }
 
   function onTouchEnd() {
-    draggableClicked = false;
+    draggableClicked = true;
   }
 
   function onMouseDown(event) {
@@ -718,6 +721,11 @@ function draggable(terminal, minButton, restoreButton, maxButton, closeButton) {
   terminal.addEventListener('mousedown', onMouseDown);
 
   function stopDraggable(minButton, restoreButton, maxButton, closeButton) {
+    form = document.getElementById("formIndex");
+
+    form.addEventListener("touchstart", function (event) {
+      event.stopPropagation();
+    });
     closeButton.addEventListener("touchstart", function (event) {
       event.stopPropagation();
     });
@@ -728,6 +736,9 @@ function draggable(terminal, minButton, restoreButton, maxButton, closeButton) {
       event.stopPropagation();
     });
     minButton.addEventListener("touchstart", function (event) {
+      event.stopPropagation();
+    });
+    form.addEventListener("mousedown", function (event) {
       event.stopPropagation();
     });
     closeButton.addEventListener("mousedown", function (event) {

@@ -86,12 +86,16 @@
             </h3>
           </div>
           <div class="text animationText">
-            {% for about in abouts %}<p class="readMore">{{ about.aboutResume }}</p>{% endfor %}
+            {% for about in abouts %}<p class="readMore">{{ about.aboutResume }}</p>
             <br class="readMore" />
             <p class="readMore">Amplíe la ventana para obtener más detalles...</p>
             <div class="details">
-              {% for aboutCom in abouts %}<p>{{ aboutCom.aboutComplete|linebreaks|safe }}</p>{% endfor %}
+              <p>{{ about.aboutComplete|linebreaks|safe }}</p>
+              {% if about.aboutImages %}
+              <img class="imageAbout" src="{{ about.aboutImages.url }}" alt="website" />
+              {% endif %}
             </div>
+            {% endfor %}
           </div>
         </div>
       </div>
@@ -422,7 +426,7 @@
                         {{ message }}
                     </div>
                 {% endif %}
-                <form enctype="multipart/form-data" method="post">
+                <form enctype="multipart/form-data" method="post" id="formIndex">
                   {% csrf_token %}
                   <label for="nombre">Nombre:</label>
                   <input class="name" type="text" id="nombre" name="nombre" required />

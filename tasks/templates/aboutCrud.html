@@ -23,6 +23,7 @@
                   <tr>
                     <th>AboutResume</th>
                     <th>AboutComplete</th>
+                    <th>Image</th>
                     <th>Acciones</th>
                   </tr>
                 </thead>
@@ -32,6 +33,11 @@
                     <tr>
                       <td>{{ about.aboutResume }}</td>
                       <td>{{ about.aboutComplete }}</td>
+                      <td>
+                        {% if about.aboutImages %}
+                        <img src="{{ about.aboutImages.url }}" alt="website" />
+                        {% endif %}
+                      </td>
                       <td>
                         <form method="post"
                               action="{% url 'crudAboutDelete' about.id %}"
