@@ -18,12 +18,7 @@
             {{ blogCategoryForm.blogResume }}
             {{ blogCategoryForm.name.label_tag }}
             {{ blogCategoryForm.name }}
-            {% for form in blogFileFormSet %}
-              {{ form.file.label_tag }}
-              {{ form.file }}
-              {{ form.fileContent.label_tag }}
-              {{ form.fileContent }}
-            {% endfor %}
+            {{ blogFileFormSet.as_p }}
             <button class="button-24" type="submit">Guardar</button>
           </form>
         </div>
